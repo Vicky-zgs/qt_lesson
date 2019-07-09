@@ -110,3 +110,19 @@ body {
         background-position: 0 100%;
     }
 }
+
+/* 让我们的大白从pc端来到移动端  */
+/* 适配 响应式编程 手机 */
+@media only screen and (max-width:480px) {
+    .baymax:before, .baymax:after {
+        width: 8em;
+        height: 8em;
+        top: -4em;
+    }
+    .baymax:before {
+        left: -5em;
+    }
+    .baymax:after {
+        right: -5em;
+    }
+}
