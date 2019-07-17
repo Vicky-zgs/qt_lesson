@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>traffic-light</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #337e92;
+        }
+        .traffic-light {
+            height: 22.5em;
+            width: 10em;
+            background-color: #333333;
+            border-radius: 2em;
+            border:0.5em solid #eeeeee ;
+            position: absolute;
+            top: 38%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            z-index: 10;
+        }
+        .traffic-light::before {
+            content: '';
+            height: 8em;
+            width: 3em;
+            position:absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #eeeeee;
+            background: linear-gradient(rgba(240,240,240,0.9),#337e92);
+        }
+        .light {
+            width: 6em;
+            height: 5.5em;
+            border-radius: 50%;
+            background: #000;
+            border: 1px solid #000;
+            margin: 1.5em auto;
+        }
+        .red {
+            animation: red 10s linear infinite;
+        }
+        .amber {
+            animation: amber 10s linear infinite;
+        }
+        .green {
+            animation: green 10s linear infinite;
+        }
+        @keyframes red {
+            0% {
+                background: #000;
+            }
+            2%,40% {
+                background: red;
+            }
+            42%,100% {
+                background: #000;
+            }
+        }
+        @keyframes amber {
+            0%,20% {
+                background: #000;
+            }
+            22%, 40% {
+                background: #ff7e00;
+            }
+            42%, 80% {
+                background: #000;
+            }
+            82%, 100% {
+                background: #ff7e00;
+            }
+        }
+        @keyframes green {
+            0%,40% {
+                background: #000;
+            }
+            42%,80% {
+                background: green;
+            }
+            82%,100% {
+                background: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="traffic-light">
+        <div class="light red"></div>
+        <div class="light amber"></div>
+        <div class="light green"></div>
+    </div>
+</body>
+</html>
