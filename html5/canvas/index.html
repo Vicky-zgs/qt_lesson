@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Canvas</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        text-align: center;
+    }
+    #draw {
+        border: 1px solid #000;
+    }
+    </style>
+</head>
+<body>
+    <!-- 画布 -->
+    <canvas id="draw" width="800" height="800">
+    </canvas>
+    <script>
+    const canvas =
+     document.querySelector('#draw');
+    // console.log(canvas);
+    // canvas 步骤
+     const ctx = canvas.getContext('2d'); 
+    //绘画环境
+    // BOM Browser Object Model
+    // DOM Document Object Model
+    // window(js 的宙斯)
+    // document  (地面的王)
+    canvas.width = window.innerWidth - 100;
+    canvas.height = window.innerHeight - 10;
+
+    ctx.strokeStyle = '#BADA55'; //描边颜色
+    ctx.lineWidth = 10;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+
+    //全局变量
+    let lastX = 0,
+        lastY = 0,
+        isDrawing = false,
+        hue = 0,
+        direction = true;
+    // ctx.moveTo(100,100);
+    // ctx.lineTo(200,200);
+    // ctx.stroke();
+    function draw (event) {
+        // console.log(event.offsetX,event.offsetY);
+        if (!isDrawing) return;
+        console.log(event);
+        ctx.strokeStyle = 'hsl('+ hue +', 100%, 50%)'; //设置颜色饱和度(彩色)
+        ctx.beginPath();
+        ctx.moveTo(lastX,lastY);
+        ctx.lineTo(event.offsetX,event.offsetY);
+        ctx.stroke();
+        lastX = event.offsetX;
+        lastY = event.offsetY;
+
+        hue++; //颜色
+        if (hue >= 360) {
+            hue = 0;
+        }
+
+        //画笔大小 超过五十就变小，小于1就变大
+        if (ctx.lineWidth >= 50 || ctx.lineWidth <= 1 ) {
+            direction =!direction;
+        }
+
+        if (direction) {
+            ctx.lineWidth++;
+        } else {
+            ctx.lineWidth--;
+        }
+    }
+    canvas.addEventListener('mousedown',  // 触摸画布
+        function(event) {
+            // console.log(event.offsetX,event.offsetY);
+            isDrawing = true;
+            // boolean mousemove  要画
+            lastX = event.offsetX;
+            lastY = event.offsetY;
+        }); 
+    // 画完
+    canvas.addEventListener('mousemove', draw); //鼠标移动到画布上
+    // canvas.addEventListener('mouseup',   //松开
+    // function(event) {
+    //     isDrawing = false ;
+    // }); 
+    canvas.addEventListener('mouseup',() => isDrawing = false) 
+    // => 箭头函数， 箭头左边是function,右边是函数的语句 ，可省{}
+    canvas.addEventListener('mouseout',() => isDrawing = false)
+    
+    </script>
+</body>
+</html>
