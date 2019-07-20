@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            color: red;
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            text-align: center;
+            line-height: 100px;
+            transition: all 1s;
+        }
+        /* .wrapper:hover{ 
+            width: 300px;
+        } */
+        .active {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper" id="wrapper">789</div>
+    <script>
+        var test = document.getElementById('wrapper') /*获取wrapper*/
+        // consolo.log(test)  //打印wrapper
+        var isActive = false
+        test.addEventListener('click',function(){/*监听事件*/
+            isActive = !isActive
+            if(isActive == true){
+                test.classList.add('active') //伸
+            }else {
+                test.classList.remove('active') //缩
+            }
+            
+        })
+    </script>
+</body>
+</html>
