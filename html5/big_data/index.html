@@ -53,6 +53,7 @@
     let news = chunk(originNews, pageNum);
     const loadObserver = new IntersectionObserver(
         (entries) => {
+            console.log(entries);
             if (entries[0].intersectionRatio <= 0)
                 return;
 
