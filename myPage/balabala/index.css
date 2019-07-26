@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+/* 头部 */
+.header {
+  height: 20vh;
+}
+/* 中间 */
+.container {
+  height: 376vh;
+  overflow-x: hidden;
+}
+.themeWrap{
+  width: 99vw;
+  height: 85vh;
+  position: relative;
+}
+
+.List{
+  width: 99vw;
+  height: 85vh;
+  list-style: none;
+  position: relative;
+  padding-left: 0;
+}
+.List img{
+  width: 100vw;
+  height: 80vh;
+}
+.item{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 50px;
+}
+
+.btn{
+  width: 40px;
+  height: 50px;
+  background-color: black;
+  border: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding-left: 0;
+  margin: 0px 50px;
+  z-index: 100;
+  opacity: 0.35;
+}
+#goPre{
+  color: aliceblue;
+  left: 0px;
+  font-size: 40px;
+}
+#goNext{
+  color: aliceblue;
+  right: 0px;
+  font-size: 40px;
+}
+.item.active{
+  z-index:10;
+}
+.PointList{
+  padding-left: 0;
+  list-style: none;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1000;
+}
+.point{
+  width: 8px;
+  height: 8px;
+  background-color: rgba(0,0,0,0.4);
+  border-radius: 100%;
+  float:left;
+  margin-right: 14px;
+  margin-bottom: 15px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(255,255,255,0.8);
+  
+  cursor: pointer;
+}
+.point.active{
+  border-color: rgba(255,255,255,0.4);
+}
+
+.detailWrap {
+  width: 99vw;
+  height: 115.5vh;
+  position: relative;
+}
+.detailHd {
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  padding: 25px;
+  opacity: .5;
+}
+.detailWrap img {
+  width: 86vw;
+  height: 99vh;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.balaOther {
+  width: 86vw;
+  height: 160vh; 
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.otherItem img{
+  width: 43vw;
+  height: 40vw;
+}
+.otherItem1 {
+  float: left;
+}
+.otherItem3 {
+  float: left;
+}
+
+/* 尾部 */
+.footer {
+  height: 80vh;
+}

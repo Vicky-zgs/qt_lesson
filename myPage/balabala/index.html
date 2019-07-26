@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <title>balabala</title>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header"></div>
+        <div class="container">
+            <div class="balaTheme">
+                <div class="themeWrap">
+                    <ul class="List">
+                        <li class="item active"><img src="http://www.balabala.com.cn/upload/image/20190716/20190716162103_22567.jpg"></li>
+                        <li class="item"><img src="http://www.balabala.com.cn/upload/image/20190716/20190716162115_54623.jpg"></li>
+                        <li class="item "><img src="http://www.balabala.com.cn/upload/image/20190716/20190716162135_14900.jpg"></li>
+                        <li class="item"><img src="http://www.balabala.com.cn/upload/image/20190716/20190716162236_49305.jpg"></li>
+                        <li class="item"><img src="http://www.balabala.com.cn/upload/image/20190716/20190716162503_56215.jpg"></li>
+                    </ul> 
+                    <ul class="PointList">
+                        <li class="point active" data-index='0'></li>
+                        <li class="point" data-index='1'></li>
+                        <li class="point" data-index='2'></li>
+                        <li class="point" data-index='3'></li>
+                        <li class="point" data-index='4'></li>
+                        
+                    </ul>
+                    <button type="button" class="btn" id="goPre"><</button>
+                    <button type="button" class="btn" id="goNext">></button>
+                     
+                 </div>
+            </div>
+            <div class="balaDetail">
+                <div class="detailWrap">
+                    <div class="detailHd">
+                       精致校园
+                    </div>
+                    <div class="detailPic">
+                        <img src="http://www.balabala.com.cn/upload/image/20190627/20190627102554_72474.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="balaOther">
+                <div class="otherItem otherItem1">
+                    <img src="http://www.balabala.com.cn/upload/image/20190627/20190627104036_52822.jpg" alt="">
+                </div>
+                <div class="otherItem otherItem2">
+                    <a href="#">
+                        <img src="http://www.balabala.com.cn/upload/image/20190709/20190709133547_29177.jpg" alt="">
+                    </a>
+                </div>
+                <div class="otherItem otherItem3">
+                    <a href="#">
+                        <img src="http://www.balabala.com.cn/upload/image/20190709/20190709133611_80729.jpg" alt="">
+                    </a>
+                    
+                </div>
+                <div class="otherItem otherItem4">
+                    <a href="#">
+                        <img src="http://www.balabala.com.cn/upload/image/20190709/20190709133625_12673.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer"></div>
+    </div>
+    <script type="text/javascript">
+        var items=document.getElementsByClassName('item');
+        var points=document.getElementsByClassName('point');
+        var goPreBtn=document.getElementById('goPre');
+        var goNextBtn=document.getElementById('goNext');
+        
+        var index=0;
+        var clearActive =function(){
+           for(var i=0;i<items.length ; i++){
+               items[i].className='item';
+           }
+           for(var i=0;i<points.length;i++){
+               points[i].className='point';
+           }
+       }
+        var goIndex=function(){
+            clearActive();
+            items[index].className= 'item active';
+            points[index].className= 'point active';
+        }
+        var goNext = function(){
+            if(index <4){
+               index ++; 
+            }
+            else{
+                index=0;
+            }
+            goIndex();
+        }
+        var goPre=function(){
+            if(index==0){
+                index=4; 
+            }
+            else{
+                index--;
+            }
+            goIndex();
+        }
+        goNextBtn.addEventListener('click',function(){
+            goNext();
+        })
+        goPreBtn.addEventListener('click',function(){
+            goPre();
+        })
+        
+        for(var i=0;i<points.length;i++){
+            points[i].addEventListener('click',function(){
+                var pointIndex= this.getAttribute('data-index');
+                index=pointIndex;
+                goIndex();
+            })
+        }
+        
+        //2000ms跳转一次
+        setInterval(function(){
+            goNext();
+        },4000)
+        
+        
+    </script>
+</body>
+</html>
