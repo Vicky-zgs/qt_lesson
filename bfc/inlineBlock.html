@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .page {
+            font-size: 0; /*取消item之间的间隙*/
+        }
+        .item {
+            font-size: 14px;
+            width: 200px;
+            height: 100px;
+            text-align: center;
+            background-color: #aaa;
+            line-height: 100px; /*使文字行高拉长至容器的高度*/
+            display: inline-block; /*也创建了一个bfc区域*/
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div>
+</body>
+</html>
