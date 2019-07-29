@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            text-align: center;
+            padding: 25px 0;
+        }
+        .inner{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        box
+        <p class="inner">inner</p>
+    </div>
+    <!-- 登录 评论 loginForm -->
+    <a href="/login" id="login_a">login</a>
+    <div id="loginBtn">登录</div>
+    <script>
+        const box = document.querySelector('.box');
+        const inner = document.querySelector('.inner');
+        document
+        .getElementById('login_a')
+        .addEventListener('click',function(event){
+            event.preventDefault(); //阻止默认行为的发生(此处阻止超链接跳转)
+            alert('打开弹窗');
+        })
+        document.querySelector('.box').addEventListener('click',(event)=>{
+            alert('I am box');
+        },true)
+        document.querySelector('.inner').addEventListener('click',(event)=>{
+            // event.stopPropagation();
+            alert('I am inner');
+        })
+    </script>
+</body>
+</html>
