@@ -278,3 +278,66 @@ html,body{
 	}
 
 }
+.mianwrap{
+    position: absolute;
+    width: 486px;
+    height: 494px;
+    right: 0;
+    bottom: 0;
+    transform: scale(.5);
+}
+.man{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/man.fafe9d20caf92e672faf6cac0506c94b.png) no-repeat; 
+}
+.shoubi{
+    position: absolute;
+    left: 70px;
+    top: -115px;
+    width: 246px;
+    height: 270px;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/shoubi.dfdeb7747a98b98266ff5b0713024c87.png) no-repeat;
+    animation: swing 1.3s  steps(12) infinite;
+}
+@keyframes swing{
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -2952px 0;
+    }
+}    
+.swiper-slide-active .word{
+    animation: blurAppear 2s linear forwards;/* 从模糊到清晰并最后保持清晰,小到大 */
+}
+.word{
+    filter:blur(10px);
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    background-size: 120px;
+    background-repeat: no-repeat;
+    
+}
+@keyframes blurAppear{
+    0%{
+        filter:blur(10px);
+        transform: scale(.8);
+        opacity: 0;
+    }
+    100%{
+        filter:blur(0);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+span.word:nth-child(1){
+    background-image: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/word-005.fb23ac077f192198be71db00c07ea3a1.png);
+}
+span.word:nth-child(2){
+    background-image: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/word-006.742fab0bc19b5e0d3a1aea45bbbd785f.png);
+}

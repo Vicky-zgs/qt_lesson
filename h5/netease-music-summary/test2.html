@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>猫</title>
+  <style>
+      .catBody{
+          position: absolute;
+          width: 130px;
+          height: 200px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maoshenti.ad6177be5deba54a83a99ef58fe80047.png) no-repeat;
+          z-index: 1;
+      }
+      .catHand{
+          position: absolute;
+          width: 100px;
+          height: 200px;
+          top: 496px;
+          left: 181px;
+          background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maozhua.35cbb00fc5856cf230d6a4e60cfdfc55.png) no-repeat;
+          animation: hand 2s infinite;
+          transform-origin:  61.0294117647059% 4.93827160493827%;
+      }
+      @keyframes hand{
+          0%{
+              transform: rotate(0);
+          }
+          100%{
+            transform: rotate(-5deg);
+          }
+          100%{
+            transform: rotate(0);
+          }
+      }
+      .catFoot{
+          position: absolute;
+          width: 100px;
+          height: 200px;
+          top: 121px;
+          left: 111px;
+          background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maowei.cebc9c6d99173d07009465c700b0eb21.png) no-repeat;
+          animation: foot 2s infinite;
+          transform-origin: 40.625% 96.3917525773196%;
+      }
+      @keyframes foot{
+          0%{
+              transform: rotate(0);
+          }
+          50%{
+            transform: rotate(-5deg);
+          }
+          100%{
+            transform: rotate(0);
+          }
+      }
+  </style>
+</head>
+<body>
+  <!-- 
+  身体：http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maoshenti.ad6177be5deba54a83a99ef58fe80047.png
+  猫爪：http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maozhua.35cbb00fc5856cf230d6a4e60cfdfc55.png
+  猫尾：http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maowei.cebc9c6d99173d07009465c700b0eb21.png
+  1. 身体居中
+  2. 猫爪 猫尾摆动
+  -->
+  <div class="wrap">
+      <div class="catBody"></div>
+      <div class="catHand"></div>
+      <div class="catFoot"></div>
+  </div>
+</body>
+</html>
