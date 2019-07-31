@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.bootcss.com/weui/1.1.3/style/weui.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>weui-shopping</title>
+</head>
+<body>
+    <div class="container">
+        <div class="page tabbar js_show">
+            <div class="page__bd" style="height: 100%;">
+                <div class="weui-tab">
+                    <div class="weui-tab__panel tab">
+                        111111
+                    </div>
+                    <div class="weui-tab__panel tab">
+                        2
+                    </div>
+                    <div class="weui-tab__panel tab">
+                        <div class="mine-title">我的</div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                                <img src="./images/images/avatar.jpg" style="width: 50px;display: block">
+                            </div>
+                            <div class="weui-cell__bd">
+                                <p>联系人名称</p>
+                                <p style="font-size: 13px;color: #888888;">摘要信息</p>
+                            </div>
+                        </div>
+                        <div class="weui-cell weui-cell_access">
+                            <div class="weui-cell__bd">
+                                <div class="weui-cell__bdimg">
+                                    <img src="./images/images/shuiguo_1.png" style="width:30px;height:30px;display:block;float: left;">
+                                </div>
+                                <span style="vertical-align: middle">文字标题</span>
+                            </div>
+                            <div class="weui-cell__ft">124</div>
+                        </div>
+                        <div class="weui-cell weui-cell_access">
+                            <div class="weui-cell__bd">
+                                <div class="weui-cell__bdimg">
+                                    <img src="./images/images/shuiguo_1.png" style="width:30px;height:30px;display:block;float: left;">
+                                </div>
+                                <span style="vertical-align: middle">文字标题</span>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </div>
+                    </div>
+                    <div class="weui-tabbar">
+                        <a href="javascript:;" class="weui-tabbar__item">
+                            <span style="display: inline-block;position: relative;">
+                                <img src="./images/images/shuiguo_2.png" alt="" class="weui-tabbar__icon">
+                                <span class="weui-badge" style="position: absolute;top: -2px;right: -13px;">8</span>
+                            </span>
+                            <p class="weui-tabbar__label">微信</p>
+                        </a>
+                        <a href="javascript:;" class="weui-tabbar__item">
+                            <img src="./images/images/dangao.png" alt="" class="weui-tabbar__icon">
+                            <p class="weui-tabbar__label">通讯录</p>
+                        </a>
+                        <a href="javascript:;" class="weui-tabbar__item">
+                            <span style="display: inline-block;position: relative;">
+                                <img src="./images/images/shengnvguo.png" alt="" class="weui-tabbar__icon">
+                                <span class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span>
+                            </span>
+                            <p class="weui-tabbar__label">我的</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const choose = document.querySelectorAll('.weui-tabbar__item')
+        // console.log(choose)  打印choose获取的数组(a标签的类名)
+        const tabs = document.querySelectorAll('.weui-tab__panel') 
+        for (let i = 0; i < choose.length; i++) {
+            choose[i].addEventListener('click',function() {
+                showTab.call(this)
+            })
+        }
+        function showTab() {
+            // console.log(this)
+            for (let j = 0;j < tabs.length; j++){
+                if(choose[j] === this) {
+                    //点击了哪个就在哪个里添加此类名 这个类名添加后是绿色字体效果
+                    choose[j].classList.add( 'weui-bar__item_on') 
+                    tabs[j].classList.add( 'show') 
+                } else {
+                    choose[j].classList.remove( 'weui-bar__item_on') 
+                    tabs[j].classList.remove( 'show') 
+                }
+            }
+        }
+    </script>
+</body>
+</html>

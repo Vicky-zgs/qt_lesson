@@ -1,0 +1,269 @@
+$hdbg_color = #e54847
+$font_color_block = #ffffff
+$bd_color = #e5e5e5
+html,body
+    width 100%
+.flex
+    display flex
+.flex1
+    flex 1
+
+.section-title
+    font-size 17px
+    color #000000
+.action-list.section-title
+    padding-left 0.4rem
+
+.nav
+    height 1.067rem
+    font-size 18px
+    text-align center
+    background-color $hdbg_color
+    padding 6px
+    box-sizing border-box
+    .arrow-left
+        float left
+        height 100%
+        position relative
+        &:after
+            content ''
+            height 12px
+            width 12px
+            position absolute
+            top 50%
+            left 16px
+            border 2px solid #ffffff
+            border-width 0 0 2px 2px
+            transform translateY(-50%) rotate(45deg)
+    span 
+        color $font_color_block
+        display inline-block
+
+.page
+    background #f4f4f4
+    position relative
+    z-index 1
+    margin 0
+    color #555555
+    min-width 3.1rem
+    -webkit-tap-highlight-color rgba(255,255,255,0)
+    font 14px/1.5 Arial,Helvetica,sans-serif
+    section 
+        background #fff
+        border-bottom 1px solid #e5e5e5
+    .movie-header
+        padding 0
+        background #f8f8f8
+        border-bottom none
+        .movie
+            color #ffffff
+            padding 0.4rem
+            line-height 1
+            position relative
+            box-sizing border-box
+            filter blur(0)
+            &-background,
+            &-filter
+                position absolute
+                top 0
+                left 0
+                right 0
+                bottom 0
+            &-background
+                z-index 0
+                filter blur(0.6rem)
+                -webkit-filter blur(0.6rem)
+                background-image url(./images/images/header-bg.jpg)
+                background-size cover
+                background-repeat no-repeat
+                background-position-y 40%
+            &-filter
+                background-color #40454d
+                opacity 0.5
+            &-container
+                z-index 1
+                position relative
+                overflow hidden
+                .movie-cover
+                    float left
+                    width 2.854rem
+                    border 1px solid #f0f2f3
+                    position relative
+                    .img
+                        width 100%
+                    &:after
+                        content ''
+                        display block
+                        width 1.6rem
+                        height 1.6rem
+                        background-image url(./images/images/bofang.png)
+                        background-size 100% auto
+                        position absolute
+                        left 50%
+                        top 50%
+                        transform translate(-50%,-50%)
+                        opacity 0.7
+                .movie-content
+                    overflow hidden
+                    padding 0.4rem
+                    .movie-name
+                        font-size 17px
+                        margin 0.08rem 0 /*上下0.08 左右0*/
+                    .movie-ename
+                        font-size 12px
+                        margin-bottom 0.3rem
+                    .movie-score
+                        font-size 12px
+                        margin-bottom 0.3rem
+                        .rating
+                            .img
+                                width 0.48rem
+                                margin-right 2px
+                            .rating-score
+                                font-size .48rem
+                                color #ffc600
+                    .movie-detail
+                        font-size: 12px
+                        margin-bottom 0.16rem
+                        opacity 0.7
+                        div,p 
+                            margin-bottom 0.14rem
+            .operating
+                margin-top 0.5rem
+                div
+                    border 1px solid rgba(255,255,255,0.4)
+                    background-color rgba(255,255,255,0.4)
+                    font-size 14px
+                    color #ffffff
+                    position relative
+                    z-index 2
+                    text-align center
+                    padding 0.25rem 0
+                    border-radius 4px
+                img
+                    vertical-align middle // 居中
+                span
+                    vertical-align middle
+            .movie-watch
+                margin-right 0.3rem
+                img
+                    width 14px
+            .movie-mark
+                img
+                    width 14px
+    
+    .section-seperate
+        padding-top 0.4rem
+        margin-bottom 0.3rem
+        border-top 1px solid $bd_color
+    .section-expender
+        padding-left 0.4rem
+        padding-right 0.4rem
+        .text-expander
+            &__content.close
+                min-height 65px
+                display -webkit-box
+                overflow hidden
+                text-overflow ellipsis
+                word-break break-all
+                -webkit-box-orient vertical
+                -webkit-line-clamp 3
+            &__button
+                height 0.7rem
+                text-align center
+                .icon-chevron__down
+                    width 10px
+                    height 10px
+                    border 1px solid #aaaaaa
+                    display inline-block
+                    border-width 0 1px 1px 0
+                    transform rotateZ(45deg)
+                    box-sizing border-box
+                    transition transform .5s /*若transform发生变化，需要5秒时间*/
+                .icon-chevron__down.up
+                    transform rotateZ(-135deg)
+    
+    .section-seperate
+        // 演员表
+        .movie-celebrities
+            width 100%
+            padding .3rem .3rem .1rem .3rem
+            overflow-x scroll
+            white-space nowrap
+            box-sizing border-box
+            li    
+                text-align center
+                display inline-block
+                padding 0.04rem
+                .link
+                    color #000000
+                    .movie-celebrities__pic
+                        width 1.7334rem
+                        height 2.4rem
+                        margin 0.05rem
+                        img
+                            width 100%
+                    span
+                        display block  /*换行*/
+                        font-size 0.2rem
+                        text-overflow ellipsis
+                        overflow hidden
+                        white-space nowrap /*若设置了超出范围则打省略号，一定要设置不能换行*/
+                    .movie-celebrities-roles
+                        color #999999
+    .movie-booking
+        padding-bottom 0.2rem
+        .weui-flex
+            text-align center
+            .placeholder
+                span
+                    font-size 24px
+                    color #d96a3d
+                p  
+                    color #bababa
+                    margin-top 0.1rem
+    .movie-photo
+        .movie-photo__lists
+            width 100%
+            box-sizing border-box
+            padding 0.3rem 0.3rem 0.2rem 0.3rem
+            white-space nowrap
+            overflow-x scroll
+                .stage-img-container
+                    margin-right 0.13333rem
+                    display inline-block
+                    width 2.4rem
+                    height 1.867rem
+                    .movie-celebrities__pic
+                        width 100%
+                        height 100%
+                        img
+                            width 100%
+                    &:first-child
+                        width 3.3334rem
+                        height 1.867rem
+                    &:last-child
+                        margin-right 0
+    .section-seperate
+        .join-comment
+            padding 10px
+            background-color orange
+            position absolute
+            right 0.4rem
+            margin-bottom 1.4rem
+            border-radius 25px 25px 25px 25px
+
+        .movie-comment
+            margin-top 25px
+            .comment-item
+                display inline-block
+                padding 5px
+                font-size: 18px
+                box-sizing border-box
+                border 1px solid gray
+                margin 5px
+                border-radius 25px 25px 25px 25px
+#toast
+    display none
+.active
+    display block !important //权重最高，本来id权重比class高则active无法覆盖toast

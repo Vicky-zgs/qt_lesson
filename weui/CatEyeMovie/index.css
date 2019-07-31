@@ -1,0 +1,324 @@
+html,
+body {
+  width: 100%;
+}
+.flex {
+  display: flex;
+}
+.flex1 {
+  flex: 1;
+}
+.section-title {
+  font-size: 17px;
+  color: #000;
+}
+.action-list.section-title {
+  padding-left: 0.4rem;
+}
+.nav {
+  height: 1.067rem;
+  font-size: 18px;
+  text-align: center;
+  background-color: #e54847;
+  padding: 6px;
+  box-sizing: border-box;
+}
+.nav .arrow-left {
+  float: left;
+  height: 100%;
+  position: relative;
+}
+.nav .arrow-left:after {
+  content: '';
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  border: 2px solid #fff;
+  border-width: 0 0 2px 2px;
+  transform: translateY(-50%) rotate(45deg);
+}
+.nav span {
+  color: #fff;
+  display: inline-block;
+}
+.page {
+  background: #f4f4f4;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #555;
+  min-width: 3.1rem;
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
+  font: 14px/1.5 Arial, Helvetica, sans-serif;
+}
+.page section {
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+.page .movie-header {
+  padding: 0;
+  background: #f8f8f8;
+  border-bottom: none;
+}
+.page .movie-header .movie {
+  color: #fff;
+  padding: 0.4rem;
+  line-height: 1;
+  position: relative;
+  box-sizing: border-box;
+  filter: blur(0);
+}
+.page .movie-header .movie-background,
+.page .movie-header .movie-filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.page .movie-header .movie-background {
+  z-index: 0;
+  filter: blur(0.6rem);
+  -webkit-filter: blur(0.6rem);
+  background-image: url("./images/images/header-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: 40%;
+}
+.page .movie-header .movie-filter {
+  background-color: #40454d;
+  opacity: 0.5;
+}
+.page .movie-header .movie-container {
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+}
+.page .movie-header .movie-container .movie-cover {
+  float: left;
+  width: 2.854rem;
+  border: 1px solid #f0f2f3;
+  position: relative;
+}
+.page .movie-header .movie-container .movie-cover .img {
+  width: 100%;
+}
+.page .movie-header .movie-container .movie-cover:after {
+  content: '';
+  display: block;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-image: url("./images/images/bofang.png");
+  background-size: 100% auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+}
+.page .movie-header .movie-container .movie-content {
+  overflow: hidden;
+  padding: 0.4rem;
+}
+.page .movie-header .movie-container .movie-content .movie-name {
+  font-size: 17px;
+  margin: 0.08rem 0 /*上下0.08 左右0*/;
+}
+.page .movie-header .movie-container .movie-content .movie-ename {
+  font-size: 12px;
+  margin-bottom: 0.3rem;
+}
+.page .movie-header .movie-container .movie-content .movie-score {
+  font-size: 12px;
+  margin-bottom: 0.3rem;
+}
+.page .movie-header .movie-container .movie-content .movie-score .rating .img {
+  width: 0.48rem;
+  margin-right: 2px;
+}
+.page .movie-header .movie-container .movie-content .movie-score .rating .rating-score {
+  font-size: 0.48rem;
+  color: #ffc600;
+}
+.page .movie-header .movie-container .movie-content .movie-detail {
+  font-size: 12px;
+  margin-bottom: 0.16rem;
+  opacity: 0.7;
+}
+.page .movie-header .movie-container .movie-content .movie-detail div,
+.page .movie-header .movie-container .movie-content .movie-detail p {
+  margin-bottom: 0.14rem;
+}
+.page .movie-header .movie .operating {
+  margin-top: 0.5rem;
+}
+.page .movie-header .movie .operating div {
+  border: 1px solid rgba(255,255,255,0.4);
+  background-color: rgba(255,255,255,0.4);
+  font-size: 14px;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0.25rem 0;
+  border-radius: 4px;
+}
+.page .movie-header .movie .operating img {
+  vertical-align: middle;
+}
+.page .movie-header .movie .operating span {
+  vertical-align: middle;
+}
+.page .movie-header .movie .movie-watch {
+  margin-right: 0.3rem;
+}
+.page .movie-header .movie .movie-watch img {
+  width: 14px;
+}
+.page .movie-header .movie .movie-mark img {
+  width: 14px;
+}
+.page .section-seperate {
+  padding-top: 0.4rem;
+  margin-bottom: 0.3rem;
+  border-top: 1px solid #e5e5e5;
+}
+.page .section-expender {
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+.page .section-expender .text-expander__content.close {
+  min-height: 65px;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+.page .section-expender .text-expander__button {
+  height: 0.7rem;
+  text-align: center;
+}
+.page .section-expender .text-expander__button .icon-chevron__down {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #aaa;
+  display: inline-block;
+  border-width: 0 1px 1px 0;
+  transform: rotateZ(45deg);
+  box-sizing: border-box;
+  transition: transform 0.5s /*若transform发生变化，需要5秒时间*/;
+}
+.page .section-expender .text-expander__button .icon-chevron__down.up {
+  transform: rotateZ(-135deg);
+}
+.page .section-seperate .movie-celebrities {
+  width: 100%;
+  padding: 0.3rem 0.3rem 0.1rem 0.3rem;
+  overflow-x: scroll;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+.page .section-seperate .movie-celebrities li {
+  text-align: center;
+  display: inline-block;
+  padding: 0.04rem;
+}
+.page .section-seperate .movie-celebrities li .link {
+  color: #000;
+}
+.page .section-seperate .movie-celebrities li .link .movie-celebrities__pic {
+  width: 1.7334rem;
+  height: 2.4rem;
+  margin: 0.05rem;
+}
+.page .section-seperate .movie-celebrities li .link .movie-celebrities__pic img {
+  width: 100%;
+}
+.page .section-seperate .movie-celebrities li .link span {
+  display: block /*换行*/;
+  font-size: 0.2rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap /*若设置了超出范围则打省略号，一定要设置不能换行*/;
+}
+.page .section-seperate .movie-celebrities li .link .movie-celebrities-roles {
+  color: #999;
+}
+.page .movie-booking {
+  padding-bottom: 0.2rem;
+}
+.page .movie-booking .weui-flex {
+  text-align: center;
+}
+.page .movie-booking .weui-flex .placeholder span {
+  font-size: 24px;
+  color: #d96a3d;
+}
+.page .movie-booking .weui-flex .placeholder p {
+  color: #bababa;
+  margin-top: 0.1rem;
+}
+.page .movie-photo .movie-photo__lists {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.3rem 0.3rem 0.2rem 0.3rem;
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+.page .movie-photo .movie-photo__lists .stage-img-container {
+  margin-right: 0.13333rem;
+  display: inline-block;
+  width: 2.4rem;
+  height: 1.867rem;
+}
+.page .movie-photo .movie-photo__lists .stage-img-container .movie-celebrities__pic {
+  width: 100%;
+  height: 100%;
+}
+.page .movie-photo .movie-photo__lists .stage-img-container .movie-celebrities__pic img {
+  width: 100%;
+}
+.page .movie-photo .movie-photo__lists .stage-img-container:first-child {
+  width: 3.3334rem;
+  height: 1.867rem;
+}
+.page .movie-photo .movie-photo__lists .stage-img-container:last-child {
+  margin-right: 0;
+}
+.page .section-seperate .pos_r{
+  position: relative;
+}
+.page .section-seperate .join-comment {
+  font-size: 14px;
+  padding: 7px;
+  background-color: #e54847;
+  color: #fff;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.1rem 0.3rem;
+  border-radius: 20px;
+}
+.page .section-seperate .movie-comment {
+  padding: 0.2rem 0 .4rem 0;
+}
+.page .section-seperate .movie-comment .comment-item {
+  display: inline-block;
+  padding: 0.1rem 0.25rem;
+  font-size: 14px;
+  border: 1px solid #aaa;
+  margin-top: .2rem;
+  margin-right: .3rem;
+  border-radius: 20px;
+}
+#toast {
+  display: none;
+}
+.active {
+  display: block !important;
+}
