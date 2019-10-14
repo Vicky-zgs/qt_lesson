@@ -14,6 +14,9 @@ ul
 .flex1
   flex 1
 
+.action-list.section-til
+  padding-left 0.4rem
+
 html,body
     width 100%
 
@@ -183,6 +186,70 @@ html,body
             transform rotateZ(45deg)
             border-width 0 1px 1px 0
             box-sizing border-box
+            transition transform .5s
+          .icon-shevron__down.up
+            transform rotateZ(-135deg)
+    .section-seperate
+      .movie-celebrities
+        width 100%
+        padding 0.3rem 0.3rem 0.1rem 0.3rem
+        white-space nowrap
+        overflow scroll
+        box-sizing border-box
+        li
+          text-align center
+          display inline-block
+          padding 0.04rem
+          .link
+            color #000000
+            .movie-celebrities_pic
+              width 1.7334rem
+              height 2.4rem
+              margin 0.05rem
+              img
+                width 100%
+            span
+              display block
+              font-size 0.3rem
+              overflow hidden
+              white-space nowrap
+              text-overflow ellipsis
+              .movie-celebrities_roles
+                color #999
+    .movie-booking
+      padding-bottom 0.2rem
+      .weui-flex
+        text-align center
+        .placeholder
+          span
+            font-size 24px
+            color #d96a3d
+          p
+            color #bababa
+            margin-top .1rem
+    .movie-photo
+      &__lists
+        width 100%
+        padding 0.3rem 0.3rem 0.2rem 0.3rem
+        white-space nowrap
+        overflow scroll
+        box-sizing border-box
+        .stage-img-container
+          margin-right .13333rem
+          display inline-block
+          width 2.4rem
+          height 1.867rem
+          .movie-celebrities_pic
+            width 100%
+            height 100%
+            img
+              width 100%
+              height 100%
+          &:first-child
+            width 3.3334rem
+            height 1.867rem
+          &:last-child
+            margin-right 0
 
 
 
