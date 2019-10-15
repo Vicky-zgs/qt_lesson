@@ -8,3 +8,6 @@
     -webkit-line-clamp: 3        限制行数为3
     -webkit-box-orient: vertical    
     word-break: break-all        自动换行
+-   overflow: hidden;   超出隐藏
+    white-space: nowrap;  不换行
+    text-overflow: ellipsis;   超出打点
