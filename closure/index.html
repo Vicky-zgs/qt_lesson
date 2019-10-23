@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    
+    // function f1() {
+    //   n = 999
+    // }
+    // f1()
+    // console.log(n)
+    function f1() {
+      var n = 999
+      function f2() {
+        console.log(n)
+      }
+      return f2
+    }
+    var result = f1()
+    result()
+    //函数f2能够访问其外部函数的作用域
+  </script>
+</body>
+</html>
