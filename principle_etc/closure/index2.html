@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //闭包私有化
+
+    // for (var i = 0; i < 10; i++) {
+    //   setTimeout(() => {
+    //     document.write(i + ' ')
+    //   }, 0);
+    // }
+
+    function test() {
+      var arr = []
+      for (var i = 0; i < 10; i++) {
+        // arr[i] = function() {
+        //   document.write(i + ' ')
+        // }   //这个操作仅复制，function()没有被调用，不会执行
+
+        //若此时手动调用一下，则此function会生效，则会打印0-9
+        // arr[i]()
+        //不手动调用 使其自动执行 即自执行函数
+        (function(j) {
+          // var j = 0
+          //j = 0, 1, 2 ...
+          //下面这个function仍然不会在这执行，但仍然可输出0-9
+          arr[j] = function() {
+           document.write(j + ' ')
+          } 
+        })(i)
+      }
+
+      // arr = [
+      //   function() {
+      //     document.write(i + ' ')
+      //   }
+      //   function() {
+      //     document.write(i + ' ')
+      //   }
+      //   ...
+      //   10个function
+      // ]
+      return arr //返回了arr数组给函数test()
+    }
+
+    var myArr = test()
+    //此时i的循环已经结束了，i此时等于10
+    for (var j = 0; j < 10; j++) {
+      //这里调用了arr数组中的每个函数，打印i的值，即10
+      myArr[j]()
+    }
+  </script>
+</body>
+</html>
