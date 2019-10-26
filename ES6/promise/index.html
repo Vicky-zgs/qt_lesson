@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var name = ''
+    function test() {
+      // Promise 一定有这两个参数，一个成功一个失败
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+        console.log('猛哥')
+        name = '猛哥'
+        resolve('ok')
+        // reject('error')
+        },500)
+      })
+    }
+    function xq() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+        console.log(name + '相亲')
+        resolve('相亲很顺利')
+      },1000)
+      })
+    }
+    function marry() {
+      console.log(name + '结婚')
+    }
+    // test()    
+    //   .then(xq)    //在.then里面调用函数不用()
+    //   .then(marry)
+
+      // .then((res) => {
+      //   console.log(res)
+      //   xq()
+      //     .then((res) => {
+      //     console.log(res)
+      //     marry()
+      //   })
+      // })
+
+    // Promise.all([test(),xq()]).then((value) => {
+    //   console.log(value, '--------------')
+    //   marry()    //打印出 [ok , 相亲很顺利]   --------
+    // })
+
+    Promise.race([test(),xq()]).then((value) => {
+      console.log(value, '--------------')
+      marry()    //race: 只要test,xq之中有方法执行了,marry就可以执行了
+    })
+
+  </script>
+</body>
+</html>
