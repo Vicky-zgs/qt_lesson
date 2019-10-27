@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>懒加载</title>
+  <style>
+    .image-item {
+      margin-bottom: 50px;
+      height: 200px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+    <!-- data-original是自己定义的属性 -->
+    <img src="" class="image-item" lazyload="true" data-original="http://img1.3lian.com/2015/a1/149/d/129.jpg" />
+    <img src="" class="image-item" lazyload="true" data-original="http://img15.3lian.com/2015/f2/57/d/96.jpg" />
+    <img src="" class="image-item" lazyload="true" data-original="http://img2.3lian.com/2014cf/f6/146/d/93.jpg" />
+    <img src="" class="image-item" lazyload="true" data-original="http://s9.knowsky.com/sc/mjpg/92/2013082412182770364.jpg" />
+    <img src="" class="image-item" lazyload="true" data-original="http://pic1.win4000.com/wallpaper/b/546441f1d83c2.jpg" />
+    <img src="" class="image-item" lazyload="true" data-original="http://www.officedoyen.com/uploads/allimg/140929/1-140929230255201.jpg" />
+    <img src="" class="image-item" lazyload="true" data-original="http://img1.3lian.com/2015/w22/38/d/82.jpg" />
+    <img src="" class="image-item" lazyload="true" data-original="http://b.zol-img.com.cn/desk/bizhi/image/4/960x600/1393553860400.jpg" />
+    <img src="" class="image-item" lazyload="true" data-original="http://img2.3lian.com/2014cf/f6/146/d/92.jpg" />
+    <img src="" class="image-item" lazyload="true" data-original="http://pic1.win4000.com/wallpaper/2018-01-09/5a547c0cb840c.jpg" />
+    <img src="" class="image-item" lazyload="true" data-original="http://image.biaobaiju.com/uploads/20180802/00/1533139825-SvFkOmnxrA.jpg" />
+    <img src="" class="image-item" lazyload="true" data-original="http://img3.xiazaizhijia.com/walls/20160927/1440x900_dec5fdacc3059ca.jpg" />
+
+  <script>
+    // 获取整个浏览器页面的高度
+    var viewHeight = document.documentElement.clientHeight
+
+    function lazyload() {
+      // lazyload属性是判断是否需要懒加载的
+      var eles = document.querySelectorAll('img[data-original][lazyload]')
+      // 遍历一下数组的原型链 相当于eles.forEach(() => {})
+      Array.prototype.forEach.call(eles, function(item, index) {
+        var rect
+        //若无图片，不懒加载
+        if (!item.dataset.original)  return 
+        // 返回元素的大小及其相对于视口的位置
+        rect = item.getBoundingClientRect()
+        if (rect.bottom >= 0 && rect.top < viewHeight) {
+          //自执行的另一种写法 , ! 代替了一对括号
+          !function() {
+            var img = new Image()  //创建一个img标签
+            img.src = item.dataset.original //将original的值给img
+            img.onload = function() {
+              item.src = img.src
+            }
+            item.removeAttribute('data-original')
+            item.removeAttribute('lazyload')
+          }()
+        }
+      })
+    }
+
+    // 调用lazyload 但这只能执行一次，所以要给整个页面监听滚动实践
+    lazyload()
+
+    document.addEventListener('scroll', lazyload)
+
+  </script>
+</body>
+</html>
