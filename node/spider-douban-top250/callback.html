@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<!-- 认识回调 -->
+
+  <script>
+    function a(arg) {
+      console.log(arg)
+    }
+    a('123')
+    
+
+    function httpGet(url, cb) { //收到一个url , 和一个回调函数
+      setTimeout(() => {
+        // complete
+        cb('data');
+      },3000)
+    }
+    httpGet('baidu.com', (arg) => {
+      console.log('arg',arg);
+    })
+  </script>
+</body>
+</html>
