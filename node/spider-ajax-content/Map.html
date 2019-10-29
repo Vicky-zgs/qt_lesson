@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://127.0.0.1:59349/Map.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Map</title>
+</head>
+<body>
+  <button id="btn"></button>
+  <script>
+    // Map  
+    // key value
+    const btn = document.getElementById('btn');
+    var map = {
+      name: 'lihua',
+      [btn]: 'dom node',
+    }
+    map['0'] = 'b val';
+    map['3'] = 'a val';
+    map['2'] = 'c val';
+    map['1'] = 'd val'; // 打印时是按0 1 2 3 顺序
+
+    let map1 = new Map([
+      ['key', 'value']
+    ]);
+    map1.set('key1', 'value1');  //添加
+    map1.get('key');  //拿值
+    // es6的Map可以传任意类型的key:value
+    map1.set(() => {}, 'function'); //添加了一个函数
+    // for of 可以遍历数组 Map ...
+    for (let entey of map1) {
+      // 打印了map1中所有键值对
+      console.log(entey);
+    }
+
+    console.log(btn);  // <button id="btn"></button>  
+    console.log(Object.keys(map)); // 打印 object HTMLButtonElement 即被转化成了字符串
+    console.log(map1);
+    // 有什么用
+    // 为什么 es6 要增加一个 Map
+    // 1. 以前的key 只支持字符串
+    // 2. 以前的ket 无序的
+
+    // 优化if else
+    var NameMap = {
+      lihua: 'sing',
+      lilei: 'dance',
+      lizhi: 'rap',
+      name: 'name'
+    }
+    function doSomething(name) {
+      // name == lihua 输出 sing
+      // name == lilei 输出 dance
+      // name == lizhi 输出 rap
+      console.log(NameMap[name]);
+    }
+    doSomething('lihua');
+
+    // 扩展运算符
+    // 打散这个数组 
+    console.log(...[1,2,4]);  // 1 2 4 
+    console.log(Math.max(9,8,2));  // 求最大数
+    console.log(Math.max(...[9,8,2]));
+    let a = [1,2,3];
+    let b = [4,5,6];
+    // a.push(4, 5);
+    a.push(...b);   // 将b打散接到a后面
+    console.log(a);
+    
+</script>
+
+</body></html>
