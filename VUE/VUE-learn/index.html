@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- 引入VUE框架 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>vue-初步学习</title>
+</head>
+<body>
+  <div id="app">
+    <!-- v-model: 只要text中的内容发生变化，数据源中的test也会发生变化 -->
+    <input type="text" v-model="test">
+    <div class="msg">{{test}}</div>
+
+    <div class="wrap">
+      <!-- v-if,v-else: 对应了数据源中deng if: true即出现 false即不出现 此时dom结构都没有了-->
+      <!-- v-show: 也是true即出现 false即不出现 但dom结构依然在 只是display:none -->
+      <div class="wrap1" v-show="deng">灯灯好帅</div>
+      <!-- v-on:click  点击事件，在methods里面写这个方法, 可以简写为@click-->
+      <div class="wrap2" v-on:click="handle">灯灯帅吗</div>
+    </div>
+
+    <div class="wrap">
+      <ul>
+        <!-- 相当于一个for循环 ,list 相当于new的一个变量 -->
+        <li v-for="list in newsList">{{list.title}}--{{list.date}}</li>
+      </ul>
+    </div>
+
+    <div class="wrap">
+        <div class="content" v-html="content"></div>
+    </div>
+
+    <div class="wrap">
+      <!-- v-bind:class 动态绑定属性，如果isActive为true则添加active类名 -->
+      <div class="className" v-bind:class="isActive ? 'active' : ''">v-bind</div>
+      <!-- 添加多个类名 -->
+      <div class="wn" :class="[classA,classB]">蜗牛</div>
+    </div>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',  // 让这个new Vue中的代码在id 为app的dom结构中生效
+      data () {  // 数据源
+        return {
+          massage: 'hello world',
+          test: '',
+          deng: false,
+          newsList: [
+            {title: '全国各地的梯子遭到我国长城防火墙的禁用', date:'2019/5/31'},
+            {title: '韩国瑜：准备承担2020年重担，让鬼混的民进党下台', date:'2019/6/1'},
+            {title: '冠心病“救命药”单片涨价近11倍 药企：换了包装', date:'2019/6/2'},
+            {title: '长春一天集齐雷电冰雹暴雨：有路段积水漂车，部分航班取消', date:'2019/6/3'}
+          ],
+          content: '<p>iLoveU</p>',
+          isActive: true,
+          className: true,
+          classA: 'wnnnn',
+          classB: 'wnnnnnnn'
+        }
+      },
+      // methods不是函数,是个属性，其中装了所有要使用的方法 
+      methods: {
+        handle() {
+          console.log('帅')
+        },
+      },
+      
+      // VUE的八个生命周期
+      created() {
+        console.log('created')
+      },
+      beforeCreate() {
+        console.log('beforeCreate')
+      },
+      mounted() {
+        console.log('mounted')
+      },
+      beforeMount() {
+        console.log('beforeMount')
+      },
+      updated() {
+        console.log('updated')
+      },
+      beforeUpdate() {
+        console.log('beforeUpdate')
+      },
+      destroyed() {
+        console.log('destroyed')
+      },
+      beforeDestroy() {
+        console.log('eforeDestroy')
+      }
+    }) 
+  </script>
+</body>
+</html>
