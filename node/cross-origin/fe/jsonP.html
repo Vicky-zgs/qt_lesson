@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <script>
+      function getBook(res) {
+        console.log('得到请求结果', res);
+      }
+  </script>
+  <!-- 1: script 加载回来的东西被当做 js 执行
+    getBook()
+  -->
+  <!-- <script src="http://localhost:3000/api/getBook">
+    // getBook({ bookName: 'php'})
+  </script> -->
+  <script>
+    getBook({ bookName: 'php'})
+  </script>
+
+  <script>
+    var obj = {
+      a: 1
+    }
+    // console.log 可能是异步 惰性的
+    console.log(obj)
+    console.log(obj.b);
+
+    setTimeout(() => {
+      obj.b = 123
+    }, 8)
+  </script>
+</body>
+</html>
