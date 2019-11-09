@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- 引入Iconfont网站里的icon -->
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1495814_cfuxy32in2.css">
+  <title>star评分</title>
+  <!-- 先设置五个单选框，将单选框的样式去掉，换成星星进行打分 -->
+  <style>
+    * {
+      margin: 0;padding: 0;
+    }
+    input {
+      border: none;
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    /* 给有name="rate"的input框设置样式 */
+    input[name="rate"]{ 
+      /* 要用iconfont就要写font-family这个属性 */
+      font-family: "iconfont"; 
+      font-size: 30px;
+      padding-right: 10px;
+      transition: transform .2x ease;
+      transform: rotateZ(180deg);
+    }
+    input[name="rate"]::after {
+      content: '\e612';
+      color: #999;
+    }
+    /* 单选框被选中时, checked出现 */
+    input[name="rate"]:checked::after{
+      content: '\e623';
+      color: #ffa822;
+    }
+    /* 使选中某个单选框时，它 后面 的兄弟属性也被选中 */
+    input[name="rate"]:checked ~ input[name="rate"]::after {
+      content: '\e623';
+      color: #ffa822;
+    }
+    .rate-content {
+      display: flex;
+      /* 当前行倒转，将五颗星星顺序反一下，这样才能时点击时 前面 的兄弟属性也被选中 */
+      /* flex-flow: row-reverse;  */
+      transform: rotateZ(180deg);
+    }
+    /* 鼠标放上去变大 */
+    input[name="rate"]:hover {
+      transform: scale(1.2) rotateZ(180deg);
+    }
+    /* 鼠标放上去的伪类星星变黄色 */
+    input[name="rate"]:hover::after{
+      content: '\e623';
+      color: #ffa822;
+    }
+    /* 鼠标放上去的伪类星星的兄弟星星变黄色 */
+    input[name="rate"]:hover ~ input[name="rate"]::after{
+      content: '\e623';
+      color: #ffa822;
+    }
+  </style>
+</head>
+<body>
+  <div class="rate-content">
+    <input type="radio" name="rate">
+    <input type="radio" name="rate">
+    <input type="radio" name="rate">
+    <input type="radio" name="rate">
+    <input type="radio" name="rate">
+  </div>
+</body>
+</html>
