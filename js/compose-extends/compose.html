@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/underscore.js/1.9.1/underscore.js"></script>
+  <title>函数式编程</title>
+</head>
+<body>
+  <script>
+    // 函数式编程
+    // 函数是一等公民
+    function req(err, success) {
+      setTimeout(() => {
+        let rmd = Math.random();
+        if (rmd < 0.5) {
+          success({code: 200 })
+        } else {
+          err({code: 500 })
+        }
+      }, 3000)
+    }
+    req((res) => {
+      console.log(res);
+    }, (res) => {
+      console.log(res);
+    })
+    // 函数式编程 提倡 单独的功能拆分为函数
+    // 函数式编程 通过什么组合单一的功能的 ?
+
+    function setRedColor(btn) {
+      btn.style.color = 'red';
+      return btn;
+    }
+    function setInnerHtml(btn) {
+      btn.innerHTML = '立即购买';
+      return btn;
+    }
+    function append(btn) {
+      document.body.appendChild(btn);
+      return btn;
+    }
+    let btn = document.createElement('button');
+    setRedColor(btn);setInnerHtml(btn);append(btn);
+
+    // 使用引入的underscore.js中的方法compose
+    // 函数作为一个普通参数传递
+    let fn1 = str => str += '123'
+    let fn2 = str => str += '456'
+    let fn3 = _.compose(fn1, fn2);
+    console.log(fn3('------')); // ------456123
+
+    let nFn = _.compose(append, setInnerHtml, setRedColor);
+    let btn1 = document.createElement('button');
+    nFn(btn1);
+
+    // 自定义 compose(组合) 函数
+    function compose1(fn1, fn2, fn3) {
+      // 返回值是个函数
+      // 1 compose1
+      return function (params) {
+        // 2 nFn时执行
+        // 后面的函数的结果不断交给前面
+        fn1(fn2(fn3(params)));
+      }
+    }
+
+    // 加强 使其能传入不同数量的函数
+    function myCompose(...fns) {
+      console.log(fns);
+      return function(arg) {
+        // 从后往前
+        // fns [fn1, fn2, fn3]
+        let res = fns.pop()(arg);
+        while (fns.length) {
+          let fn = fns.pop();
+          res = fn(res);
+        }
+        return res;
+      }
+    }
+    var ffff = myCompose(append, setRedColor, setInnerHtml);
+    ffff(document.createElement('div'));
+  </script>
+</body>
+</html>
