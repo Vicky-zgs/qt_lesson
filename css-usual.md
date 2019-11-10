@@ -16,3 +16,14 @@
     white-space: nowrap;  不换行
     text-overflow: ellipsis;   超出打点
 -   outline: none;     取消按钮点击时的蓝框
+-   font-size: 0;  写在需要弄掉间隙的节点的父容器里
+-   清除被(浮动)影响的布局
+    .clearfix::after {
+      content: '';
+      clear: left;
+      display: table;
+    }
+-   将默认样式都弄掉
+      border: none;
+      outline: none;
+      -webkit-appearance: none;
