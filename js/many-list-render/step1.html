@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>渲染十万条数据(常规)</title>
+</head>
+<body>
+  <ul id="container"></ul>
+  <script>
+    const total = 100000;
+    let start = Date.now(); // 获得插入前的时间
+    const ul = document.getElementById('container');
+    for (let i = 0; i < total; i ++) {
+      const liNode = document.createElement('li'); // 创建li标签
+      liNode.innerText = Math.random() * total; // 在li中添加随机数字
+      ul.appendChild(liNode);
+    }
+    let end = Date.now(); // 获得插入后的时间 来得到时间差
+    console.log('时间', end - start);
+
+    // setTimeout异步，会在同步的打印结束后再结束，所以可以在这里得到渲染的真正时间
+    setTimeout(() => {
+      const end1 = Date.now();
+      // 这个打印才和页面出现同步，这才是数据的渲染时间
+      console.log('渲染时间', end1 - end);
+    }, 0);
+  </script>
+</body>
+</html>
