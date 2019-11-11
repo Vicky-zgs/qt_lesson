@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>函数式编程</title>
+</head>
+<body>
+  <script>
+    // 过程抽象
+    
+    // 无参化
+    function add(a, b, c) {
+      console.log(a, b, c);
+    }
+    add(1, 2, 3);
+
+    let arr = [1, 2, 3];
+    arr.forEach(add);
+    // ===
+    arr.forEach((item, i, arr) => {
+      add(item, i, arr);
+    })
+    // 函数是一等公民
+    // 函数 和其他变量一样 有同等的地位
+    arr.forEach((item, i, arr) => {
+      console.log(item, i, arr);
+    })
+
+    // (item, i, arr)
+    console.log([1, 2, 3].map(parseInt)); // [1,NaN,NaN]
+    parseInt('123px', 10); // 123 10表示进制
+    parseInt(1, 0, [1, 2, 3]) // 把0进制的1 转化为10进制
+    parseInt(2, 1, [1, 2, 3]) // 没有1进制
+    parseInt(3, 2, [1, 2, 3]) // 2进制没有3  010101
+    // 把 多少 进制的 xx 转为 10 进制的 xx
+    console.log(parseInt('1', 2))
+  </script>
+</body>
+</html>
