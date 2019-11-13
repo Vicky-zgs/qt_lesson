@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MutationObserver,观察一个dom节点的改变,破解小游戏</title>
+</head>
+<body>
+  <!-- http://kolor.moro.es/  破解这个小游戏拿最高分-->
+  <div id="kolor-kolor"></div>
+  <script>
+  var observer = new MutationObserver((mutationList) => {
+    // console.log(mutationList); 一个数组
+    if (mutationList[0].type == 'attributes') {
+      console.log('attributes change');
+      // 监测到颜色改变 拿到这个属性
+      let color = document.getElementById('kolor-kolor')
+      .style.backgroundColor;
+      // 检测哪个小块的颜色匹配到color
+      document.querySelectorAll('#kolor-options a').forEach((e) => {
+        if (e.style.backgroundColor == color) {
+          // 手动触发点击事件 点击匹配到的那个小块
+          e.click();
+        }
+      })
+    }
+  })
+  const targetNode = document.getElementById('kolor-kolor');
+  // 用创建的observer观察这个节点
+  observer.observe(targetNode, {
+    attributes: true
+  })
+
+  setTimeout(() => {
+    targetNode.style.backgroundColor = 'rgba(0, 0, 0, 0)'
+  },1000);
+  </script>
+</body>
+</html>
