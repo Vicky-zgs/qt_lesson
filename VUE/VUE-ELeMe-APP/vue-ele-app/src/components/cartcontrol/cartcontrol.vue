@@ -29,7 +29,9 @@ export default {
       } else {
         this.food.count++
       }
-      // 发散器 往外发散一个add出去 父组件接收的多少次add,num(购物车角标数)就+多少
+      // 发散器 往外发散一个add出去 
+      // 父组件(goods.vue)接收的多少次add,num(购物车角标数)就+多少
+      // $emit抛出的第二个参数 event.target 会作为参数传给抛出的方法
       this.$emit('add', event.target)
     },
     decreaseCart () {
