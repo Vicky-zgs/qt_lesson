@@ -27,3 +27,5 @@
       border: none;
       outline: none;
       -webkit-appearance: none;
+- 加动画
+      animation: animate 3s linear infinite; 3s 匀速 循环
