@@ -20,6 +20,18 @@
           </div>
         </div>
       </div>
+      <!-- 点击 菜品旁的 + 时 一个球呈抛物线下坠 -->
+      <div class="ball-container">
+        <!-- ball -->
+        <div v-for="(ball, index) in balls" :key="index">
+          <!-- 给球下坠的三个过程绑定事件 -->
+          <transition name="drop" @before-enter="beforeDrop" @enter="dropping" @after-enter="afterDrop">
+            <div class="ball" v-show="ball.show">
+              <div class="inner inner-hook"></div>
+            </div>
+          </transition>
+        </div>
+      </div>
       <transition name="fold">
         <!-- 购物车的已购列表 -->
         <div class="shopcart-list" v-show="listShow">
@@ -79,7 +91,15 @@ export default {
   },
   data () {
     return {
-      fold: true
+      fold: true,
+      balls: [
+        {show:false},
+        {show:false},
+        {show:false},
+        {show:false},
+        {show:false}
+      ],
+      dropBalls: []
     }
   },
   components: {
@@ -157,6 +177,50 @@ export default {
     },
     hideList () {
       this.fold = true
+    },
+    drop (el) {
+      // goods.vue中传入了target
+      for (let i = 0; i < this.balls.length; i++) {
+        let ball = this.balls[i]
+        if (!ball.show) {
+          ball.show = true
+          ball.el = el
+          this.dropBalls.push(ball)
+          return
+        }
+      }
+    },
+    beforeDrop (el) {
+      let count = this.balls.length
+      while (count--) {
+        let ball = this.balls[count]
+        if (ball.show) {
+          // 此方法可以获取这个dom结构的所有几何信息
+          let rect = ball.el.getBoundingClientRect()
+          let x = rect.left - 32
+          let y = -(window.innerHeight - rect.top - 22)
+          el.style.display = '';
+          el.style.transform = `translate3d(0, ${y}px, 0)`
+          let inner = el.getElementsByClassName('inner-hook')[0]
+          inner.style.transform = `translate3d(${x}px, 0, 0)`
+        }
+      }
+    },
+    dropping (el, done) {
+      let rf = el.offsetHeight;
+      this.$nextTick(() => {
+        el.style.transform = `translate3d(0, 0, 0)`
+        let inner = el.getElementsByClassName('inner-hook')[0]
+        inner.style.transform = `translate3d(0, 0, 0)`
+        el.addEventListener('transitionend', done)
+      })
+    },
+    afterDrop (el) {
+      let ball = this.dropBalls.shift()
+      if (ball) {
+        ball.show = false
+        el.style.display = 'none'
+      }
     }
   }
 }
