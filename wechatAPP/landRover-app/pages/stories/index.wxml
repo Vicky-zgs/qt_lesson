@@ -1,0 +1,5 @@
+<!--pages/stories/index.wxml-->
+<!-- MV   VM -->
+<!-- view 视图 -->
+<!-- Model 模型 (js -> data: {}) 提供数据的 -->
+<text>{{ id }}</text>
