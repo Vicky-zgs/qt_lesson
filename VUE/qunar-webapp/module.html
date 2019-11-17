@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>import知识点,关于懒加载</title>
+</head>
+<body>
+  <script type="module">
+    // es6 模块化知识
+    import {
+      foo 
+    } from './module.js';
+
+    // es6时  不可以的
+    // if (true) {
+    //   import {
+    //     foo 
+    //   } from './module.js';
+    // }
+
+    // es7
+    setTimeout(() => {
+      import('./module.js')
+      .then(mod => {
+        console.log(mod.foo); // f () {console.log(foo)};
+      })
+    }, 3000)
+  </script>
+</body>
+</html>
