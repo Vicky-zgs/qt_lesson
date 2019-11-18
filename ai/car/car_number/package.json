@@ -1,0 +1,16 @@
+{
+  "name": "car_number",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "baidu-aip": "^2.3.3",
+    "baidu-aip-sdk": "^2.4.4"
+  }
+}
