@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>countBy</title>
+</head>
+<!-- 使用countBy以向下取整的方法统计,自己写一个countBy,用reduce写一个countBy -->
+<body>
+  <script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.min.js"></script>
+  <script>
+    // 统计 向下取整
+    console.log(_.countBy([5.4, 5.6, 5.1, 7], Math.floor))
+    // {5:3, 7:1}
+    function myCountBy(arr, fn) {
+      let obj = {}
+      arr.forEach(element => {
+        let res = fn(element);
+        if (obj[res] !== undefined) {
+          obj[res] ++
+        } else {
+          obj[res] = 1;
+        }
+      });
+      return obj;
+    }
+    let num = myCountBy([2.6, 4.3, 7, 2.1, 4, 8, 1, 2], Math.floor)
+    console.log(num)
+    // map filter reduce()
+    // 函数式编程 风格 的 API
+    
+    // [5.4, 5.6, 5.1, 7]
+    let aaa = myCountBy1([5.4, 5.6, 5.1, 7], Math.floor)
+    console.log(aaa);
+    function myCountBy1(arr, func) {
+      return arr.reduce((pre, next) => {
+        console.log(pre, next); // {} 5.4,{5: 1} 5.6,{5: 3} 7,{5: 3, 7: 1} 
+        // 第一次循环 如果有第二个参数 pre === 第二个参数
+
+        let res = func(next);
+        // 第二次以后的循环 pre 是 上一次的返回值
+        if (pre[res] !== undefined) {
+          pre[res] ++
+        } else {
+          pre[res] = 1;
+        }
+        return pre
+      }, {})
+    }
+  </script>
+</body>
+</html>
