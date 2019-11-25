@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>(promise与.then)->(async与await)</title>
+  <style>
+      .light {
+        width: 20px;height: 20px;
+        border: 1px solid #000;
+        background-color: black;
+      }
+    </style>
+</head>
+<body>
+  <div class="light"></div>
+  <script>
+    const light = document.querySelector('.light')
+    // step1,step2都要是函数,否则两个计时器会同时计时
+    let step1 = () => new Promise((resolve, reject) => {
+      setTimeout(() => {
+        light.style.backgroundColor = 'red';
+        // 通知外面我完成了
+        resolve();
+      },1000)
+    })
+    let step2 = () => new Promise((resolve, reject) => {
+      setTimeout(() => {
+        light.style.backgroundColor = 'green';
+        resolve();
+      }, 2000)
+    })
+
+    // // promise:
+    // // .then是在 promise resolve()后 才执行的
+    // step1()
+    // .then(res => {
+    //   // then return promise 之后 后面还可以接着调用 .then
+    //   return step2();
+    // })
+    // .then(res => {
+    //   console.log(123)
+    // })
+
+    // 两个定时器本来是同时开始进行的,所以将step1,step2定义为函数,就不会同时计时了
+
+
+    // 至今异步最好的方式 async是个关键字
+    async function run () {
+      await step1();
+      await step2();
+    }
+    run();
+  </script>
+</body>
+</html>
