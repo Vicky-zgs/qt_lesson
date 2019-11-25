@@ -1,6 +1,11 @@
 -   display: flex;   弹性居中：
     justify-content: center;   水平居中
     align-items: center;   垂直居中
+-   居中 其他空白填充
+    text-align center
+    display flex
+    align-items center
+    justify-content space-between
 -   居中，网格布局 
     display: grid;
     place-items: center;
