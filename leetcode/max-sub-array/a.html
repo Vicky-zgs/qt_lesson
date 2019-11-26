@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>最大子序和之枚举法</title>
+</head>
+<body>
+  <script>
+    var arr = [-2,1,-3,4,-1,2,1,-5,4];
+    function maxSubArray(nums) {
+      let i, k;
+      let thisSum;
+      // Number 不分整数 浮点数
+      let maxSum = - Number.MAX_VALUE;
+      for (i = 0; i < nums.length; i++) {
+        for (k = i ; k < nums.length; k++) {
+          // end: k start: i
+          thisSum = 0;
+          for (j = i; j <= k; j++) {
+            // 当前的和
+            thisSum += nums[j];
+          }
+          // 当前的和是否比历史最大值大
+          if (thisSum > maxSum) {
+            maxSum = thisSum;
+          }
+        }
+      }
+      return maxSum;
+    }
+    console.log(maxSubArray(arr))
+  </script>
+</body>
+</html>
