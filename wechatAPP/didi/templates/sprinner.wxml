@@ -1,0 +1,17 @@
+<template name="sprinner">
+  <block wx:if="{{isLoading}}">
+    <view class="spinner">
+      <view class="bounce1"></view>
+      <view class="bounce2"></view>
+      <view class="bounce3"></view>
+    </view>
+  </block>
+  <view class="circle-str"></view>
+  <navigator url="/pages/starting/starting" redirect>
+    <view class="didi-input-str" style="color: #333333">{{address}}</view>
+  </navigator>
+  <navigator url="/pages/destination/destination" redirect>
+    <view class="didi-input-str destination" style="color: #333333">{{destination}}</view>
+  </navigator>
+  <view class="circle-end"></view>
+</template>
