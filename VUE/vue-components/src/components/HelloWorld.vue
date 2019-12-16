@@ -13,6 +13,9 @@
     <!-- 或者如下 -->
     <i-button size="default" ref="sure" @click.native="oSure" @sendMsg="getMsg">确认</i-button>
     <div>{{msg1}}</div>
+
+    <!-- 使用plugin中的Toast组件 -->
+    <div class="button" @click="showToast">toast</div>
   </div>
 </template>
 
@@ -43,6 +46,9 @@ export default {
     },
     getMsg (e) {
       this.msg1 = e
+    },
+    showToast () {
+      this.$toast('网络异常')
     }
   }
 }
