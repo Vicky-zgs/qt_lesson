@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自定义bind()</title>
+</head>
+<body>
+  <script>
+
+    // slice
+    // Array.prototype.slice
+    // 将myBind()加在Function原型链中
+    // prototype包含函数实例 共享的 方法和属性
+    Function.prototype.myBind = function(oThis, ...aArgs) {
+      // sum
+      // this
+      console.log("this === sum?",this === sum); // true
+      // 先获取要绑定的函数
+      var fToBind = this;
+      // 第二步调用 sum
+      var fBound = function() {
+        // call apply
+        console.log("oThis: ", oThis) // null
+        fToBind.apply(oThis);
+      }
+      return fBound;
+    }
+
+    function sum(a, b, c) {
+      return a + b + c;
+    }
+
+    // 第一步调用
+    var a = sum.myBind(null, 1);
+    // 第二步调用
+    a(2, 3);
+
+    
+    // why this === sum?
+    function Foo() {
+
+    }
+    Foo.prototype.say = function() {
+      console.log("say 的 this:",this);
+    }
+    var f = new Foo();
+    f.say();
+  </script>
+</body>
+</html>

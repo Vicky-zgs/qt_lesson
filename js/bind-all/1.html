@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>bind</title>
+</head>
+<body>
+  <script>
+      function sum(a, b, c) {
+        return a + b + c;
+      }
+      // sum(1, 2, 3)
+      // 对 sum 这个函数的科里化
+      // bind 返回的一个函数
+      var currySum = sum.bind(null, 1, 2);
+      console.log(currySum) // sum函数
+      var res = currySum(3);
+      console.log(res); // 6
+
+      // 测试正则表达式与指定字符串是否匹配
+      // test() 方法只需要待测试字符串中包含了要测试的字符串就是ture
+      function matchStr(reg, str) {
+        return reg.test(str);
+      }
+      // + : 1~任意长度   \s 空白符   g: global    //flag
+      // 判断指定字符串中是否有空白字符
+      console.log(matchStr(/\s+/g, 'a b'));  // true
+      console.log(matchStr(/\s+/g, 'abc ')); // true
+
+      // 科里化  先将正则符传入函数 这样之后就不需要重复传正则符
+      const hasWhiteSpace = matchStr.bind(null, /\s+/g);
+      console.log(hasWhiteSpace('a b c')) // true
+      console.log(hasWhiteSpace('ab ')) // true
+
+      const hasNum = matchStr.bind(null, /[0-9]+/g);
+      console.log(hasNum('123abc')) // true
+      console.log(hasNum('cbd')) // false
+
+      // 例2 判断类型
+      function type(type, value) {
+        return Object.prototype.toString.call(value) === `[object ${type}]`
+      }
+      console.log(type('Array', [1, 2, 3, 4])) // true
+      console.log(type('Array', [1])) // true
+      const isArray = type.bind(null, 'Array')
+      console.log(isArray([7, 8])) // true
+  </script>
+</body>
+</html>
