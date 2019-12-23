@@ -1,0 +1,33 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1574337251381'); /* IE9 */
+  src: url('iconfont.eot?t=1574337251381#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAQ8AAsAAAAACJAAAAPtAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDMgqEKINnATYCJAMUCwwABCAFhG0HUBt7B8gOJSHBwABQgAFgPHzt9zt3d9/7Kg2SaJIqNp1EiCSSlUCCkoiESslk0RL+T+9Zr+JSs8bXAQwOKibZbBF0DoYPjpkurcHybDaXjNRowNGAZ7OOzwJ+kH+QB/Ifxi4v8noCbcvyqM7rNaHAqNAXBeJa4B1gTOiUCnJoKuuCnUU8gU4zPajPAHj0fj/+oSSMJFWmr7y4quuGGl+mZ7JmwP8BOjgI4A9nAdtHxg5QiJtC2zVNENuh0ZbHax0DbU1JGmpY6LPUZ/L//0SiDSnaho20mX+8TNR0WRdij+OFL5PFJPEVyiT4SpWqlstQ7nrR1Y42ajwD+AUdt0KWDvyzor0ZF47Serd1UG2dXdozrvajdkRT1JIVc+ZG0NSMuelLLaMzWdp5yPL5sQw7ff68VRkMM2uXmaemLI1i6amjo6ZHFoln2ZOYaaPCKWrKjAh2usTpKp5iRZhp4RRbqRZHwedRU5ZFTpsVxTKr5mey7OzRMTS9dG4WRU+dET4lSJYuI+5ps2Yvdyez05ePXhpB01OXzpwRXmPFEqQJHqhPyb50thhphhtshx2wE/cZ2DwifaD09E9q7ZfXp7/btjHnd9pTS9WoEMPDbjjdEBJV1fI0LcsuOvHd9OM/a/1Jk54MSo+AOgeFx+Obb9skoHAtW+3p8YmR84aO6HHwQnCLve1j29tsv/xgjxmvrRsb1ZqDVzbauNo20Dc8LnPJZHbJlCmsNypu+EAfnEPWpdu7wJOuTepRViMh5fSUCSknN59JaL9zR94Om+1bNp9MSY86nVCjbBa8NQ+5KeNvtVSuOiw3+/36Vd2ZbkkbPqdW3GrUJLpJI++tTykbC3i6x/qVOR/ihnWGHgCLZfljbgdA3lUfASDfqx8ALP7nNZrcX+BvvPzvvadzUJWvRksBb39mv3u+xbIC3eNNicb8F85v2FYUoa6vilRp8SRHZW8AWZL72njNrrF7wyhmjQsJTbMIkoYlyJpWkAW7A5WOfag1HUHbtvr7OyYUGlFa2DIUQBhaD0nfK2RDZ5EFexcqc2+hNgwNtF1G2IkdayGYayvYQbAbOXsiwSX6OdNIzH5xK8x39TqUuNCjMFgJCEFUXFCUTtbHfqwMsSbQjS8hhEOcIvpQPXAz7PWKSFLECuwiBeWESJUKC7miLypwiT4wO6PAHAjMDXHqCRG4iPw4pzdhzvx8KxivKy8HpaKqzMrAFAHC4EixAkUNkPVl/kZVl/KSgG54JQiCg3AUIh+kHrBgXiMmQqTiaRUwF6JAeYeIpJJC1I1rKiuYXuG7gVxWh35pFSlylKii1rolDiXfJUo9dYGuxJC0i36j5+U4AAAAAA==') format('woff2'),
+  url('iconfont.woff?t=1574337251381') format('woff'),
+  url('iconfont.ttf?t=1574337251381') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1574337251381#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-star-copy:before {
+  content: "\e612";
+}
+
+.icon-star2:before {
+  content: "\e609";
+}
+
+.icon-star-on:before {
+  content: "\e671";
+}
+
+.icon-star-off:before {
+  content: "\e623";
+}
+
