@@ -25,3 +25,5 @@ n2.next = n3;
 n3.next = n4;
 n4.next = n5;
 console.log(n1);
+
+console.log(reverseList(n1))
