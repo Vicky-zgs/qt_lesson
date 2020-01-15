@@ -32,3 +32,5 @@ console.log(n1);
 
 reverseList(n1)
 console.log(n5);
+
+// console.log(reverseList(n1))
