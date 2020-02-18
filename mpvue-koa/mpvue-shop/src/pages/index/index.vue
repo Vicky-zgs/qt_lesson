@@ -110,6 +110,7 @@
         </ul>
       </div>
     </div>
+    <!-- xx好物 -->
     <div class="newcategory">
       <div class="list" v-for="(item ,index) in newCategoryList" :key="index">
         <div class="head">{{item.name}}好物</div>
@@ -142,7 +143,9 @@ export default {
       channel: [],
       brandList: [],
       newGoods: [],
-      hotGoods: []
+      hotGoods: [],
+      topicList: [],
+      newCategoryList: []
     }
   },
   computed: {
@@ -211,6 +214,8 @@ export default {
       this.brandList = data.brandList
       this.newGoods = data.newGoods
       this.hotGoods = data.hotGoods
+      this.topicList = data.topicList
+      this.newCategoryList = data.newCategoryList
     },
     categroyList(id) {
       // 种类(居家 餐厨 等等) 页面跳转
@@ -241,6 +246,12 @@ export default {
         url: '/pages/newgoods/main?isNew=' + 1
       })
       }
+    },
+    topicdetail(id) {
+      // 根据传参不同跳转到专题精选的不同页面
+      wx.navigateTo({ 
+        url: '/pages/topicdetail/main?id=' + id
+      })
     }
   }
 }
