@@ -3,7 +3,7 @@
     <!-- 头部的搜索 -->
     <div class="search">
       <div @click="toMappage">{{cityName}}</div>
-      <div>
+      <div @click="toSearch">
         <input type="text" placeholder="搜索商品" />
         <span class="icon"></span>
       </div>
@@ -216,6 +216,12 @@ export default {
       this.hotGoods = data.hotGoods
       this.topicList = data.topicList
       this.newCategoryList = data.newCategoryList
+    },
+    toSearch () {
+      // 跳转到搜索页面
+      wx.navigateTo({
+        url: '/pages/search/main'
+      });
     },
     categroyList(id) {
       // 种类(居家 餐厨 等等) 页面跳转

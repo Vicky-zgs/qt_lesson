@@ -13,7 +13,14 @@ const router = require('koa-router')({ // 路由
 // 这个controllers拿到的是index.js中的函数返回的一个对象
 const controllers = require('../controllers/index')
 
+// 首页相关的接口
 // controllers是个对象 这样可以拿到home中的index.js的绝对路径
 router.get('/index/index', controllers.home.index)
+
+// 搜索相关的接口
+// 获取搜索历史和热门搜索的接口
+router.get('/search/indexaction', controllers.search.index.indexAction)
+// 将当前搜索内容存入数据库中的接口
+router.post('/search/addhistoryaction', controllers.search.index.addHistoryAction)
 
 module.exports = router
