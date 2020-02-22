@@ -1,0 +1,1 @@
+# 如何渲染传过来的display.js中的template
