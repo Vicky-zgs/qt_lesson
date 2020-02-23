@@ -9,6 +9,7 @@ import ButtonTest from './components/ButtonTest'
 import Hoc from './components/Hoc'
 import ContextSample from './components/ContextSample'
 import HooksTest from './components/HooksTest'
+import KFormCreate from './components/KFormCreate'
 // import App from './App'
 
 // class App extends React.Component {
@@ -170,4 +171,5 @@ class FeatureReturnFraments extends React.Component {
 // ReactDOM.render(<PureComponentTest body='vue is very good' author='youyuxi' />, document.querySelector('#root'))
 // ReactDOM.render(<Hoc state="React" />, document.querySelector('#root'))
 // ReactDOM.render(<ContextSample />, document.querySelector('#root'))
-ReactDOM.render(<HooksTest />, document.querySelector('#root'))
+// ReactDOM.render(<HooksTest />, document.querySelector('#root'))
+ReactDOM.render(<KFormCreate />, document.querySelector('#root'))
