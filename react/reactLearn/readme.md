@@ -1,0 +1,6 @@
+- build文件夹中是react的源码
+- demo1 react基础1, 在页面上显示东西
+- demo2 react基础2, 渲染数组在页面上
+- demo3 react基础3, jsx中允许直接插入js数组变量
+- demo4 react基础4, react组件的使用就像插入普通的HTML标签一样插入到网页中
+- demo5 react基础5, this.props.children
