@@ -9,21 +9,25 @@
       </div>
       <div @click="cancel">取消</div>
     </div>
-    <!-- 输入内容后出现的dom -->
+    <!-- input框中 输入内容后出现的dom -->
     <div class="searchtips" v-if="words">
-      <div>
-        牙刷
+      <div v-if="tipsData.length !== 0">
+        <div v-for="(item, index) in tipsData" :key="index">
+          {{item.name}}
+        </div>
       </div>
-      <div class="nogoods">数据库暂无此类商品</div>
+      <div class="nogoods" v-else>数据库暂无此类商品...</div>
     </div>
     <!-- 历史记录 -->
-    <div class="history">
+    <div class="history" v-if="historyData.length!==0">
       <div class="t">
         <div>历史记录</div>
         <div @click="clearHistory"></div>
       </div>
       <div class="cont">
-        <div>日式</div>
+        <div v-for="(item, index) in historyData" :key="index" @click="searchWords" :data-value="item.keyword">
+          {{item.keyword}}
+        </div>
       </div>
     </div>
     <!-- 热门搜索 -->
@@ -32,10 +36,9 @@
         <div>热门搜索</div>
       </div>
       <div class="cont">
-        <div class="active">日式</div>
-        <div>韩式</div>
-        <div>456</div>
-        <div>啊啊</div>
+        <div v-for="(item, index) in hotData" :key="index" :class="{active: item.is_hot === 1}" @click="searchWords" :data-value="item.keyword">
+          {{item.keyword}}
+        </div>
       </div>
     </div>
   </div>
@@ -46,15 +49,16 @@ import { get, post } from '../../utils/index'
 export default {
   data () {
     return {
-      words: '',
-      openid: '',
-      hotData: [],
-      historyData: []
+      words: '',  // input框中输入的内容
+      openid: '', // 每个人的身份标识
+      hotData: [],    // 热门搜索
+      historyData: [], // 搜索历史记录
+      tipsData: []  // 搜索匹配的数据
     }
   },
   mounted () {
     // 获取每个人自己的openid
-    this.openid = wx.getStorageSync('openid') || '';
+    this.openid = wx.getStorageSync('openId') || '';
     this.getHotData()
   },
   methods: {
@@ -62,9 +66,24 @@ export default {
       this.words = ''
     },
     cancel () {},
-    clearHistory () {},
+    async clearHistory () {
+      const data = await post('/search/clearhistoryAction', {
+        openId: this.openid
+      })
+      if (data) {
+        // data存在  即删除成功
+        this.historyData = []
+      }
+    },
     inputFocus () {},
-    tipsearch() {},
+    async tipsearch() {
+      // @input="tipsearch" 搜索框中的值一发生变化  就实时做接口请求
+      const data = await get('/search/helperaction', {
+        keyword: this.words
+      })
+      // console.log(data)
+      this.tipsData = data.keywords
+    },
     async searchWords (e) {
       // 输入了要搜索的内容,点击自己键盘上的'搜索'后执行的方法  需要接口请求
       // console.log(e)
@@ -73,7 +92,7 @@ export default {
       const data = await post('/search/addhistoryaction', {
         // 这个接口: 在搜索框输入内容后 将内容插入 到数据库中的搜索历史记录表中
         // 传参数
-        openId: this.words,
+        openId: this.openid,
         keyword: value || this.words
       })
       // console.log(data)
@@ -84,8 +103,8 @@ export default {
       // 此接口 获取历史数据和热门数据
       const data = await get('/search/indexaction?openId=' + this.openid)
       this.historyData = data.historyData
-      this.hotData = data.hotData
-      console.log(data)
+      this.hotData = data.hotKeywordList
+      // console.log(data)
     }
   }
 }
