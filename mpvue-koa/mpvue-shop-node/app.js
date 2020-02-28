@@ -1,8 +1,12 @@
 const Koa = require('koa')
 // const Router = require('koa-router') // 路由
+const app = new Koa()
+const bodyParser = require('koa-bodyparser')
 const config = require('./config')
 
-const app = new Koa()
+// 解析请求体
+app.use(bodyParser())
+
 // const router = new Router()
 
 // 路由,    相当于 定义一个接口 为了可读性强 一般不写在这里 写在routes里
