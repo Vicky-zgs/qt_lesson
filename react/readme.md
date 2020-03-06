@@ -11,3 +11,7 @@
 - package.json     修改一下(为了看效果，只有一部分功能)
 - npm i 
 - npm start
+
+# react-router  关于react的路由的使用
+  - app.js中引入: import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+  这是react最新版本的路由
