@@ -22,5 +22,9 @@ router.get('/index/index', controllers.home.index)
 router.get('/search/indexaction', controllers.search.index.indexAction)
 // 将当前搜索内容存入数据库中的接口
 router.post('/search/addhistoryaction', controllers.search.index.addHistoryAction)
+// 清除历史记录的接口
+router.post('/search/clearhistoryAction', controllers.search.index.clearHistoryAction)
+// 搜索提示接口
+router.get('/search/helperaction', controllers.search.index.helperAction)
 
 module.exports = router
