@@ -1,0 +1,15 @@
+// 要用到的颜色
+
+export const color = [
+  'magenta',
+  'red',
+  'volcano',
+  'orange',
+  'gold',
+  'lime',
+  'green',
+  'cyan',
+  'blue',
+  'geekblue',
+  'purple'
+]
