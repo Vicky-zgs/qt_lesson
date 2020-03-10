@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react'
 import { Layout, Row, Col, Menu } from 'antd'
-import { SmileOutlined, HomeOutlined } from '@ant-design/icons';
+import { SmileOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
 import menus from '../../../Router/web'
 import './index.less'
@@ -23,12 +23,13 @@ class HeaderCustom extends Component {
     // 拿到menus中所有menu为true的字段
     const list = menus.filter(v => v.menu)
     const menuList = list.map((item, i) => {
-      return <Menu.Item key={i}>
-                <Link to={item.path}>
-                  < HomeOutlined />
-                  <span className="nave-text">{item.title}</span>
-                </Link>
-            </Menu.Item>
+      // 首页的导航栏 四个menu.item 每次点击不同的栏目 会储存对应的webKey(默认选中的)
+      return <Menu.Item key={i} onClick={() => sessionStorage.setItem('webKey', String(i))}>
+        <Link to={item.path}>
+          <item.icon />
+          <span className="nav-text">{item.title}</span>
+        </Link>
+      </Menu.Item>
     })
 
     return (
