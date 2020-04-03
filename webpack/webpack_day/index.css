@@ -1,0 +1,12 @@
+/* 引入其他css文件 */
+@import './other.css';  
+
+body {
+  background: red;
+}
+.pic {
+  width: 150px;
+  height: 150px;
+  column-count: 3;
+  transform: translate(100px, 100px);
+}
