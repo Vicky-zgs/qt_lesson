@@ -7,27 +7,35 @@ import Recommend from './components/Recommend'
 import Writer from './components/Writer'
 import axios from 'axios'
 import { connect } from 'react-redux'
+import { actionCreators } from './store'
 import {
    HomeWrapper,
    HomeLeft,
-   HomeRight
+   HomeRight,
+   BackTop
 } from './style'
 
 class Home extends Component {
   componentDidMount() {
-    // 请求首页上的数据
-    axios.get('/api/home.json').then((res) => {
-      console.log(res)
-      const result = res.data.data
-      const action = {
-        type: 'change_home_data',
-        topicList: result.topicList,
-        articleList: result.articleList,
-        recommendList: result.recommendList
-      }
-      this.props.changeHomeData(action)
-    })
+    this.props.changeHomeData()
+    this.bindEvents()
   }
+
+  bindEvents() {
+    // 监听屏幕滚动
+    window.addEventListener('scroll', this.props.changeScrollTopShow)
+  }
+
+  componentWillUnmount() {
+    // 组件销毁时移除这个绑定事件
+    window.removeEventListener('scroll', this.props.changeScrollTopShow)
+  }
+
+  handleScrollTop () {
+    // 点击 回到顶部 后 页面回到最顶部
+    window.scrollTo(0, 0)
+  }
+
   render () {
     return (
       <HomeWrapper>
@@ -40,15 +48,36 @@ class Home extends Component {
           <Recommend />
           <Writer />
         </HomeRight>
+        {
+          this.props.showScroll 
+          ? <BackTop onClick={this.handleScrollTop}>回到顶部</BackTop> 
+          : null
+        }
       </HomeWrapper>
     )
   }
 }
 
+const mapState = (state) => ({
+  showScroll: state.home.get('showScroll')
+})
+
 const mapDispatch = (dispatch) => ({
-  changeHomeData(action) {
-    dispatch(action)
+  // 获取首页数据
+  changeHomeData() {
+    const action = actionCreators.getHomeInfo()
+    // dispatch(action)
+    action(dispatch)
+  },
+  // 页面一滚动就执行, 更改showScroll数据
+  changeScrollTopShow(e) { // 事件参数
+    if (document.documentElement.scrollTop > 200) {
+      // 当前页面的滚动条纵坐标位置
+      dispatch(actionCreators.toggleTopShow(true))
+    } else {  
+      dispatch(actionCreators.toggleTopShow(false))
+    }
   }
 })
 
-export default connect(null, mapDispatch)(Home)
+export default connect(mapState, mapDispatch)(Home)

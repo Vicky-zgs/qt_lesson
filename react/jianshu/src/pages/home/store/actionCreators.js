@@ -13,9 +13,10 @@ const changeHomeData = (result) => ({
 })
 
 // 在原List后再加数据
-const addHomeList = (list) => ({
+const addHomeList = (list, nextPage) => ({
   type: constants.ADD_ARTICLE_LIST,
-  list: fromJS(list)
+  list: fromJS(list),
+  nextPage
 })
 
 export const getHomeInfo = () => {
@@ -31,13 +32,19 @@ export const getHomeInfo = () => {
 }
 
 // 点击 阅读更多 后, 在原List后再加数据
-export const getMoreList = () => {
+export const getMoreList = (page) => {
   return (dispatch) => {
-    axios.get('/api/homeList.json').then((res) => {
+    axios.get('/api/homeList.json?page=' + page ).then((res) => {
       // console.log(res)
       const result = res.data.data
       // console.log(result)
-      dispatch(addHomeList(result))
+      dispatch(addHomeList(result, page + 1))
     })
   }
 }
+
+// 根据屏幕滚动距离更改 showScroll 的值(是否展示 回到顶部)
+export const toggleTopShow = (show) => ({
+  type: constants.TOGGLE_SCROLL_TOP,
+  show: show
+})
