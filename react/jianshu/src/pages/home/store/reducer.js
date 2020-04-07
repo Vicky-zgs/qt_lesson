@@ -34,7 +34,7 @@ const changeHomeData = (state, action) => {
 const addArticleList = (state, action) => {
   return state.merge({ // 把多个对象合并成一个对象  (修改多个数据)
     articleList: state.get('articleList').concat(action.list),
-        articlePage: action.nextPage
+    articlePage: action.nextPage
   });
   // return state.set('articleList', state.get('articleList').concat(action.list))
 }

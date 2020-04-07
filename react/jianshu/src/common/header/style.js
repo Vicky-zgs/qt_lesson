@@ -32,15 +32,19 @@ export const NavItem = styled.div`
   padding: 0 15px;
   font-size: 17px;
   color: #333;
+  a {
+    text-decoration: none;
+    color: #333;
+    &.active {
+      color: #ea6f5a;
+    }
+  }
   &.left {
     float: left;
   }
   &.right {
     float: right;
     color: #969696;
-  }
-  &.active {
-    color: #ea6f5a;
   }
 `;
 export const SearchWrapper = styled.div`

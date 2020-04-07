@@ -1,3 +1,5 @@
+// 详情页面
+
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { actionCreators } from './store'
@@ -8,8 +10,9 @@ import {
 } from './style.js'
 
 class Detail extends Component {
-  componentWillMount() {
-    this.props.getDetail()
+  componentDidMount() {
+    // 将上级传过来的detail的id传给getDetail()
+    this.props.getDetail(this.props.match.params.id)
   }
   render() {
     return (
@@ -29,8 +32,8 @@ const mapState = (state) => ({
 })
 
 const mapDispatch = (dispatch) => ({
-  getDetail() {
-    let action = actionCreators.getDetail()
+  getDetail(id) { // id: 不同detail的id
+    let action = actionCreators.getDetail(id)
     action(dispatch)
   }
 })
