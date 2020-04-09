@@ -54,11 +54,13 @@ const Header = (props) => {
         </SearchWrapper>
       </Nav>
       <Addition>
-        <Button className="writting">
-          <span className="iconfont">&#xe7c2;</span>
-          写文章
-        </Button>
-        <Button className="reg">注册</Button>
+        <Link to="/write">
+          <Button className="writting">
+            <span className="iconfont">&#xe7c2;</span>
+            写文章
+          </Button>
+          <Button className="reg">注册</Button>
+        </Link>
       </Addition>
     </HeaderWrapper>
   )
