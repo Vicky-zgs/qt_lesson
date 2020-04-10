@@ -1,5 +1,8 @@
-function a() {
-  console.log('a')
+function a () {
+  var div = document.createElement("div")
+  div.setAttribute("id", "number")
+  div.innerHTML = 10000
+  document.body.appendChild(div)
 }
 
 export default a

@@ -1,5 +1,14 @@
+// entry： 入口文件
+// module：模块，webpack里一切皆模块，一个模块对应一个文件
+// chunk：代码块，对应多个module。
+// loader：模块转换器，用于模块内容的转换。
+// plugin：插件，在构建流程中监听特定的事件来做一些处理。
+
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const webpack = require('webpack')
 
 module.exports = {
   mode: "development",
@@ -10,6 +19,8 @@ module.exports = {
     path: path.resolve(__dirname, "./build"),  // 打包后的文件路径
     filename: "index.js"      // 打包后的文件命名
   },
+  devtool: "cheap-module-eval-source-map", // 开发环境
+  // devtool: "cheap-module-source-map", // 线上环境
   module: {
     // 遇到不认识的模块, 就在这里找loader
     rules: [
@@ -29,6 +40,9 @@ module.exports = {
 
       {
         test: /\.css$/,
+        // use: ["style-loader", "css-loader", "postcss-loader"]
+        // 如果用mini-css-extract-plugin 就不需要style-loader了, 如下
+        // use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"]
         use: ["style-loader", "css-loader", "postcss-loader"]
       },
       
@@ -39,14 +53,30 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin(
+    new HtmlWebpackPlugin({
       // 该插件将为你生成一个 HTML5 文件
-      {
-        template: "./index.html", // 指定模板
-        title: "标题-自己取的", // 打包后的html文件的title
-        filename: "app.html",  // 指定打包后的html文件的名字
-
-      },
-    )
-  ] 
+      template: "./index.html", // 指定模板
+      title: "标题-自己取的", // 打包后的html文件的title
+      filename: "index.html",  // 指定打包后的html文件的名字
+    }),
+    // 在打包前 先把上次生成的目录删除
+    new CleanWebpackPlugin(),
+    // 将项目中的css抽离出来打包, 还要把style-loader改成MiniCssExtractPlugin.loader
+    // new MiniCssExtractPlugin({
+    //   filename: "[name].css"
+    // })
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  devServer: {
+    // 实时更新
+    contentBase: "./build",
+    open: true, // 自动打开浏览器
+    hot: true,  // 模块热替换
+    hotOnly: true,  // 即使热替换不生效, 浏览器也不自动刷新
+    port: "8081",
+    // 跨域代理
+    proxy: {
+      "/api": "http://localhost:3000"
+    }
+  }
 }

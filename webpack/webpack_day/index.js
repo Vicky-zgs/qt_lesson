@@ -1,25 +1,28 @@
-// 这个入口文件中的代码最终都会被打包到build/index.js中
+// import './index.css'
+
+// 对于css进行热更新(代码演示)：
+// var btn = document.createElement("button")
+// btn.innerHTML="新增";
+// document.body.appendChild(btn)
+
+// btn.onclick = function() {
+//   var div = document.createElement("div")
+//   div.innerHTML= "item"
+//   document.body.appendChild(div)
+// }
 
 import a from './a'
 import b from './b'
-import pic from './img/touxiang.jpg'
-import './index.css'
 
-var img = new Image()
-img.src = pic
-img.classList.add('pic')
-var root = document.getElementById('root')
-root.append(img)
-
-console.log(pic)
-
-// 既然webpack默认只认识js模块, 那么遇到非js模块该怎么办?
-// loader
 a()
 b()
 
-function lm() {
-  console.log('welcome to lm')
+if (module.hot) { // 是否开启HMR
+  // 监听a.js的变化
+  // a.js更新了之后重新执行一遍并且替换原来的数据, 这样就实现了js的热更新
+  module.hot.accept("./a", () => {
+    console.log("有更新了")
+    document.body.removeChild(document.getElementById("number"))
+    a()
+  })
 }
-
-lm()
