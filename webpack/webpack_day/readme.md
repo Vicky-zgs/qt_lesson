@@ -34,6 +34,16 @@
       - 本来用了这个就可以不写css-loader, 但如果要在css文件中使用@import, 那么在配置文件中use里要加上css-loader
       - postcss.config.js 专门的配置文件
       - 使用postcss可能还需要安装别的东西,例如npm i autoprefixer -D
+      (视频webpack(4))
+    - **babel-loader** 
+      - index3.js, webpack视频(6)/(7)
+      - 当今最为常用的 JavaScript 编译器, 大多数情况下, Babel 被用来转译 ECMAScript 2015+ 至可兼容浏览器的版本
+      - 参考babel中文网进行配置 (视频webpack(6))
+        - 安装babel-load, npm install --save-dev babel-loader @babel/core
+        - es6转换到es5的"规则" npm install @babel/preset-env --save-dev
+        - 识别es6中的api(高级词汇) npm install --save @babel/polyfill
+      - @ babel / plugin-transform-runtime
+      # .babelrc文件 将babel的配置从webpack.config.js中分离出来
 
 # plugins
   相当于生命周期的概念, 在webpack构建的过程中(某一个特定的时间段),通过plugins这个属性往webpack中植入某个插件的逻辑(扩展的逻辑), 以改变我们的构建结果 
@@ -54,6 +64,7 @@
       - module.hot.accept("./a", ...)
     **HMR总结**  
       HMR 默认对css模块支持较好,对js模块需要额外的处理,通过 module.hot.accept来对需要更新的模块进行监控
+      (视频webpack(5))
       
 
 # 配置
@@ -65,7 +76,6 @@
     - 查阅官网上的github链接上的使用方法, 要修改packge.json文件(第8行), 然后再配置webpack.config.js
     - npm run server 启动打包之后的这个服务
 
-
 # 如何解决跨域问题 (只在开发环境中使用)
   - server.js   写一个接口  npm i express -D
   - 在index.js做接口请求 npm i axios -D
@@ -74,3 +84,59 @@
     因为前端的代码请求的是8081服务器上的数据, 但这个服务器上没有数据
     但是服务器之间没有同源策略, 所以使用代理(devServer配置中的proxy属性)
     webpack会帮你请求localhost:3000端口上的数据再提供给前端的服务器
+
+# babel 
+  - Presets (预设)
+    preset 可以作为 Babel 插件的组合，甚至可以作为可以共享的 options 配置。
+    - react预设,  引入这个预设插件后就可以编写react代码(在.babelrc文件配置)
+      npm install --save-dev @babel/preset-react
+
+# tree shaking  (将没有用的东西过滤,即不打包)
+  注意： 只有ES module 的引入方式 ！
+  - 配置 **optimization**
+    - 配置文件中
+      optimization: {
+        usedExports: true
+      }
+    - package.json文件中 
+      "sideEffects": ["*.css]  // 排除css文件的监控(是否要过滤) 
+    - 要设置成生产模式才看得出来
+
+
+# development vs production 模块区分打包
+  (webpack视频(8))
+  - 创建 webpack.dev.js      开发环境的配置
+  - 创建 webpack.prod.js     生产环境下的配置
+  - 将配置文件中的代码复制，并且设置相应的 mode: "develpment/production"
+  - 修改package.json文件 ("scripts")
+  - npm run bundle / npm run build / npm run server
+  - 创建 webpack.common.js   开发环境和生产环境的共同配置
+  ## webpack-merge
+    将开发环境和生产环境的配置与公共配置 拼接
+    - npm i webpack-merge -D
+    1. 在webpack.prod.js/webpack.dev.js中进行拼接
+    或者
+    2. 在webpack.common.js中进行判断拼接,并且要修改package.json中的"scripts"
+
+# code Splitting  (代码分割, 也是一种优化方案)
+  (视频webpack8)
+  ## lodash 是一个一致性、模块化、高性能的JavaScript的实用工具库
+  - npm i lodash -D
+  - webpack 支持的写法,但与webpack没什么关系：
+    - 将第三方的库(例如lodash)放入了单独的js文件
+    - 修改配置文件中的entry设置
+  - webpack自己的写法： 
+    - 在optimization配置项中设置 **splitChunks**
+
+# 打包分析
+  在 github 搜 analyse
+  - 将命令webpack --profile --json > stats.json 放入package.json的scripts中
+  - 点击 github 上的网址并上传生成的stats.json文件, 会得到一份分析
+  - 或者在webpack中搜bundle analyse, 点击weboack-chart,上传stats.json文件
+
+# webpack 官方推荐的编码方式
+
+
+
+ps. 查看代码使用率：
+  在浏览器中点击检查 -> ctrl+shift+p 搜索show coverage -> Unused Bytes

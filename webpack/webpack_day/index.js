@@ -1,28 +1,24 @@
-// import './index.css'
+//  tree shaking示例
 
-// 对于css进行热更新(代码演示)：
-// var btn = document.createElement("button")
-// btn.innerHTML="新增";
-// document.body.appendChild(btn)
+// import { add } from './a.js'
+// // import "./index1.css"
 
-// btn.onclick = function() {
-//   var div = document.createElement("div")
-//   div.innerHTML= "item"
-//   document.body.appendChild(div)
-// }
+// add(1, 2)
 
-import a from './a'
-import b from './b'
 
-a()
-b()
+// // lodash示例  (视频webpack8)
+// import _ from 'lodash'   // 10Mb
+// console.log(_.join(["a", "b", "c"], "***"))  // 1Mb
 
-if (module.hot) { // 是否开启HMR
-  // 监听a.js的变化
-  // a.js更新了之后重新执行一遍并且替换原来的数据, 这样就实现了js的热更新
-  module.hot.accept("./a", () => {
-    console.log("有更新了")
-    document.body.removeChild(document.getElementById("number"))
-    a()
+
+// 代码分割示例  (webpack9)
+document.addEventListener('click', () => {
+  import("./click.js").then(({default: func}) => {
+    
   })
-}
+})
+
+// click.js
+// function click() {
+
+// }

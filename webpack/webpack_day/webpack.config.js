@@ -12,11 +12,12 @@ const webpack = require('webpack')
 
 module.exports = {
   mode: "development",
-  entry: "./index.js",  // 指定打包的入口
+  // mode: "production",
+  entry: "./lodash.js",  // 指定打包的入口
   // 指定打包后的资源位置
-  output: { 
+  output: {
     // publicPath: "https://cdn.baidu.com",  // 公共路径设置
-    path: path.resolve(__dirname, "./build"),  // 打包后的文件路径
+    path: path.resolve(__dirname, "./dist"),  // 打包后的文件路径
     filename: "index.js"      // 打包后的文件命名
   },
   devtool: "cheap-module-eval-source-map", // 开发环境
@@ -33,7 +34,7 @@ module.exports = {
             name: "[name]_[hash].[ext]",   // touxiang.jpg
             outputPath: "images/",     // 打包的内容放这个文件夹下
             // url-loader可以限定模块的体积, 根据体积判断是否需要转换base64, 减少http请求
-            limit: 73730  
+            limit: 73730
           }
         }
       },
@@ -45,11 +46,32 @@ module.exports = {
         // use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"]
         use: ["style-loader", "css-loader", "postcss-loader"]
       },
-      
+
       {
         test: /\.scss$/,  // loader是有执行顺序的, 从后往前
         use: ["style-loader", "css-loader", "sass-loader"]
       },
+
+      {
+        // 使用babel
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,   // 检测时排除掉依赖里的js
+        use: {
+          loader: "babel-loader",
+          // options: {
+          //   // "presets": [
+          //   //   [
+          //   //     "@babel/preset-env",
+          //   //     {
+          //   //       useBuiltIns: "usage", // 按需加载
+          //   //       corejs: 2
+          //   //     }
+          //   //   ],
+          //   // ],
+          //   "plugins": [["@babel/plugin-transform-runtime"]]
+          // }
+        }
+      }
     ]
   },
   plugins: [
@@ -69,7 +91,7 @@ module.exports = {
   ],
   devServer: {
     // 实时更新
-    contentBase: "./build",
+    contentBase: "./dist",
     open: true, // 自动打开浏览器
     hot: true,  // 模块热替换
     hotOnly: true,  // 即使热替换不生效, 浏览器也不自动刷新
@@ -78,5 +100,8 @@ module.exports = {
     proxy: {
       "/api": "http://localhost:3000"
     }
+  },
+  optimization: {
+    usedExports: true
   }
 }

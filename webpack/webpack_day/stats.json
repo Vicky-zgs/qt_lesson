@@ -1,0 +1,370 @@
+{
+  "errors": [],
+  "warnings": [],
+  "version": "4.42.1",
+  "hash": "7e14d02610d55937e7ec",
+  "time": 32818,
+  "builtAt": 1587033239769,
+  "publicPath": "",
+  "outputPath": "F:\\A-Dream\\workspace\\git\\qt_lesson\\webpack\\webpack_day\\dist",
+  "assetsByChunkName": {
+    "index": "index.js"
+  },
+  "assets": [
+    {
+      "name": "index.html",
+      "size": 258,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": true
+    },
+    {
+      "name": "index.js",
+      "size": 30948,
+      "chunks": [
+        "index"
+      ],
+      "chunkNames": [
+        "index"
+      ],
+      "info": {},
+      "emitted": true
+    }
+  ],
+  "filteredAssets": 0,
+  "entrypoints": {
+    "index": {
+      "chunks": [
+        "index"
+      ],
+      "assets": [
+        "index.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "namedChunkGroups": {
+    "index": {
+      "chunks": [
+        "index"
+      ],
+      "assets": [
+        "index.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "chunks": [
+    {
+      "id": "index",
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "size": 442,
+      "names": [
+        "index"
+      ],
+      "files": [
+        "index.js"
+      ],
+      "hash": "6f893191178f8f331f12",
+      "siblings": [],
+      "parents": [],
+      "children": [],
+      "childrenByOrder": {},
+      "modules": [
+        {
+          "id": "./index.js",
+          "identifier": "F:\\A-Dream\\workspace\\git\\qt_lesson\\webpack\\webpack_day\\node_modules\\babel-loader\\lib\\index.js!F:\\A-Dream\\workspace\\git\\qt_lesson\\webpack\\webpack_day\\index.js",
+          "name": "./index.js",
+          "index": 0,
+          "index2": 0,
+          "size": 442,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            "index"
+          ],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "profile": {
+            "factory": 133,
+            "building": 32369
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "./index.js",
+              "loc": "index"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [],
+          "depth": 0,
+          "source": "//  tree shaking示例\n// import { add } from './a.js'\n// // import \"./index1.css\"\n// add(1, 2)\n// // lodash示例  (视频webpack8)\n// import _ from 'lodash'   // 10Mb\n// console.log(_.join([\"a\", \"b\", \"c\"], \"***\"))  // 1Mb\n// 代码分割示例  (webpack9)\ndocument.addEventListener('click', function () {\n  var element = document.createElement(\"div\");\n  element.innerHTML = \"welcome to webpack4.x\";\n  document.body.appendChild(element);\n});"
+        }
+      ],
+      "filteredModules": 0,
+      "origins": [
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "index",
+          "request": "./index.js",
+          "reasons": []
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "id": "./index.js",
+      "identifier": "F:\\A-Dream\\workspace\\git\\qt_lesson\\webpack\\webpack_day\\node_modules\\babel-loader\\lib\\index.js!F:\\A-Dream\\workspace\\git\\qt_lesson\\webpack\\webpack_day\\index.js",
+      "name": "./index.js",
+      "index": 0,
+      "index2": 0,
+      "size": 442,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        "index"
+      ],
+      "issuer": null,
+      "issuerId": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "profile": {
+        "factory": 133,
+        "building": 32369
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": null,
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "type": "single entry",
+          "userRequest": "./index.js",
+          "loc": "index"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [],
+      "depth": 0,
+      "source": "//  tree shaking示例\n// import { add } from './a.js'\n// // import \"./index1.css\"\n// add(1, 2)\n// // lodash示例  (视频webpack8)\n// import _ from 'lodash'   // 10Mb\n// console.log(_.join([\"a\", \"b\", \"c\"], \"***\"))  // 1Mb\n// 代码分割示例  (webpack9)\ndocument.addEventListener('click', function () {\n  var element = document.createElement(\"div\");\n  element.innerHTML = \"welcome to webpack4.x\";\n  document.body.appendChild(element);\n});"
+    }
+  ],
+  "filteredModules": 0,
+  "logging": {
+    "webpack.buildChunkGraph.visitModules": {
+      "entries": [],
+      "filteredEntries": 2,
+      "debug": false
+    }
+  },
+  "children": [
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "",
+      "outputPath": "F:\\A-Dream\\workspace\\git\\qt_lesson\\webpack\\webpack_day\\dist",
+      "assetsByChunkName": {
+        "HtmlWebpackPlugin_0": "__child-HtmlWebpackPlugin_0"
+      },
+      "assets": [
+        {
+          "name": "__child-HtmlWebpackPlugin_0",
+          "size": 6051,
+          "chunks": [
+            "HtmlWebpackPlugin_0"
+          ],
+          "chunkNames": [
+            "HtmlWebpackPlugin_0"
+          ],
+          "info": {},
+          "emitted": false
+        }
+      ],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "HtmlWebpackPlugin_0": {
+          "chunks": [
+            "HtmlWebpackPlugin_0"
+          ],
+          "assets": [
+            "__child-HtmlWebpackPlugin_0"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "HtmlWebpackPlugin_0": {
+          "chunks": [
+            "HtmlWebpackPlugin_0"
+          ],
+          "assets": [
+            "__child-HtmlWebpackPlugin_0"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "chunks": [
+        {
+          "id": "HtmlWebpackPlugin_0",
+          "rendered": true,
+          "initial": true,
+          "entry": true,
+          "size": 580,
+          "names": [
+            "HtmlWebpackPlugin_0"
+          ],
+          "files": [
+            "__child-HtmlWebpackPlugin_0"
+          ],
+          "hash": "b0d7601b6c20b99cafe6",
+          "siblings": [],
+          "parents": [],
+          "children": [],
+          "childrenByOrder": {},
+          "modules": [
+            {
+              "id": "./node_modules/html-webpack-plugin/lib/loader.js!./index.html",
+              "identifier": "F:\\A-Dream\\workspace\\git\\qt_lesson\\webpack\\webpack_day\\node_modules\\html-webpack-plugin\\lib\\loader.js!F:\\A-Dream\\workspace\\git\\qt_lesson\\webpack\\webpack_day\\index.html",
+              "name": "./node_modules/html-webpack-plugin/lib/loader.js!./index.html",
+              "index": 0,
+              "index2": 0,
+              "size": 580,
+              "cacheable": true,
+              "built": true,
+              "optional": false,
+              "prefetched": false,
+              "chunks": [
+                "HtmlWebpackPlugin_0"
+              ],
+              "issuer": null,
+              "issuerId": null,
+              "issuerName": null,
+              "issuerPath": null,
+              "profile": {
+                "factory": 70,
+                "building": 5102
+              },
+              "failed": false,
+              "errors": 0,
+              "warnings": 0,
+              "assets": [],
+              "reasons": [
+                {
+                  "moduleId": null,
+                  "moduleIdentifier": null,
+                  "module": null,
+                  "moduleName": null,
+                  "type": "single entry",
+                  "userRequest": "F:\\A-Dream\\workspace\\git\\qt_lesson\\webpack\\webpack_day\\node_modules\\html-webpack-plugin\\lib\\loader.js!F:\\A-Dream\\workspace\\git\\qt_lesson\\webpack\\webpack_day\\index.html",
+                  "loc": "HtmlWebpackPlugin_0"
+                }
+              ],
+              "usedExports": true,
+              "providedExports": null,
+              "optimizationBailout": [],
+              "depth": 0,
+              "source": "var _ = __non_webpack_require__(\"F:\\\\A-Dream\\\\workspace\\\\git\\\\qt_lesson\\\\webpack\\\\webpack_day\\\\node_modules\\\\lodash\\\\lodash.js\");module.exports = function (templateParams) { with(templateParams) {return (function(data) {\nvar __t, __p = '';\n__p += '<!DOCTYPE html>\\r\\n<html lang=\"en\">\\r\\n<head>\\r\\n  <meta charset=\"UTF-8\">\\r\\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\\r\\n  <title>' +\n((__t = ( htmlWebpackPlugin.options.title )) == null ? '' : __t) +\n'</title>\\r\\n</head>\\r\\n<body>\\r\\n  <div id=\"app\"></div>\\r\\n</body>\\r\\n</html>';\nreturn __p\n})();}}"
+            }
+          ],
+          "filteredModules": 0,
+          "origins": [
+            {
+              "module": "",
+              "moduleIdentifier": "",
+              "moduleName": "",
+              "loc": "HtmlWebpackPlugin_0",
+              "request": "F:\\A-Dream\\workspace\\git\\qt_lesson\\webpack\\webpack_day\\node_modules\\html-webpack-plugin\\lib\\loader.js!F:\\A-Dream\\workspace\\git\\qt_lesson\\webpack\\webpack_day\\index.html",
+              "reasons": []
+            }
+          ]
+        }
+      ],
+      "modules": [
+        {
+          "id": "./node_modules/html-webpack-plugin/lib/loader.js!./index.html",
+          "identifier": "F:\\A-Dream\\workspace\\git\\qt_lesson\\webpack\\webpack_day\\node_modules\\html-webpack-plugin\\lib\\loader.js!F:\\A-Dream\\workspace\\git\\qt_lesson\\webpack\\webpack_day\\index.html",
+          "name": "./node_modules/html-webpack-plugin/lib/loader.js!./index.html",
+          "index": 0,
+          "index2": 0,
+          "size": 580,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            "HtmlWebpackPlugin_0"
+          ],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "profile": {
+            "factory": 70,
+            "building": 5102
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "F:\\A-Dream\\workspace\\git\\qt_lesson\\webpack\\webpack_day\\node_modules\\html-webpack-plugin\\lib\\loader.js!F:\\A-Dream\\workspace\\git\\qt_lesson\\webpack\\webpack_day\\index.html",
+              "loc": "HtmlWebpackPlugin_0"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [],
+          "depth": 0,
+          "source": "var _ = __non_webpack_require__(\"F:\\\\A-Dream\\\\workspace\\\\git\\\\qt_lesson\\\\webpack\\\\webpack_day\\\\node_modules\\\\lodash\\\\lodash.js\");module.exports = function (templateParams) { with(templateParams) {return (function(data) {\nvar __t, __p = '';\n__p += '<!DOCTYPE html>\\r\\n<html lang=\"en\">\\r\\n<head>\\r\\n  <meta charset=\"UTF-8\">\\r\\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\\r\\n  <title>' +\n((__t = ( htmlWebpackPlugin.options.title )) == null ? '' : __t) +\n'</title>\\r\\n</head>\\r\\n<body>\\r\\n  <div id=\"app\"></div>\\r\\n</body>\\r\\n</html>';\nreturn __p\n})();}}"
+        }
+      ],
+      "filteredModules": 0,
+      "logging": {
+        "webpack.buildChunkGraph.visitModules": {
+          "entries": [],
+          "filteredEntries": 2,
+          "debug": false
+        }
+      },
+      "children": [],
+      "name": "HtmlWebpackCompiler"
+    }
+  ]
+}
