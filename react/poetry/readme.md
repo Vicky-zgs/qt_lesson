@@ -5,6 +5,12 @@
 - npm i react-particles-js
 - npm install react-loadable
 
+ (4.25)
+- npm i axios 接口请求
+- npm i redux
+- npm i --save react-redux
+- npm i immutable
+
 # pages
   admin中的页面与用户相关, web是网页
   - admin/login 登录页面

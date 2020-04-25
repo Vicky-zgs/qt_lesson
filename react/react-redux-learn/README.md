@@ -27,7 +27,7 @@
 # redux-thunk 中间件  实现ajax数据请求
 - 官方文档：在github搜索 redux-thunk
   - npm i --save redux-thunk
-  - 要在index.js中声明
+  - 要在src/store/index.js中声明
   - 使用中间件 就可以不把接口请求放在TodoList.js的生命周期中
     而是把接口请求当成一句话写在actionCreator.js中
 
@@ -39,3 +39,5 @@
   - npm install --save redux-saga
   - 原本dispatch的action给的是reducer去处理
     但是使用saga后 saga.js也能通过自己的方法获取dispatch派发的内容 (TodoList.js/45行)
+
+# ps： 这个文件夹(react-redux-learn) 是学习redux的 不是react-redux

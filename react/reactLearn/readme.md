@@ -1,6 +1,13 @@
 - build文件夹中是react的源码
-- demo1 react基础1, 在页面上显示东西
-- demo2 react基础2, 渲染数组在页面上
-- demo3 react基础3, jsx中允许直接插入js数组变量
-- demo4 react基础4, react组件的使用就像插入普通的HTML标签一样插入到网页中
-- demo5 react基础5, this.props.children
+- demo1  react基础1,  在页面上显示东西
+- demo2  react基础2,  渲染数组在页面上
+- demo3  react基础3,  jsx中允许直接插入js数组变量
+- demo4  react基础4,  react组件的使用就像插入普通的HTML标签一样插入到网页中
+- demo5  react基础5,  this.props.children
+- demo6  react基础6,  PropTypes  校验, 需要引入prop-types.js
+- demo7  react基础7,  createRef()  获取真实的dom结构
+- demo8  react基础8,  this.state
+- demo9  react基础9,  input
+- demo10 react基础10, 生命周期
+- demo11 react基础11, ajax 接口请求 要引入jquery.min.js
+- demo12 react基础12, ajax+promise 接口请求 要引入jquery.min.js

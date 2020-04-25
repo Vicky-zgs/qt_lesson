@@ -38,6 +38,11 @@
 
 # react-hook  hook是一个概念
 
-# react-redux-learn       状态管理  Redux = flux + Reduce
+# react-redux-learn  状态管理  学习 Redux = flux + Reduce (不是react-redux)
   - npm add antd
   - npm install redux
+
+# react-redux_learn  这是个第三方  学习更好地使用redux
+  - npm install --save react-redux
+
+# jianshu   使用react做简书网站
