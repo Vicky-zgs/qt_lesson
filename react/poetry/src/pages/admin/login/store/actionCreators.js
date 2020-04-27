@@ -7,10 +7,10 @@ const changeLogin = () => ({
 })
 
 // 退出登录的action
-// export const logout = () => ({
-//   type: constants.LOGOUT,
-//   value: false
-// })
+export const logout = () => ({
+  type: constants.LOGOUT,
+  value: false
+})
 
 // 登录的action
 export const login = (url, user) => {

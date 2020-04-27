@@ -2,6 +2,8 @@ import React from 'react'
 import { Menu } from 'antd';
 import { Button, Input } from 'antd'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { actionCreators as LoginActionCreators } from '../../admin/login/store/index'
 import './index.less'
 import menus from '../../../Router/web'
 
@@ -32,6 +34,7 @@ class Header extends React.Component {
       </Menu.Item>
     })
 
+    const { isLogin, logout} = this.props
     return (
       <div className="HeaderWrapper">
         <Link to="/web/index" className="header-title">
@@ -43,12 +46,31 @@ class Header extends React.Component {
         
         <Input className="header-input" placeholder="搜索..." />
 
-        <Button className="header-login">
-          <Link to="/login">登录</Link>
-        </Button>
+        {
+          isLogin 
+          ? <span onClick={logout}>退出登录</span>
+          : <Button className="header-login">
+              <Link to="/login">登录</Link>
+            </Button>
+        }
       </div>
     )
   }
 }
 
-export default Header
+const mapStateToProps = (state) => {
+  return {
+    // 获取是否登录的数据
+    isLogin: state.login.get('isLogin')
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logout() {
+      dispatch(LoginActionCreators.logout())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
