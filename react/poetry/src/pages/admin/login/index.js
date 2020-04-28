@@ -36,8 +36,9 @@ class LoginAndRegister extends React.Component {
   render () {
     return (
       <div className="login">
+        <Link to="/web/index" className="login-title">古诗文鉴赏</Link>
         <Card
-          className="login-form" 
+          className="login-form"
           tabList={this.state.tabList}
           activeTabKey={this.state.key}
           onTabChange={key => {

@@ -1,11 +1,15 @@
-// 诗人组件
+// 古籍组件
 
 import React, { Component } from 'react'
+import Head from '../header/index'
 
 class Poet extends Component {
   render () {
     return (
-      <div>我是诗人组件</div>
+      <div>
+        <Head />
+        古籍组件
+      </div>
     )
   }
 }

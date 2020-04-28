@@ -1,9 +1,6 @@
 import React from 'react'
-import { Menu } from 'antd';
-import { Button, Input } from 'antd'
+import { Menu, Button, Input, Dropdown } from 'antd'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { actionCreators as LoginActionCreators } from '../../admin/login/store/index'
 import './index.less'
 import menus from '../../../Router/web'
 
@@ -34,43 +31,51 @@ class Header extends React.Component {
       </Menu.Item>
     })
 
-    const { isLogin, logout} = this.props
+    // 个人信息的下拉菜单
+    const menu = (
+      <Menu>
+        <Menu.Item>
+          <Link to="/personalInfo" target="_blank" rel="noopener noreferrer">
+            个人信息
+          </Link>
+        </Menu.Item>
+        <Menu.Item>
+          <Link to="/userManage" target="_blank" rel="noopener noreferrer" >
+            用户管理
+          </Link>
+        </Menu.Item>
+        <Menu.Item>
+          <Link to="/collectionManage" target="_blank" rel="noopener noreferrer" >
+            收藏管理
+          </Link>
+        </Menu.Item>
+        <Menu.Item>
+          <Link to="/commentManage" target="_blank" rel="noopener noreferrer" >
+            评论管理
+          </Link>
+        </Menu.Item>
+      </Menu>
+    );
+
     return (
       <div className="HeaderWrapper">
-        <Link to="/web/index" className="header-title">
-          古诗文鉴赏
-        </Link>
+        <a href="#" className="header-title">古诗文鉴赏</a>
         <Menu className="menu" onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal">
           {menuList}
         </Menu>
         
         <Input className="header-input" placeholder="搜索..." />
 
-        {
-          isLogin 
-          ? <span onClick={logout}>退出登录</span>
-          : <Button className="header-login">
-              <Link to="/login">登录</Link>
-            </Button>
-        }
+        <Button className="header-login">
+          <Link to="/login">登录</Link>
+        </Button>
+
+        <Dropdown overlay={menu} placement="bottomRight" className="personalInfo">
+          <Button>信息中心</Button>
+        </Dropdown>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    // 获取是否登录的数据
-    isLogin: state.login.get('isLogin')
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    logout() {
-      dispatch(LoginActionCreators.logout())
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default Header

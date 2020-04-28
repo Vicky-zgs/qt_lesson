@@ -1,13 +1,14 @@
-// 诗人组件
+// 文章组件
 
 import React, { Component } from 'react'
-import './index.less'
+import Head from '../header/index'
 
 class Article extends Component {
   render () {
     return (
-      <div className="poetWrapper">
-        我是诗人组件
+      <div>
+        <Head />
+        诗人组件
       </div>
     )
   }

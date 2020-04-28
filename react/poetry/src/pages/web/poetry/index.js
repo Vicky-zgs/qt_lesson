@@ -1,11 +1,15 @@
 // 古诗组件
 
 import React, { Component } from 'react'
+import Head from '../header/index'
 
 class Poetry extends Component {
   render () {
     return (
-      <div>我是古诗组件</div>
+      <div>
+        <Head />
+        古诗组件
+      </div>
     )
   }
 }
