@@ -34,16 +34,18 @@ class Login extends React.Component {
       fetch(url,{
           method: 'post',
           body: user,
+          credentials: 'include',
       }).then(function (res) {
           return res.json();
       }).then(function (json) {
           alert(json.description)
+          console.log(json)
           window.location.href=json.nextAction;
           this.setState({
             isLogin: true
           })
       })
-  }
+    }
 
   render() {
     return (

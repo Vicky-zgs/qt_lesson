@@ -7,6 +7,7 @@
 
  (4.25)
 - npm i axios 接口请求
+(4.29)
 - npm i redux
 - npm i --save react-redux
 - npm i immutable
