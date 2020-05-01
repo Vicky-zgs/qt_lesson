@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
-// import { reducer as headerReducer } from '../common/header/store'
+import { reducer as loginReducer } from '../pages/admin/login/store/index.js'
 
 // 合并所有不同组件上的reducer
 const reducer = combineReducers({
-//   header: headerReducer,
+  login: loginReducer,
 })
 
 export default reducer
