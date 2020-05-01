@@ -17,3 +17,7 @@
   - admin/login 登录页面
   - web/layout 主页面
   - web/list   主页面中的展示列表组件
+
+
+5.1 记录
+- 接下来要写管理员的管理页面，写个table组件，放到管理组件的content里，然后每次点击不同的submenu就改变当前页面的state中的url，传不同的url接口给table，就可以传回来不同的数据
