@@ -1,6 +1,7 @@
 import React from 'react'
 import { Menu, Button, Input, Dropdown } from 'antd'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 import './index.less'
 import menus from '../../../Router/web'
 
@@ -8,7 +9,23 @@ class Header extends React.Component {
   constructor(props) {
     super(props)
     this.state = ({
-      current: 'home'
+      current: 'home',
+      isManager: false  // 是不是管理员, false即不是管理员 是用户, 默认是用户
+    })
+  }
+
+  componentDidMount () {
+    axios.get('/isManager').then((res) => {
+      console.log('isManager',res.data.data.isManager)
+      let managerId = res.data.data.isManager
+      if (managerId === 1) {
+        // 登录者是管理员
+        this.setState({
+          isManager: true
+        })
+      }
+    }).catch(err => {
+      console.log(err)
     })
   }
 
@@ -40,11 +57,6 @@ class Header extends React.Component {
           </Link>
         </Menu.Item>
         <Menu.Item>
-          <Link to="/userManage" target="_blank" rel="noopener noreferrer" >
-            用户管理
-          </Link>
-        </Menu.Item>
-        <Menu.Item>
           <Link to="/collectionManage" target="_blank" rel="noopener noreferrer" >
             收藏管理
           </Link>
@@ -70,9 +82,15 @@ class Header extends React.Component {
           <Link to="/login">登录</Link>
         </Button>
 
-        <Dropdown overlay={menu} placement="bottomRight" className="personalInfo">
-          <Button>信息中心</Button>
-        </Dropdown>
+        {
+          this.state.isManager
+          ? <Button className="personalInfo">
+              <Link to="/admin/manager">用户信息管理</Link>
+            </Button>
+          : <Dropdown overlay={menu} placement="bottomRight" className="personalInfo">
+              <Button>个人信息</Button>
+            </Dropdown>
+        }
       </div>
     )
   }

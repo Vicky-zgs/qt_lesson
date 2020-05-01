@@ -28,6 +28,7 @@ class Login extends React.Component {
       let url = "http://localhost:8080/login";//接口地址
       let user = new FormData();
       let msg = {'email':this.state.email,'password':this.state.pwd}
+      console.log(msg)
       for (const key in msg) {
           user.append(key,msg[key])
       }
@@ -39,13 +40,12 @@ class Login extends React.Component {
           return res.json();
       }).then(function (json) {
           alert(json.description)
-          console.log(json)
           window.location.href=json.nextAction;
           this.setState({
             isLogin: true
           })
       })
-    }
+  }
 
   render() {
     return (
