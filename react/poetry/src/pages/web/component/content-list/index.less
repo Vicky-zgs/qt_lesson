@@ -5,8 +5,9 @@
   .content-item {
     border-radius: 5px;
     background: #dadae7;
-    margin: 2vh 1vw;
+    margin: 2vh 1vw 3vh 1vw;
     padding: 1vh 1vw;
+    box-shadow: 0px 0px 5px #888888;
     .title {
       color: rgba(14, 75, 187, 0.8);
       display: block;
@@ -20,6 +21,19 @@
     }
     .content {
       color: black;
+      overflow: hidden;
+      display:-webkit-box;
+      -webkit-box-orient:vertical;
+      -webkit-line-clamp:5;
+    }
+    .tool {
+      margin: 1vh 0;
+      .shoucang, .xiazai, .fuzhi {
+        display: inline;
+        color: gray;
+        margin: 0 1vw 0 0;
+        cursor: pointer;
+      }
     }
     .border {
       width: 40vw;
@@ -29,5 +43,9 @@
     .content-tag {
       margin: 1vh 0;
     }
+  }
+  .loadMore {
+    width: 100%;
+    text-align: center;
   }
 }

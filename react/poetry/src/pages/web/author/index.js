@@ -1,17 +1,51 @@
-// 文章组件
+// 作者组件
 
 import React, { Component } from 'react'
 import Head from '../header/index'
+import List from '../component/content-list/index.js'
+import Tag from '../component/tag/index.js'
+import axios from 'axios'
 
-class Article extends Component {
+class Author extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      poetList: [],
+      poetTag: []
+    }
+  }
+
+  componentDidMount() {
+    // 获取诗人页面显示的标签
+    axios.get('/getpoet').then((res) => {
+      // console.log(res.data.data)
+      this.setState({
+        poetTag: res.data.data
+      })
+    }).catch((err) => {
+      alert(err)
+    })
+
+    // 获取诗人显示列表的内容
+    axios.get('/listpoets').then((res) => {
+      console.log('诗人组件的内容',res)
+      this.setState({
+        poetList: res.data.data
+      })
+    })
+  }
+
   render () {
     return (
       <div>
         <Head />
-        诗人组件
+        <div className="HomeWrapper">
+            <List list={this.state.poetList}/>
+          <Tag list={this.state.poetTag}/>
+        </div>
       </div>
     )
   }
 }
 
-export default Article
+export default Author

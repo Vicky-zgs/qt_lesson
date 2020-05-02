@@ -2,60 +2,60 @@
 
 import React, { Component } from 'react'
 import './index.less'
+import { StarOutlined, DownloadOutlined, CopyOutlined } from '@ant-design/icons'
 
 class List extends Component {
-  render () {
+  constructor(props) {
+    super(props)
+    this.state = {
+      listNum: 5
+    }
+  }
+
+  loadMore() {
+    this.setState({
+      listNum : this.state.listNum + 2
+    })
+  }
+
+  render() {
+    const { list } = this.props
     return (
-      <div className="content-list">
-          <div className="content-item">
-            <span className="title">六月中遇火</span>
-            <span className="author">陶渊明</span>
-            <div className="content">
-              <p>草庐寄穷巷，甘以辞华轩。</p>
-              <p>果菜始复生，惊鸟尚未还。</p>
-              <p>一宅无遗宇，肪舟荫门前。</p>
-              <p>迢迢新秋夕，亭亭月将圆。</p>
-              <p>果菜始复生，惊鸟尚未还。</p>
-            </div>
-            <div className="border"></div>
-            <div className="content-tag">
-            感叹
-            </div>
-          </div>
+      <div
+        className="content-list"
+      >
+        {
+          list.map((item, index) => {
+            if (index < this.state.listNum) {
+              return (
+                <div className="content-item" key={index}>
 
-          <div className="content-item">
-            <span className="title">六月中遇火</span>
-            <span className="author">陶渊明</span>
-            <div className="content">
-              <p>草庐寄穷巷，甘以辞华轩。</p>
-              <p>果菜始复生，惊鸟尚未还。</p>
-              <p>一宅无遗宇，肪舟荫门前。</p>
-              <p>迢迢新秋夕，亭亭月将圆。</p>
-              <p>果菜始复生，惊鸟尚未还。</p>
-            </div>
-            <div className="border"></div>
-            <div className="content-tag">
-            感叹
-            </div>
-          </div>
+                  <span className="title">{item.name}</span>
+                  <span className="author">{item.birthday}~{item.deathday}</span>
+                  <div className="content">
+                    {item.intro}
+                  </div>
+                  <div className="tool">
+                    <div className="shoucang"><StarOutlined /></div>
+                    <div className="xiazai"><DownloadOutlined /></div>
+                    <div className="fuzhi"><CopyOutlined /></div>
+                  </div>
+                  <div className="border"></div>
+                  <div className="content-tag">
+                    {item.masterwork}
+                  </div>
 
-          <div className="content-item">
-            <span className="title">六月中遇火</span>
-            <span className="author">陶渊明</span>
-            <div className="content">
-              <p>草庐寄穷巷，甘以辞华轩。</p>
-              <p>果菜始复生，惊鸟尚未还。</p>
-              <p>一宅无遗宇，肪舟荫门前。</p>
-              <p>迢迢新秋夕，亭亭月将圆。</p>
-              <p>果菜始复生，惊鸟尚未还。</p>
-            </div>
-            <div className="border"></div>
-            <div className="content-tag">
-            感叹
-            </div>
-          </div>
-
+                </div>
+              )
+            } else {
+              return
+            }
+          })
+        }
+        <div onClick={() => this.loadMore()} className="loadMore">
+          <p>点击加载更多</p>
         </div>
+      </div>
     )
   }
 }

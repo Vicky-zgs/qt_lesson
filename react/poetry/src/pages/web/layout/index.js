@@ -7,13 +7,18 @@ import Tag from '../component/tag/index.js'
 import Head from '../header/index'
 
 class WebLayout extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      list: []
+    }
+  }
   render () {
     return (
       <div>
         <Head />
         <div className="HomeWrapper">
-          <List />
-          <Tag />
+          <List list={this.state.list}/>
       </div>
       </div>
     )
