@@ -9,6 +9,7 @@ import routes from './Router/web'
 import WebLayout from './pages/web/layout/index'
 import PersonalInfo from './pages/web/personalInfo/index.js'
 import CollectionManage from './pages/web/manage/collection/index.js'
+import CommentManage from './pages/web/manage/comment/index.js'
 import Manager from './pages/admin/manage/index.js'
 
 class App extends React.Component {
@@ -27,6 +28,7 @@ class App extends React.Component {
           <Route path="/personalInfo" component={PersonalInfo}></Route>
           <Route path="/collectionManage" component={CollectionManage}></Route>
           <Route path="/admin/manager" component={Manager}></Route>
+          <Route path="/commentManage" component={CommentManage}></Route>
         </div>
       </Router>
       </Provider>
