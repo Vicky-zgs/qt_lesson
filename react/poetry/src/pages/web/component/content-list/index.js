@@ -3,6 +3,7 @@
 import React, { Component } from 'react'
 import './index.less'
 import { StarOutlined, DownloadOutlined, CopyOutlined } from '@ant-design/icons'
+import { Link } from 'react-router-dom'
 
 class List extends Component {
   constructor(props) {
@@ -30,7 +31,12 @@ class List extends Component {
               return (
                 <div className="content-item" key={index}>
 
-                  <span className="title">{item.name}</span>
+                  <span className="title" >
+                    {/* 传id给详情页 */}
+                    <Link to={"/poetInfo/" + item.id} >
+                      {item.name}
+                    </Link>
+                  </span>
                   <span className="author">{item.birthday}~{item.deathday}</span>
                   <div className="content">
                     {item.intro}
