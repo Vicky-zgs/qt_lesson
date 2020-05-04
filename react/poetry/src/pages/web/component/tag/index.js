@@ -2,6 +2,8 @@
 
 import React, { Component } from 'react'
 import './index.less'
+import { Link } from 'react-router-dom'
+
 
 class Tag extends Component {
   constructor(props) {
@@ -15,16 +17,31 @@ class Tag extends Component {
   render() {
     const { list } = this.props
     return (
-      // <div className="tag">
-      //   <div className="tag-item">小学古诗</div>
-      // </div>
       <div className="tag">
         {
           list.map((item, index) => {
             // 根据父组件传过来的不同list,展示不同的标签
-            return (
-              <div key={index} className="tag-item">{item.name}</div>
-            )
+            if (item.birthday) {
+              // 诗人页面的标签
+              return (
+                <Link to={"/poetInfo/" + item.id} key={index} >
+                  <div className="tag-item" >
+                    {item.name}
+                  </div>
+                </Link>
+              )
+            } else if (item.translation) {
+              // 诗词页面的标签
+              return (
+                <Link to={"/poetryInfo/" + item.id} key={index} >
+                  <div className="tag-item" >
+                    {item.name}
+                  </div>
+                </Link>
+              )
+            } else {
+              return 
+            }
           })
         }
       </div>

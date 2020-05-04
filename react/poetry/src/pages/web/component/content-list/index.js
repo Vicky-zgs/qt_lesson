@@ -19,6 +19,19 @@ class List extends Component {
     })
   }
 
+  // 点击收藏触发的方法
+  collectPoetry (poetryId) {
+    // console.log('收藏的诗词的id', poetryId)
+    let url = "http://localhost:8080/addcoll";//接口地址
+    let id = poetryId
+    let that = this
+    fetch(url, {
+      method: 'post',
+      body: id,
+      credentials: 'include'//解决fetch跨域session丢失
+    })
+  }
+
   render() {
     const { list } = this.props
     return (
@@ -27,7 +40,8 @@ class List extends Component {
       >
         {
           list.map((item, index) => {
-            if (index < this.state.listNum) {
+            if ((index < this.state.listNum) && (item.birthday) ) {
+              // 诗人列表
               return (
                 <div className="content-item" key={index}>
 
@@ -53,8 +67,35 @@ class List extends Component {
 
                 </div>
               )
+            } else if ((index < this.state.listNum) && (item.poetname)){
+              // 诗词列表
+              return (
+                <div className="content-item" key={index}>
+
+                  <span className="title" style={{textAlign:'left'}}>
+                    {/* 传id给详情页 */}
+                    <Link to={"/poetryInfo/" + item.id} >
+                      {item.name}
+                    </Link>
+                  </span>
+                  <span className="author">{item.dynastyname}：{item.poetname}</span>
+                  <div className="content">
+                    {item.content}
+                  </div>
+                  <div className="tool">
+                    <div className="shoucang" onClick={(e) => this.collectPoetry(item.id)}><StarOutlined /></div>
+                    <div className="xiazai"><DownloadOutlined /></div>
+                    <div className="fuzhi"><CopyOutlined /></div>
+                  </div>
+                  <div className="border"></div>
+                  <div className="content-tag">
+                    {item.type}
+                  </div>
+
+                </div>
+              )
             } else {
-              return
+              return 
             }
           })
         }
