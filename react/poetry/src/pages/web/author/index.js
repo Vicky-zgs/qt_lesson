@@ -39,7 +39,7 @@ class Author extends Component {
     return (
       <div>
         <Head />
-        <div className="HomeWrapper">
+        <div className="HomeWrapper" style={{width: '70vw',margin: '2vh auto',position:'relative'}}>
             <List list={this.state.poetList}/>
           <Tag list={this.state.poetTag}/>
         </div>
