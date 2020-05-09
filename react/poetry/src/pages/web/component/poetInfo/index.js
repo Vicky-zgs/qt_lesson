@@ -37,7 +37,7 @@ class PoetInfo extends Component {
     return (
       <div>
         <Header />
-        <div className="wrapper">
+        <div className="wrapper" style={{width: '50vw'}}>
           <div className="content-item" >
 
             <span className="title" >

@@ -24,7 +24,6 @@ class List extends Component {
     // console.log('收藏的诗词的id', poetryId)
     let url = "http://localhost:8080/addcoll";//接口地址
     let id = poetryId
-    let that = this
     fetch(url, {
       method: 'post',
       body: id,
@@ -67,19 +66,21 @@ class List extends Component {
 
                 </div>
               )
-            } else if ((index < this.state.listNum) && (item.poetname)){
+            } else if ((index < this.state.listNum) && (item.poetname) && (item.id)){
               // 诗词列表
               return (
-                <div className="content-item" key={index}>
+                <div className="content-item" key={index} >
 
-                  <span className="title" style={{textAlign:'left'}}>
+                  <span className="title" style={{textAlign:'left', backgroundColor: '#dadae7'}}>
                     {/* 传id给详情页 */}
                     <Link to={"/poetryInfo/" + item.id} >
                       {item.name}
                     </Link>
                   </span>
-                  <span className="author">{item.dynastyname}：{item.poetname}</span>
-                  <div className="content">
+                  <span className="author">
+                    <Link style={{color:'black'}} to={"/poetInfo/" + item.authoruid}>{item.dynastyname}：{item.poetname}</Link>  
+                  </span>
+                  <div className="content" style={{backgroundColor: '#dadae7'}}>
                     {item.content}
                   </div>
                   <div className="tool">
@@ -90,6 +91,38 @@ class List extends Component {
                   <div className="border"></div>
                   <div className="content-tag">
                     {item.type}
+                  </div>
+
+                </div>
+              )
+            } else if(item.num) {
+              // 推荐页面的列表组件
+              return (
+                <div className="content-item" key={index}>
+
+                  <span className="title" style={{textAlign:'left', backgroundColor: '#dadae7'}}>
+                    {/* 传id给详情页 */}
+                    <Link to={"/poetryInfo/" + item.poetryid} >
+                      {item.name}
+                    </Link>
+                  </span>
+                  <span className="author">
+                    <Link to={"/poetInfo/" + item.authoruid} style={{color: 'black'}}>
+                      {item.dynastyname}：{item.poetname}
+                    </Link>
+                  </span>
+                  <div className="content" style={{backgroundColor: '#dadae7'}}>
+                    {item.content}
+                  </div>
+                  <div className="tool">
+                    <div className="shoucang" onClick={(e) => this.collectPoetry(item.poetryid)}><StarOutlined /></div>
+                    <div className="xiazai"><DownloadOutlined /></div>
+                    <div className="fuzhi"><CopyOutlined /></div>
+                  </div>
+                  <div className="border"></div>
+                  <div className="content-tag">
+                    <span>{item.type}</span>
+                    <span className="coll_num">收藏数：{item.num}</span>
                   </div>
 
                 </div>
