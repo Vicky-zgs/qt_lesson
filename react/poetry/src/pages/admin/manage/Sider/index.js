@@ -1,0 +1,79 @@
+// 侧边栏组件
+
+import React, { Component } from 'react'
+import { Layout, Menu } from 'antd';
+import './index.less'
+import { UserOutlined } from '@ant-design/icons'
+import { Link } from 'react-router-dom'
+
+const { Sider } = Layout;
+const { SubMenu } = Menu;
+
+class SiderMenu extends Component {
+  constructor(props) {
+    super(props)
+    // this.state = {
+    //   menuNum: ''  // 点击的菜单数字代号
+    // }
+  }
+
+  // onClick (e) {
+  //   // 点击任何一个menuItem都会触发
+  //   // console.log(e.key) // 点击的menuItem的key值
+  //   this.setState({
+  //     menuNum: e.key
+  //   })
+  // }
+
+  render() {
+    return (
+        <Sider
+          breakpoint="lg"
+          collapsedWidth="0"
+          onBreakpoint={broken => {
+            console.log(broken);
+          }}
+          onCollapse={(collapsed, type) => {
+            console.log(collapsed, type);
+          }}
+        >
+          <div className="logo" />
+          <Menu theme="dark" 
+            mode="inline" 
+            defaultSelectedKeys={['4']} 
+            // onClick={this.onClick.bind(this)}
+          >
+          <SubMenu key="sub1" icon={<UserOutlined />} title="个人信息管理">
+              <Menu.Item key="1">个人信息</Menu.Item>
+              <Menu.Item key="2">
+                <Link to="/admin/collection">我的收藏</Link>
+              </Menu.Item>
+            </SubMenu>
+            <SubMenu key="sub2" icon={<UserOutlined />} title="用户信息管理">
+              <Menu.Item key="3">用户信息</Menu.Item>
+              <Menu.Item key="4">用户评论</Menu.Item>
+            </SubMenu>
+            <SubMenu key="sub3" icon={<UserOutlined />} title="古诗词管理">
+              <Menu.Item key="5">诗人</Menu.Item>
+              <Menu.Item key="6">古诗朝代与类别</Menu.Item>
+            </SubMenu>
+            <SubMenu key="sub4" icon={<UserOutlined />} title="后台管理">
+              <Menu.Item key="7">
+                <Link to="/admin/notice">
+                  通知管理
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="8">上传资源管理</Menu.Item>
+            </SubMenu>
+          </Menu>
+          <Link to="/"
+            className="back_home" 
+            style={{ position: 'absolute',left: '0',bottom: '0',color: '#f0f0f0',margin: '1vh 1vw'}}>
+            返回主页
+          </Link>
+        </Sider>
+    )
+  }
+}
+
+export default SiderMenu
