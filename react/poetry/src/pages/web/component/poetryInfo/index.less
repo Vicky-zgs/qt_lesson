@@ -1,6 +1,7 @@
 .wrapper {
   width: 50vw;
   margin: 5vh auto;
+  position: relative;
   .content-item {
     border-radius: 5px;
     background: #dadae7;
@@ -43,5 +44,15 @@
   .loadMore {
     width: 100%;
     text-align: center;
+  }
+  .comment {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin: 0 0 20px 0;
+    .comment_content {
+      min-height: 100px;
+      max-height: 250px;
+    }
   }
 }
