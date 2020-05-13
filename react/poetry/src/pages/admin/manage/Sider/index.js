@@ -40,7 +40,7 @@ class SiderMenu extends Component {
           <div className="logo" />
           <Menu theme="dark" 
             mode="inline" 
-            defaultSelectedKeys={['4']} 
+            defaultSelectedKeys={['2']} 
             // onClick={this.onClick.bind(this)}
           >
           <SubMenu key="sub1" icon={<UserOutlined />} title="个人信息管理">
@@ -50,8 +50,16 @@ class SiderMenu extends Component {
               </Menu.Item>
             </SubMenu>
             <SubMenu key="sub2" icon={<UserOutlined />} title="用户信息管理">
-              <Menu.Item key="3">用户信息</Menu.Item>
-              <Menu.Item key="4">用户评论</Menu.Item>
+              <Menu.Item key="3">
+                <Link to="/admin/manageUser">
+                  用户信息
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="4">
+                <Link to="/admin/manageComment">
+                  用户评论
+                </Link>
+              </Menu.Item>
             </SubMenu>
             <SubMenu key="sub3" icon={<UserOutlined />} title="古诗词管理">
               <Menu.Item key="5">诗人</Menu.Item>

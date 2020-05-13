@@ -55,7 +55,7 @@ componentDidMount () {
         this.setState({
             data: res.data.data
         })
-        console.log('Data', this.state.data)
+        // console.log('管理员管理评论页面Data', this.state.data)
     }).catch(err => {
         console.log(err)
     })
@@ -67,7 +67,7 @@ search = (e) => {
     this.setState({
         searchData: e.target.value
     }, () => {
-        console.log('searchData', this.state.searchData)
+        // console.log('searchData', this.state.searchData)
     })
 }
 
@@ -83,33 +83,23 @@ handleSubmit = (e) => {
     }).then(function (res) {
         return res.json();
     }).then(function (json) {
-        console.log(json.data)
+        // console.log(json.data)
         state.setState({
             data:json.data
         })
-        console.log('Data', state.state.data)
+        // console.log('Data', state.state.data)
     })
 }
 
 deleteCollection = (id) => {
     // 点击删除触发的方法
     // console.log('删除的id',id)
-    alert(id)
     var state=this
     let url = "http://localhost:8080/admin/deletecomment";//接口地址
     fetch(url,{
         method: 'post',
         body: id,
         credentials: 'include'//解决fetch跨域session丢失
-    }).then(function (res) {
-        return res.json();
-    }).then(function (json) {
-        alert(json.data)
-        console.log(json.data)
-        state.setState({
-            data:json.data
-        })
-        console.log('Data', state.state.data)
     })
 }
 
@@ -119,7 +109,7 @@ deleteCollection = (id) => {
         <SiderMenu />
         <Layout>
           <Header className="site-layout-sub-header-background" style={{ padding: 0 }} >
-            通知管理
+            用户评论管理
           </Header>
           <Content style={{ margin: '24px 16px 0' }} >
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
