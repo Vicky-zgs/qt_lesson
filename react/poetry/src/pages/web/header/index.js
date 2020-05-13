@@ -16,7 +16,7 @@ class Header extends React.Component {
 
   componentDidMount () {
     axios.get('/isManager').then((res) => {
-      console.log('isManager',res.data.data.isManager)
+      console.log('isManager',res.data)
       let managerId = res.data.data.isManager
       if (managerId === 1) {
         // 登录者是管理员
@@ -66,6 +66,11 @@ class Header extends React.Component {
             评论管理
           </Link>
         </Menu.Item>
+        <Menu.Item>
+          <Link to="/lookNotice" target="_blank" rel="noopener noreferrer" >
+            通知
+          </Link>
+        </Menu.Item>
       </Menu>
     );
 
@@ -85,7 +90,7 @@ class Header extends React.Component {
         {
           this.state.isManager
           ? <Button className="personalInfo">
-              <Link to="/admin/manager">用户信息管理</Link>
+              <Link to="/admin/collection">用户信息管理</Link>
             </Button>
           : <Dropdown overlay={menu} placement="bottomRight" className="personalInfo">
               <Button>个人信息</Button>

@@ -5,14 +5,14 @@ import Head from '../../header/index.js'
 import './index.less'
 import { Input, Button, Table, Pagination } from 'antd'
 import axios from 'axios'
-axios.defaults.withCredentials = true
+import { Link } from 'react-router-dom'
 
 class CollectionManage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data : [],
-      searchData: null,
+      data : [],   // 显示的列表数据
+      searchData: null,  // input框中输入的值
       columns: [
         {
           title: '古诗名',
@@ -40,7 +40,9 @@ class CollectionManage extends Component {
           key: 'action',
           render: (text, record) => (
             <span>
-              <Button style={{ marginRight: 10 }} onClick={(e) => this.checkCollection(record.id)}>查看</Button>
+              <Button style={{ marginRight: 10 }} onClick={(e) => this.checkCollection(record.id)}>
+                <Link to={"/poetryInfo/" + record.poetryid}>查看</Link>
+              </Button>
               <Button onClick={(e) => this.deleteCollection(record.id)}>删除</Button>
             </span>
           ),

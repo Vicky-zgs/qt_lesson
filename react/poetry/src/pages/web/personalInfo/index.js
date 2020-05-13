@@ -49,6 +49,8 @@ class PersonalInfo extends Component {
         isVIP: data.isVIP,
         grade: data.grade
       })
+    }).catch((err) => {
+      console.log(err)
     })
   }
 

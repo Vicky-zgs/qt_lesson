@@ -29,11 +29,11 @@ class PoetryInfo extends Component {
     let that = this
     // 获得当前诗词的评论内容
     let comment_url = "http://localhost:8080/poetry/listcomments"
-    let poetryid = this.state.poetry_info.id
-    console.log('当前诗词的id', poetryid)
+    let poetryname = this.state.poetry_info.name
+    console.log('当前诗词名', poetryname)
     fetch(comment_url, {
       method: 'post',
-      body: poetryid,
+      body: poetryname,
       credentials: 'include'//解决fetch跨域session丢失
     }).then(function (res) {
       return res.json();
@@ -56,7 +56,7 @@ class PoetryInfo extends Component {
 
   componentDidMount() {
     console.log('诗词id：', this.props.match.params) // props传过来的id
-    let poetry_url = "http://localhost:8080//displaypoetrybyid"//接口地址
+    let poetry_url = "http://localhost:8080/displaypoetrybyid"//接口地址
     let id = this.props.match.params.id
     let that = this
 

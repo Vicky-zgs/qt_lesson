@@ -9,10 +9,6 @@ class Tag extends Component {
   constructor(props) {
     super(props)
   }
-
-  componentDidMount() {
-    console.log('tag的list',this.props.list)
-  }
   
   render() {
     const { list } = this.props
@@ -33,7 +29,16 @@ class Tag extends Component {
             } else if (item.translation) {
               // 诗词页面的标签
               return (
-                <Link to={"/poetryInfo/" + item.id} key={index} >
+                <Link to={"/web/poetry"} key={index} >
+                  <div className="tag-item" >
+                    {item.name}
+                  </div>
+                </Link>
+              )
+            } else if (item.start) {
+              // 朝代的标签
+              return (
+                <Link to={"/poetry/dynasty/" + item.id} key={index} >
                   <div className="tag-item" >
                     {item.name}
                   </div>
