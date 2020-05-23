@@ -59,6 +59,8 @@ class Comment extends Component {
         method: 'post',
         body: data,
         credentials: 'include'
+      }).then( function(res) {
+        alert('评论成功')
       })
     }
   }
