@@ -13,14 +13,29 @@
     margin: 0 35px;
     color: rgba(14, 75, 187, 0.8);
   }
+  .search_wrapper {
+    position: relative;
+    .search_click {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translate(0, -50%);
+      cursor: pointer;
+    }
+  }
   .header-login {
     margin: 6px 0;
     height: 36px;
     border-radius: 18px;
     position: absolute;
     right: 40px;
-    background: #ea6f5a;
-    color: white;
+    & .login {
+      background: #ea6f5a;
+      color: white;
+    }
+    & .logout {
+      color: black;
+    }
   }
   .header-input {
     width: 300px;

@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import './index.less'
 import menus from '../../../Router/web'
+import { SearchOutlined } from '@ant-design/icons';
 
 class Header extends React.Component {
   constructor(props) {
     super(props)
     this.state = ({
       current: 'home',
-      isManager: false  // 是不是管理员, false即不是管理员 是用户, 默认是用户
+      isManager: '',  // 是不是管理员, false即不是管理员 是用户, 默认是用户
+      search_data: ''
     })
   }
 
@@ -35,6 +37,30 @@ class Header extends React.Component {
       current: e.key,
     });
   };
+
+  search = (e) => {
+    // 搜索框
+    // console.log('搜索框输入', e.target.value)
+    this.setState({
+      search_data: e.target.value
+    })
+  }
+
+  handleSearch = () => {
+    let url = "http://localhost:8080/listpoetrybykw";//接口地址
+    let that = this
+    fetch(url,{
+        method: 'post',
+        body: that.state.search_data,
+        credentials: 'include'//解决fetch跨域session丢失
+    }).then(function (res) {
+        return res.json();
+    }).then(function (json) {
+      console.log('搜索的',that.state.search_data)
+      // console.log('搜索后返回的数据',json)
+        // window.location.href = {};
+    })
+  }
 
   render() {
     // 拿到menus中所有menu为true的字段
@@ -81,11 +107,20 @@ class Header extends React.Component {
           {menuList}
         </Menu>
         
-        <Input className="header-input" placeholder="搜索..." />
+        <div className="search_wrapper">
+          <Input className="header-input" placeholder="搜索..." onChange={(e) => this.search(e)} />
+          <SearchOutlined className="search_click" onClick={this.handleSearch}/>
+        </div>
 
-        <Button className="header-login">
-          <Link to="/login">登录</Link>
-        </Button>
+        {
+          (this.state.isManager === null)
+          ? <Button className="header-login login">
+              <Link to="/login">登录</Link>
+            </Button>
+          : <Button className="header-login logout">
+              已登录
+            </Button>
+        }
 
         {
           this.state.isManager

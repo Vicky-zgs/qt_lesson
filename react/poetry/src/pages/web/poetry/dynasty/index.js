@@ -20,7 +20,7 @@ class Poetry extends Component {
 
   componentDidMount () {
     // 这个页面显示的诗词数据是按照朝代/类别 分类后的数据
-    console.log('朝代id：', this.props.match.params.id)
+    // console.log('点击朝代后的数据aa', this.props.location.state.dynasty_list)
     let url = "http://localhost:8080/listalldynastybyid"//接口地址
     let id = this.props.match.params.id
     let that = this

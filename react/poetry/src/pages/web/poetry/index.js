@@ -16,11 +16,12 @@ class Poetry extends Component {
       poetryDynasty: [],
       poetryType: [],
       // 分类后的数据
-      afterDynasty: []
+      dynasty_list: []
     }
   }
 
   componentDidMount () {
+
     axios.get('/listallpoetrys').then((res) => {
       this.setState({
         poetryList: res.data.data
@@ -52,7 +53,6 @@ class Poetry extends Component {
       console.log(err)
     })
 
-    // 按不同朝代分类后的数据
   }
 
   render () {
@@ -60,8 +60,12 @@ class Poetry extends Component {
       <div>
         <Head />
         <div className="wrapper">
+          
+            {/* (this.props.list )
+            : <List list={this.props.list} />
+            ? <List list={this.state.poetryList} /> */}
           <List list={this.state.poetryList} />
-          <Tag list={this.state.poetryDynasty}/>
+          <Tag list={this.state.poetryDynasty} />
           <Tag_type list={this.state.poetryType}/>
         </div>
       </div>
