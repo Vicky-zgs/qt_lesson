@@ -43,7 +43,7 @@ class Login extends React.Component {
       'email': this.state.email,
       'password': this.state.password1,
     }
-    console.log(msg)
+    // console.log(msg)
     for (const key in msg) {
         user.append(key,msg[key])
     }

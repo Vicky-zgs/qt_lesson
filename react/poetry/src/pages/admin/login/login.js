@@ -2,6 +2,7 @@
 import React from 'react'
 import {Form, Input, Button, Checkbox } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import { Link } from 'react-router-dom'
 
 class Login extends React.Component {
   constructor(props) {
@@ -71,9 +72,9 @@ class Login extends React.Component {
             <Checkbox>记住密码</Checkbox>
           </Form.Item>
 
-          <a className="login-form-forgot" href="">
+          <Link to="/forgetPwd" className="login-form-forgot">
             忘记密码?
-          </a>
+          </Link>
         </Form.Item>
 
         <Button type="primary" htmlType="submit" className="login-form-button" block>登录</Button>
