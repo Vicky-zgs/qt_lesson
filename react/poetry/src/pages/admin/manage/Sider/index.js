@@ -62,16 +62,26 @@ class SiderMenu extends Component {
               </Menu.Item>
             </SubMenu>
             <SubMenu key="sub3" icon={<UserOutlined />} title="古诗词管理">
-              <Menu.Item key="5">诗人</Menu.Item>
-              <Menu.Item key="6">古诗朝代与类别</Menu.Item>
+              <Menu.Item key="5">
+                <Link to="/admin/managePoetry">诗词</Link>
+              </Menu.Item>
+              <Menu.Item key="6">
+                <Link to="/admin/managePoetryDynasty">古诗朝代</Link>
+              </Menu.Item>
+              <Menu.Item key="7">
+                <Link to="/admin/managePoetryType">古诗类别</Link>
+              </Menu.Item>
+              <Menu.Item key="8">
+                <Link to="/admin/managePoet">诗人</Link>
+              </Menu.Item>
             </SubMenu>
             <SubMenu key="sub4" icon={<UserOutlined />} title="后台管理">
-              <Menu.Item key="7">
+              <Menu.Item key="9">
                 <Link to="/admin/notice">
                   通知管理
                 </Link>
               </Menu.Item>
-              <Menu.Item key="8">上传资源管理</Menu.Item>
+              <Menu.Item key="10">上传资源管理</Menu.Item>
             </SubMenu>
           </Menu>
           <Link to="/"
