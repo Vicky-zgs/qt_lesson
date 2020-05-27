@@ -57,7 +57,7 @@ class Header extends React.Component {
         return res.json();
     }).then(function (json) {
       console.log('搜索的',that.state.search_data)
-      // console.log('搜索后返回的数据',json)
+      console.log('搜索后返回的数据',json.data)
         // window.location.href = {};
     })
   }
@@ -112,15 +112,9 @@ class Header extends React.Component {
           <SearchOutlined className="search_click" onClick={this.handleSearch}/>
         </div>
 
-        {
-          (this.state.isManager === null)
-          ? <Button className="header-login login">
-              <Link to="/login">登录</Link>
-            </Button>
-          : <Button className="header-login logout">
-              已登录
-            </Button>
-        }
+          <Button className="header-login login">
+            <Link to="/login">登录</Link>
+          </Button>
 
         {
           this.state.isManager

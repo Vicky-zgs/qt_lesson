@@ -13,6 +13,7 @@ class Tag extends Component {
     }
   }
 
+
   clickDynasty = (id) => {
     // console.log('点击的朝代id', id)
     let url = "http://localhost:8080/listalldynastybyid"//接口地址
@@ -59,7 +60,7 @@ class Tag extends Component {
                   </div>
                 </Link>
               )
-            } else if (item.start) {
+            } else if (item.endtime) {
               // 朝代的标签
               return (
                 <Link to={{

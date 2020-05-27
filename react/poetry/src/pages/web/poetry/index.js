@@ -36,7 +36,7 @@ class Poetry extends Component {
       this.setState({
         poetryDynasty: res.data.data
       },() =>{
-        // console.log('诗词朝代数据',this.state.poetryDynasty)
+        console.log('诗词朝代数据',this.state.poetryDynasty)
       })
     }).catch((err) => {
       console.log(err)

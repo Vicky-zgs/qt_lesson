@@ -18,9 +18,11 @@ class Author extends Component {
   componentDidMount() {
     // 获取诗人页面显示的标签
     axios.get('/getpoet').then((res) => {
-      // console.log(res.data.data)
+      // console.log('诗人页面的标签数据',res.data.data)
       this.setState({
         poetTag: res.data.data
+      },() => {
+        console.log('诗人页面的标签数据',this.state.poetTag)
       })
     }).catch((err) => {
       alert(err)

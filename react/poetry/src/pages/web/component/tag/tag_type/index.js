@@ -11,7 +11,7 @@ class Tag extends Component {
   }
 
   componentDidMount() {
-    console.log('tag_type的list',this.props.list)
+    // console.log('tag_type的list',this.props.list)
   }
   
   render() {

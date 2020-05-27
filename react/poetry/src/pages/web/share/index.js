@@ -1,4 +1,4 @@
-// 古籍组件
+// 分享组件
 
 import React, { Component } from 'react'
 import Head from '../header/index'
@@ -8,7 +8,7 @@ class Poet extends Component {
     return (
       <div>
         <Head />
-        古籍组件
+        分享组件
       </div>
     )
   }
