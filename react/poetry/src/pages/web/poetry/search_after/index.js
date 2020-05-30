@@ -6,7 +6,7 @@ import List from '../../component/content-list/index.js'
 import Tag from '../../component/tag/index.js'
 import Tag_type from '../../component/tag/tag_type/index.js'
 import axios from 'axios'
-// import './index.less'
+import './index.less'
 
 class Poetry extends Component {
   constructor(props) {
@@ -19,27 +19,25 @@ class Poetry extends Component {
   }
 
   componentDidMount () {
-    // 这个页面显示的诗词数据是按照朝代/类别 分类后的数据
-    // console.log('点击朝代后的数据aa', this.props.location.state.dynasty_list)
-    let url = "http://localhost:8080/listalldynastybyid"//接口地址
-    let id = this.props.match.params.id
-    let that = this
+    // console.log('获取的搜索数据', this.props.location.state.kw)
 
-    // 获得当前诗词的内容
-    fetch(url, {
-      method: 'post',
-      body: id,
-      credentials: 'include'//解决fetch跨域session丢失
+    let url = "http://localhost:8080/listpoetrybykw";//接口地址
+    let that = this
+    fetch(url,{
+        method: 'post',
+        body: this.props.location.state.kw,
+        credentials: 'include'//解决fetch跨域session丢失
     }).then(function (res) {
-      return res.json();
+        return res.json();
     }).then(function (json) {
-      console.log('分类后的诗词数据', json)
+      // console.log('搜索的',that.state.search_data)
       that.setState({
         poetryList: json.data
       })
-      console.log('诗词详情', that.state.poetryList)
+      console.log('搜索后返回的数据',that.state.poetryList)
     })
 
+    // 朝代类别数据
     axios.get('/listalldynasty').then((res) => {
       this.setState({
         poetryDynasty: res.data.data
@@ -60,6 +58,7 @@ class Poetry extends Component {
     }).catch((err) => {
       console.log(err)
     })
+    
   }
 
   render () {
