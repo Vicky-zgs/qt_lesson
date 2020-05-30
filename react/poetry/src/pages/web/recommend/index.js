@@ -38,7 +38,7 @@ class WebLayout extends Component {
     return (
       <div>
         <Head />
-        <div className="wrapper">
+        <div className="wrapper_recommend">
           <List list={this.state.RecommendList} />
           {/* <Tag list={this.state.TagList}/> */}
         </div>
