@@ -50,11 +50,11 @@ class ManageNotice extends Component {
   componentDidMount() {
     // 获取当前所有通知
     axios.get('/admin/listnotics').then((res) => {
-      // console.log('从后端获取的通知',res.data.data)
+      console.log('从后端获取的通知',res.data.data)
       this.setState({
         data: res.data.data
       })
-      console.log('通知数据:', this.state.data)
+      // console.log('通知数据:', this.state.data)
     }).catch(err => {
       console.log(err)
     })
@@ -99,6 +99,8 @@ class ManageNotice extends Component {
       method: 'post',
       body: id,
       credentials: 'include'//解决fetch跨域session丢失
+    }).then(function(res) {
+      alert('删除成功！')
     })
   }
 

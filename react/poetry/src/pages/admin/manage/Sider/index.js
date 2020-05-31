@@ -44,7 +44,9 @@ class SiderMenu extends Component {
             // onClick={this.onClick.bind(this)}
           >
           <SubMenu key="sub1" icon={<UserOutlined />} title="个人信息管理">
-              <Menu.Item key="1">个人信息</Menu.Item>
+              <Menu.Item key="1">
+                <Link to="/admin/myInfo">我的信息</Link>
+              </Menu.Item>
               <Menu.Item key="2">
                 <Link to="/admin/collection">我的收藏</Link>
               </Menu.Item>
@@ -66,10 +68,10 @@ class SiderMenu extends Component {
                 <Link to="/admin/managePoetry">诗词</Link>
               </Menu.Item>
               <Menu.Item key="6">
-                <Link to="/admin/managePoetryDynasty">古诗朝代</Link>
+                <Link to="/admin/managePoetryDynasty">朝代管理</Link>
               </Menu.Item>
               <Menu.Item key="7">
-                <Link to="/admin/managePoetryType">古诗类别</Link>
+                <Link to="/admin/managePoetryType">古诗类型</Link>
               </Menu.Item>
               <Menu.Item key="8">
                 <Link to="/admin/managePoet">诗人</Link>
@@ -86,7 +88,7 @@ class SiderMenu extends Component {
           </Menu>
           <Link to="/"
             className="back_home" 
-            style={{ position: 'absolute',left: '0',bottom: '0',color: '#f0f0f0',margin: '1vh 1vw'}}>
+            style={{ position: 'absolute',left: '0',bottom: '0',color: '#f0f0f0',margin: '1vh 2vw'}}>
             返回主页
           </Link>
         </Sider>
