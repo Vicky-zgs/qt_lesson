@@ -83,10 +83,10 @@ class PersonalInfo extends Component {
       'isVIP':this.state.isVIP,
       'grade':this.state.grade
     }
-    console.log('用户修改的信息',msg)
     for (const key in msg) {
         user.append(key,msg[key])
     }
+    console.log('用户修改的信息',user)
     fetch(url,{
         method: 'post',
         body: user,

@@ -4,15 +4,20 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import './index.less'
 import menus from '../../../Router/web'
-import { SearchOutlined } from '@ant-design/icons';
+import { SearchOutlined } from '@ant-design/icons'
+import PropTypes from 'prop-types'
 
 class Header extends React.Component {
+  static contextTypes = {
+    router: PropTypes.object,
+  }
   constructor(props) {
     super(props)
     this.state = ({
       current: 'home',
       isManager: '',  // 是不是管理员, false即不是管理员 是用户, 默认是用户
-      search_data: ''
+      search_data: '', // 搜索框的数据
+      search_list: [], // 搜索得到的数据，其实没什么用，只是要用到它的id啥的
     })
   }
 
@@ -57,8 +62,11 @@ class Header extends React.Component {
         return res.json();
     }).then(function (json) {
       console.log('搜索的',that.state.search_data)
-      console.log('搜索后返回的数据',json.data)
-        // window.location.href = {};
+      that.setState({
+        search_list: json.data
+      })
+      console.log('搜索后返回的数据',that.state.search_list)
+      // that.context.router.history.push('/web/search')
     })
   }
 
@@ -92,11 +100,6 @@ class Header extends React.Component {
             评论管理
           </Link>
         </Menu.Item>
-        <Menu.Item>
-          <Link to="/lookNotice" target="_blank" rel="noopener noreferrer" >
-            通知
-          </Link>
-        </Menu.Item>
       </Menu>
     );
 
@@ -109,7 +112,9 @@ class Header extends React.Component {
         
         <div className="search_wrapper">
           <Input className="header-input" placeholder="搜索..." onChange={(e) => this.search(e)} />
-          <SearchOutlined className="search_click" onClick={this.handleSearch}/>
+          <Link to={{ pathname :  `/web/search/ + ${Math.floor(Math.random()*(10))}` , state : { kw: this.state.search_data }}}>
+            <SearchOutlined className="search_click" />
+          </Link>
         </div>
 
           <Button className="header-login login">
@@ -119,7 +124,7 @@ class Header extends React.Component {
         {
           this.state.isManager
           ? <Button className="personalInfo">
-              <Link to="/admin/collection">用户信息管理</Link>
+              <Link to="/admin/collection">信息管理</Link>
             </Button>
           : <Dropdown overlay={menu} placement="bottomRight" className="personalInfo">
               <Button>个人信息</Button>

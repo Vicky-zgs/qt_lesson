@@ -2,10 +2,10 @@
 
 import React, { Component } from 'react'
 import Head from '../../header/index.js'
-import './index.less'
 import { Input, Button, Table, Pagination } from 'antd'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import './index.less'
 
 class LookManage extends Component {
   constructor(props) {
@@ -64,7 +64,6 @@ class LookManage extends Component {
       <div>
         <Head />
         <div className="wrapper">
-          <p className="title">查看通知</p>
           <Table
             rowKey={(record, index) => `complete${record.id}${index}`}
             columns={this.state.columns}
@@ -73,6 +72,7 @@ class LookManage extends Component {
               pageSize: 5,
               defaultCurrent: 1
             }}
+            style={{ margin: '20px 0' }}
           />
         </div>
       </div>

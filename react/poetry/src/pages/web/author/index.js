@@ -5,6 +5,7 @@ import Head from '../header/index'
 import List from '../component/content-list/index.js'
 import Tag from '../component/tag/index.js'
 import axios from 'axios'
+import './index.less'
 
 class Author extends Component {
   constructor(props) {
