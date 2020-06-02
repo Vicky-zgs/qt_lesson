@@ -7,6 +7,7 @@ import { StarOutlined, DownloadOutlined, CopyOutlined } from '@ant-design/icons'
 import OtherInfo from '../otherInfo/index.js'
 import { Button, Input } from 'antd';
 import Comment from '../comment/index.js'
+import axios from 'axios'
 
 class PoetryInfo extends Component {
   constructor(props) {
@@ -14,6 +15,8 @@ class PoetryInfo extends Component {
     this.state = {
       poetry_info: '', // 当前诗词的内容
       commentList: [], // 当前诗词的评论
+      userEmail: '',   // 当前评论人的email
+      commentText: '', // 用户输入的评论 
     }
   }
 
@@ -25,37 +28,10 @@ class PoetryInfo extends Component {
 
   componentDidUpdate() {
     this.autoSize();
-
-    let that = this
-    // 获得当前诗词的评论内容
-    let comment_url = "http://localhost:8080/poetry/listcomments"
-    let poetryname = this.state.poetry_info.name
-    console.log('当前诗词名', poetryname)
-    fetch(comment_url, {
-      method: 'post',
-      body: poetryname,
-      credentials: 'include'//解决fetch跨域session丢失
-    }).then(function (res) {
-      return res.json();
-    }).then(function (json) {
-      console.log('诗词评论的数据', json)
-      // newCommentList = [
-      //   {
-      //     id: this.verifyID(),
-      //     name: userName,
-      //     content: userContent
-      // },
-      // ...this.state.commentList
-      // ]
-      // that.setState({
-      //   commentList: json.data[0]
-      // })
-      console.log('诗词评论', that.state.commentList)
-    })
   }
 
   componentDidMount() {
-    console.log('诗词id：', this.props.match.params) // props传过来的id
+    // console.log('诗词id：', this.props.match.params) // props传过来的id
     let poetry_url = "http://localhost:8080/displaypoetrybyid"//接口地址
     let id = this.props.match.params.id
     let that = this
@@ -75,7 +51,50 @@ class PoetryInfo extends Component {
       // console.log('诗词详情', that.state.poetry_info)
     })
 
+    that.autoSize();
+    // 获得当前诗词的评论内容
+    let comment_url = "http://localhost:8080/poetry/listcomments"
+    let poetryname = this.props.match.params.poetryname
+    console.log('当前诗词名', poetryname)
+    fetch(comment_url, {
+      method: 'post',
+      body: poetryname,
+      credentials: 'include'//解决fetch跨域session丢失
+    }).then(function (res) {
+      return res.json();
+    }).then(function (json) {
+      // console.log('诗词评论的数据', json.data)
+      that.setState({
+        commentList: json.data
+      })
+      console.log('诗词评论', that.state.commentList)
+    })
   }
+
+  handleComment = (e) => {
+    // console.log('发表的评论：', e.target.value)
+    this.setState({
+      commentText: e.target.value
+    })
+  }
+
+  // 显示的评论列表
+  renderList = () => {
+    return (((this.state.commentList).length) === 0) ?
+      (<div className="no-comments">暂无评论，快去抢沙发吧！</div>) :
+      (
+        <ul>
+          {
+            this.state.commentList.map(item => (
+              <li key={item.id}>
+                <h4>评论人邮箱: {item.email}</h4>
+                <p>  评论内容：  {item.comments}</p>
+              </li>
+            ))
+          }
+        </ul>
+      )
+  };
 
   render() {
     const { TextArea } = Input;
@@ -114,7 +133,7 @@ class PoetryInfo extends Component {
           {/* 注释以及翻译 */}
           <OtherInfo list={this.state.poetry_info} />
           {/* 评论以及发表评论 */}
-          <Comment id={this.state.poetry_info.id} poetryname={this.state.poetry_info.name} list={this.state.commentList} />
+          <Comment list={this.state.commentList} id={this.props.match.params.id} poetryname={this.props.match.params.poetryname} />
         </div>
       </div>
     )

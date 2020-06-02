@@ -28,6 +28,10 @@ class List extends Component {
       method: 'post',
       body: id,
       credentials: 'include'//解决fetch跨域session丢失
+    }).then(function (res) {
+      alert('收藏成功！')
+    }).catch(function(err) {
+      alert('请登录！')
     })
   }
 
@@ -73,7 +77,7 @@ class List extends Component {
 
                   <span className="title" style={{textAlign:'left', backgroundColor: '#dadae7'}}>
                     {/* 传id给详情页 */}
-                    <Link to={"/poetryInfo/" + item.id} >
+                    <Link to={"/poetryInfo/" + item.id + '/' + item.name} >
                       {item.name}
                     </Link>
                   </span>
@@ -98,11 +102,11 @@ class List extends Component {
             } else if(item.num) {
               // 推荐页面的列表组件
               return (
-                <div className="content-item" key={index}>
+                <div className="content-item" key={index} >
 
                   <span className="title" style={{textAlign:'left', backgroundColor: '#dadae7'}}>
                     {/* 传id给详情页 */}
-                    <Link to={"/poetryInfo/" + item.poetryid} >
+                    <Link to={"/poetryInfo/" + item.poetryid + '/' + item.name} >
                       {item.name}
                     </Link>
                   </span>
