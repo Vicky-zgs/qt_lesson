@@ -69,9 +69,9 @@ class ManageVPoetry extends Component {
       show_changePoetry: false,
       id: '',
       name: '' ,
-      dynastyid: '' ,
-      typeid: '' ,
-      authoruid: '' ,
+      dynastyname: '' ,
+      type: '' ,
+      poetname: '' ,
       content: '' ,
       annotation: '' ,
       translation: '' ,
@@ -152,9 +152,9 @@ class ManageVPoetry extends Component {
     let that = this
     let msg = {
       name: this.state.name ,
-      dynastyid: this.state.dynastyid ,
-      typeid: this.state.typeid ,
-      authoruid: this.state.authoruid ,
+      dynastyname: this.state.dynastyname ,
+      type: this.state.type ,
+      poetname: this.state.poetname ,
       content: this.state.content ,
       annotation: this.state.annotation ,
       translation: this.state.translation
@@ -198,9 +198,9 @@ class ManageVPoetry extends Component {
     let msg = {
       id: this.state.change_poetry.id,
       name: this.state.change_poetry.name,
-      dynastyid: this.state.dynastyid ? this.state.dynastyid : this.state.change_poetry.dynastyid,
-      typeid: this.state.typeid ? this.state.typeid : this.state.change_poetry.typeid,
-      authoruid: this.state.authoruid ? this.state.authoruid : this.state.change_poetry.authoruid,
+      dynastyname: this.state.dynastyname ? this.state.dynastyname : this.state.change_poetry.dynastyname,
+      type: this.state.type ? this.state.type : this.state.change_poetry.type,
+      poetname: this.state.poetname ? this.state.poetname : this.state.change_poetry.poetname,
       content: this.state.content ? this.state.content : this.state.change_poetry.content,
       annotation: this.state.annotation ? this.state.annotation : this.state.change_poetry.annotation,
       translation: this.state.translation ? this.state.translation : this.state.change_poetry.translation,
@@ -268,14 +268,14 @@ class ManageVPoetry extends Component {
               <Input name="name" onChange={this.handleChange} placeholder="例：将进酒" />
             </Form.Item>
 
-            <Form.Item name="authoruid" label="诗人id" rules={[{ required: true }]}>
-              <Input name="authoruid" onChange={this.handleChange} />
+            <Form.Item name="poetname" label="诗人名" rules={[{ required: true }]}>
+              <Input name="poetname" onChange={this.handleChange} />
             </Form.Item>
-            <Form.Item name="dynastyid" label="朝代id" rules={[{ required: true }]}>
-              <Input name="dynastyid" onChange={this.handleChange} />
+            <Form.Item name="dynastyname" label="朝代名" rules={[{ required: true }]}>
+              <Input name="dynastyname" onChange={this.handleChange} />
             </Form.Item>
-            <Form.Item name="typeid" label="诗词类型id" rules={[{ required: true }]}>
-              <Input name="typeid" onChange={this.handleChange} />
+            <Form.Item name="type" label="诗词类型" rules={[{ required: true }]}>
+              <Input name="type" onChange={this.handleChange} />
             </Form.Item>
 
             <Form.Item name="content" label="诗词内容" rules={[{ required: true }]} >
@@ -323,14 +323,14 @@ class ManageVPoetry extends Component {
               {this.state.change_poetry.name}
             </Form.Item>
 
-            <Form.Item name="authoruid" label="诗人id" >
-              <Input name="authoruid" onChange={this.handleChange} placeholder={this.state.change_poetry.authoruid} />
+            <Form.Item name="poetname" label="诗人名" >
+              <Input name="poetname" onChange={this.handleChange} placeholder={this.state.change_poetry.poetname} />
             </Form.Item>
-            <Form.Item name="dynastyid" label="朝代id" >
-              <Input name="dynastyid" onChange={this.handleChange} placeholder={this.state.change_poetry.dynastyid} />
+            <Form.Item name="dynastyname" label="朝代名" >
+              <Input name="dynastyname" onChange={this.handleChange} placeholder={this.state.change_poetry.dynastyname} />
             </Form.Item>
-            <Form.Item name="typeid" label="诗词类型id">
-              <Input name="typeid" onChange={this.handleChange} placeholder={this.state.change_poetry.typeid} />
+            <Form.Item name="type" label="诗词类型">
+              <Input name="type" onChange={this.handleChange} placeholder={this.state.change_poetry.type} />
             </Form.Item>
 
             <Form.Item name="content" label="诗词内容" >

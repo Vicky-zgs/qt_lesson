@@ -50,7 +50,7 @@ class ManageNotice extends Component {
   componentDidMount() {
     // 获取当前所有通知
     axios.get('/admin/listnotics').then((res) => {
-      console.log('从后端获取的通知',res.data.data)
+      // console.log('从后端获取的通知',res.data.data)
       this.setState({
         data: res.data.data
       })

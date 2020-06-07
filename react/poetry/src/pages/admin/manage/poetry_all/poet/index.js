@@ -35,9 +35,9 @@ class ManagePoet extends Component {
           key: 'name_hao',
         },
         {
-          title: '朝代id',
-          dataIndex: 'dynastyid',
-          key: 'dynastyid',
+          title: '朝代',
+          dataIndex: 'dynastyname',
+          key: 'dynastyname',
         },
         {
           title: '出生日期',
@@ -79,7 +79,7 @@ class ManagePoet extends Component {
       gender: '',
       birthday: '',
       deathday: '',
-      dynastyid: '',
+      dynastyname: '',
       intro: '',
       masterwork: '',
 
@@ -164,7 +164,7 @@ class ManagePoet extends Component {
       gender: this.state.gender,
       birthday: this.state.birthday,
       deathday: this.state.deathday,
-      dynastyid: this.state.dynastyid,
+      dynastyname: this.state.dynastyname,
       intro: this.state.intro,
       masterwork: this.state.masterwork
     }
@@ -220,7 +220,7 @@ class ManagePoet extends Component {
       gender: this.state.gender ? this.state.gender : temp_data[0].gender,
       birthday: this.state.birthday ? this.state.birthday : this.state.change_poet.birthday,
       deathday: this.state.deathday ? this.state.deathday : this.state.change_poet.deathday,
-      dynastyid: this.state.dynastyid ? this.state.dynastyid : this.state.change_poet.dynastyid,
+      dynastyname: this.state.dynastyname ? this.state.dynastyname : this.state.change_poet.dynastyname,
       intro: this.state.intro ? this.state.intro : this.state.change_poet.intro,
       masterwork: this.state.masterwork ? this.state.masterwork : this.state.change_poet.masterwork
     }
@@ -311,8 +311,8 @@ class ManagePoet extends Component {
               <Input name="deathday" onChange={this.handleChange} />
             </Form.Item>
 
-            <Form.Item name="dynastyid" label="朝代id" rules={[{ required: true }]}>
-              <Input name="dynastyid" onChange={this.handleChange} />
+            <Form.Item name="dynastyname" label="朝代" rules={[{ required: true }]}>
+              <Input name="dynastyname" onChange={this.handleChange} />
             </Form.Item>
 
             <Form.Item name="intro" label="简介" rules={[{ required: true }]} >
@@ -371,8 +371,8 @@ class ManagePoet extends Component {
               <Input name="deathday" onChange={this.handleChange} placeholder={this.state.change_poet.deathday} />
             </Form.Item>
 
-            <Form.Item name="dynastyid" label="朝代id" >
-              <Input name="dynastyid" onChange={this.handleChange} placeholder={this.state.change_poet.dynastyid} />
+            <Form.Item name="dynastyname" label="朝代" >
+              <Input name="dynastyname" onChange={this.handleChange} placeholder={this.state.change_poet.dynastyname} />
             </Form.Item>
 
             <Form.Item name="intro" label="简介" >
