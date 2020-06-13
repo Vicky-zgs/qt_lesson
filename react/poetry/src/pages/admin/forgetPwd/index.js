@@ -56,6 +56,9 @@ class Login extends React.Component {
     // })
     fetch(url, {
       method: 'post',
+      headers:{
+        'Content-Type':'application/json'
+      },
       body: JSON.stringify({ username: this.state.username, to_: this.state.email })
     }).then(function (res) {
       alert('邮件发送成功')
