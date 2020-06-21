@@ -1,10 +1,21 @@
+
 .content-list {
     position: absolute;
     left: 0;
     width: 44vw;
+    .upLoad{
+        width: 42vw;
+        border-radius: 5px;
+        color: #ffffff;
+        background-color: rgb(24,144,255);
+        margin: 2vh 1vw 2vh 1vw;
+        padding: 1vh 1vw;
+        cursor: pointer;
+    
+    }
     .content-item {
       border-radius: 5px;
-      background: #dadae7;
+      background: #aec6caf6;
       margin: 2vh 1vw 3vh 1vw;
       padding: 1vh 1vw;
       box-shadow: 0px 0px 5px #888888;
@@ -20,6 +31,7 @@
         margin: 0.8vh 0 1.2vh 0;
       }
       .content {
+        font-size: 1.1em;
         color: black;
         overflow: hidden;
         display:-webkit-box;
@@ -42,6 +54,7 @@
         opacity: 0.2;
       }
       .content-tag {
+        font-size: 1em;
         margin: 1vh 0;
         position: relative;
         .coll_num {
@@ -50,17 +63,6 @@
           font-size: 12px;
         }
       }
-    }
-    .upLoad{
-        width: 42vw;
-        height: 5vh;
-        border-radius: 5px;
-        color: #ffffff;
-        background-color: rgb(24,144,255);
-        margin: 2vh 1vw 2vh 1vw;
-        padding: 1vh 1vw;
-        cursor: pointer;
-
     }
     .loadMore {
       width: 100%;
@@ -76,9 +78,9 @@
         padding: 20px 20px;
         border-radius: 6px;
         position: absolute;
+        top: 0px;
         left: 50%;
-        top: 50%;
-        transform: translate(-50%, -20%);
+        transform: translate(-50%, 0);
         z-index: 10;
         background-color: #ffffff;
         border: 1px solid #000000;
@@ -98,6 +100,53 @@
             text-align: center;
             border: none;
             cursor: pointer;
+        }
+        .uploadimgform{
+          width: 20vw;
+          height: 8vh;
+          position: relative;
+          .filebutton{
+            position: absolute;
+            display: inline-block;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            input{
+              position: absolute;
+              top: 0;
+              opacity: 0;
+              font-size:100px;
+              cursor: pointer;
+            }
+            div{
+              font-size: 14px;
+              width: 8vw;
+              height: 6vh;
+              background-color: #ffffff;
+              color: rgb(89,89,89);
+              text-align: center;
+              border: none;
+              border-radius: 2px;
+              border: 1px solid #000000;
+              padding: 5px 10px;
+              cursor: pointer;
+            }
+          }
+          .uploadimgbutton{
+            position: absolute;
+            top: 0;
+            left: 8vw;
+            font-size: 14px;
+            width: 8vw;
+            height: 6vh;
+            background-color: rgb(24,144,255);
+            color: #ffffff;
+            border-radius: 2px;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            margin-left: 3vw;
+          }
         }
     }
     .upload-form-button{

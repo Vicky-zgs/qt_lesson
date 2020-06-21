@@ -44,7 +44,7 @@ class PoetryInfo extends Component {
     }).then(function (res) {
       return res.json();
     }).then(function (json) {
-      // console.log('诗词详情页的数据', json)
+      console.log('诗词详情页的数据', json)
       that.setState({
         poetry_info: json.data[0]
       })
@@ -102,22 +102,22 @@ class PoetryInfo extends Component {
       <div>
         <Header />
         {/* 诗歌内容 */}
-        <div className="wrapper" style={{ width: '50vw' }}>
+        <div className="poetryInfo_wrapper" >
           <div className="content-item" >
 
             <span className="title" >
               {this.state.poetry_info.name}
             </span>
             <span className="author">{this.state.poetry_info.dynastyname}：{this.state.poetry_info.poetname}</span>
-            <textarea id="reward-text" className="content" style={{
+            <textarea id="reward-text" style={{
               width: '100%',
               overflow: 'auto',
               wordBreak: 'break-all',
               color: '#000000',
-              fontSize: '14px',
+              fontSize: '1.1em',
               border: 'none',
               bodyStyle: 'solid',
-              backgroundColor: '#dadae7'
+              backgroundColor: '#aec6caf6'
             }} value={this.state.poetry_info.content} readOnly></textarea>
             <div className="tool">
               <div className="shoucang"><StarOutlined /></div>

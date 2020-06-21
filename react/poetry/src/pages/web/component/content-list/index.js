@@ -2,14 +2,15 @@
 
 import React, { Component } from 'react'
 import './index.less'
-import { StarOutlined, DownloadOutlined, CopyOutlined } from '@ant-design/icons'
+import { StarOutlined, DownloadOutlined, CopyOutlined, StarFilled } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
 
 class List extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      listNum: 5
+      listNum: 5,
+      isColl: false
     }
   }
 
@@ -24,12 +25,20 @@ class List extends Component {
     // console.log('收藏的诗词的id', poetryId)
     let url = "http://localhost:8080/addcoll";//接口地址
     let id = poetryId
+    let that = this
     fetch(url, {
       method: 'post',
       body: id,
       credentials: 'include'//解决fetch跨域session丢失
     }).then(function (res) {
-      alert('收藏成功！')
+      return res.json();
+    }).then(function (json) {
+      console.log(json.data)
+      alert(json.description);
+      that.setState({
+        data:json.data
+      })
+      window.location.reload(true)
     }).catch(function(err) {
       alert('请登录！')
     })
@@ -48,13 +57,13 @@ class List extends Component {
               return (
                 <div className="content-item" key={index}>
 
-                  <span className="title" >
+                  <span className="poet_title" >
                     {/* 传id给详情页 */}
                     <Link to={"/poetInfo/" + item.id} >
                       {item.name}
                     </Link>
                   </span>
-                  <span className="author">{item.birthday}~{item.deathday}</span>
+                  <span className="poet_name">{item.birthday}~{item.deathday}</span>
                   <div className="content">
                     {item.intro}
                   </div>
@@ -75,16 +84,16 @@ class List extends Component {
               return (
                 <div className="content-item" key={index} >
 
-                  <span className="title" style={{textAlign:'left', backgroundColor: '#dadae7'}}>
+                  <span className="poet_title" style={{textAlign:'left', backgroundColor: '#aec6caf6'}}>
                     {/* 传id给详情页 */}
                     <Link to={"/poetryInfo/" + item.id + '/' + item.name} >
                       {item.name}
                     </Link>
                   </span>
-                  <span className="author">
-                    <Link style={{color:'black'}} to={"/poetInfo/" + item.authoruid}>{item.dynastyname}：{item.poetname}</Link>  
+                  <span className="poet_name">
+                    <Link style={{color:'black'}} to={"/poetInfo/" + item.authoruid} >{item.dynastyname}：{item.poetname}</Link>  
                   </span>
-                  <div className="content" style={{backgroundColor: '#dadae7'}}>
+                  <div className="content" style={{backgroundColor: '#aec6caf6'}}>
                     {item.content}
                   </div>
                   <div className="tool">
@@ -99,23 +108,23 @@ class List extends Component {
 
                 </div>
               )
-            } else if(item.num) {
+            } else if((index < this.state.listNum) && item.num) {
               // 推荐页面的列表组件
               return (
                 <div className="content-item" key={index} >
 
-                  <span className="title" style={{textAlign:'left', backgroundColor: '#dadae7'}}>
+                  <span className="poet_title" style={{textAlign:'left', backgroundColor: '#aec6caf6'}}>
                     {/* 传id给详情页 */}
                     <Link to={"/poetryInfo/" + item.poetryid + '/' + item.name} >
                       {item.name}
                     </Link>
                   </span>
-                  <span className="author">
+                  <span className="poet_name">
                     <Link to={"/poetInfo/" + item.authoruid} style={{color: 'black'}}>
                       {item.dynastyname}：{item.poetname}
                     </Link>
                   </span>
-                  <div className="content" style={{backgroundColor: '#dadae7'}}>
+                  <div className="content" style={{backgroundColor: '#aec6caf6'}}>
                     {item.content}
                   </div>
                   <div className="tool">

@@ -29,11 +29,11 @@ class OtherInfo extends Component {
             overflow: 'auto',
             wordBreak: 'break-all',
             color: '#000000',
-            fontSize: '14px',
+            fontSize: '1.1em',
             fontWeight: '300',
             border: 'none',
             bodyStyle: 'solid',
-            backgroundColor: '#dadae7'
+            backgroundColor: '#aec6caf6'
           }} value={list.annotation} readOnly></textarea>
         </div>
 
@@ -47,11 +47,11 @@ class OtherInfo extends Component {
             overflow: 'auto',
             wordBreak: 'break-all',
             color: '#000000',
-            fontSize: '14px',
+            fontSize: '1.1em',
             fontWeight: '300',
             border: 'none',
             bodyStyle: 'solid',
-            backgroundColor: '#dadae7'
+            backgroundColor: '#aec6caf6'
           }} value={list.translation} readOnly></textarea>
         </div>
       </div>

@@ -16,24 +16,43 @@ class Header extends React.Component {
     this.state = ({
       current: 'home',
       isManager: '',  // 是不是管理员, false即不是管理员 是用户, 默认是用户
+      isLogin: '',
       search_data: '', // 搜索框的数据
       search_list: [], // 搜索得到的数据，其实没什么用，只是要用到它的id啥的
     })
   }
 
-  componentDidMount () {
+  componentDidMount() {
     axios.get('/isManager').then((res) => {
-      console.log('isManager',res.data)
+      // console.log('isManager',res.data.data)
       let managerId = res.data.data.isManager
       if (managerId === 1) {
         // 登录者是管理员
         this.setState({
           isManager: true
+        }, () => {
+          // console.log('从后端获取的isManager', this.state.isManager)
         })
       }
     }).catch(err => {
       console.log(err)
     })
+
+    axios.get('/checkloginstate').then((res) => {
+      console.log('是否登录', res.data.data)  // 0为未登录，1为已登录
+      let loginData = res.data.data
+      if (loginData === 1) {
+        // 已登录
+        this.setState({
+          isLogin: true
+        }, () => {
+          console.log('isLogin', this.state.isLogin)
+        })
+      }
+    }).catch(err => {
+      console.log(err)
+    })
+
   }
 
   handleClick = e => {
@@ -54,19 +73,33 @@ class Header extends React.Component {
   handleSearch = () => {
     let url = "http://localhost:8080/listpoetrybykw";//接口地址
     let that = this
-    fetch(url,{
-        method: 'post',
-        body: that.state.search_data,
-        credentials: 'include'//解决fetch跨域session丢失
+    fetch(url, {
+      method: 'post',
+      body: that.state.search_data,
+      credentials: 'include'//解决fetch跨域session丢失
     }).then(function (res) {
-        return res.json();
+      return res.json();
     }).then(function (json) {
-      console.log('搜索的',that.state.search_data)
+      console.log('搜索的', that.state.search_data)
       that.setState({
         search_list: json.data
       })
-      console.log('搜索后返回的数据',that.state.search_list)
+      console.log('搜索后返回的数据', that.state.search_list)
       // that.context.router.history.push('/web/search')
+    })
+  }
+
+  // 退出登录
+  logout = () => {
+    axios.get('/quit').then((res) => {
+      this.setState({
+        isLogin: false
+      }, () => {
+        alert('退出成功!')
+        window.location.reload(true)
+      })
+    }).catch((err) => {
+      alert(err)
     })
   }
 
@@ -109,27 +142,48 @@ class Header extends React.Component {
         <Menu className="menu" onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal">
           {menuList}
         </Menu>
-        
+
         <div className="search_wrapper">
           <Input className="header-input" placeholder="搜索..." onChange={(e) => this.search(e)} />
-          <Link to={{ pathname :  `/web/search/ + ${Math.floor(Math.random()*(10))}` , state : { kw: this.state.search_data }}}>
+          <Link to={{ pathname: `/web/search/ + ${Math.floor(Math.random() * (10))}`, state: { kw: this.state.search_data } }}>
             <SearchOutlined className="search_click" />
           </Link>
         </div>
 
-          <Button className="header-login login">
-            <Link to="/login">登录</Link>
-          </Button>
+        {
+          this.state.isLogin
+            ? <Button className="header-logout" onClick={this.logout}>
+                退出登录
+              </Button>
+            : <Button className="header-login login">
+                <Link to="/login">登录</Link>
+              </Button>
+        }
 
         {
-          this.state.isManager
-          ? <Button className="personalInfo">
+          (this.state.isManager)
+            ? <Button className="personalInfo">
               <Link to="/admin/collection">信息管理</Link>
             </Button>
-          : <Dropdown overlay={menu} placement="bottomRight" className="personalInfo">
+            : ''
+        }
+        {
+          ((!this.state.isManager) && (this.state.isLogin))
+          ? <Dropdown overlay={menu} placement="bottomRight" className="personalInfo">
               <Button>个人信息</Button>
             </Dropdown>
+          : ''
         }
+{/* 
+{
+          (this.state.isManager)
+            ? <Button className="personalInfo">
+              <Link to="/admin/collection">信息管理</Link>
+            </Button>
+            : <Dropdown overlay={menu} placement="bottomRight" className="personalInfo">
+              <Button>个人信息</Button>
+            </Dropdown>
+        } */}
       </div>
     )
   }

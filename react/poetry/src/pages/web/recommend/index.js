@@ -21,7 +21,7 @@ class WebLayout extends Component {
       this.setState({
         RecommendList: res.data.data
       }, () => {
-        console.log('推荐列表数据', this.state.RecommendList)
+        // console.log('推荐列表数据', this.state.RecommendList)
       })
     })
 

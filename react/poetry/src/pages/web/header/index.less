@@ -1,13 +1,15 @@
 .HeaderWrapper {
-  background: #dadae7;
-  position: relative;
+  background: #aec6caf6;
+  position: fixed;
+  top: 0;
+  width: 100%;
   height: 50px;
   display: flex;
-  border-bottom: 1px solid #f0f0f0;
+  z-index: 99;
   .header-title {
     height: 100%;
     line-height: 50px;
-    font-size: 25px;
+    font-size: 2em;
     font-family: 'KaiTi';
     font-weight: bold;
     margin: 0 35px;
@@ -33,6 +35,15 @@
     background: #ea6f5a;
     color: white;
   }
+  .header-logout {
+    margin: 8px 0;
+    height: 33px;
+    border-radius: 18px;
+    position: absolute;
+    right: 40px;
+    width: 90px;
+    color: black;
+  }
   .header-input {
     width: 300px;
     height: 35px;
@@ -43,17 +54,21 @@
   .menu {
     height: 50px;
     margin: 0 50px;
-    font-size: 14px;
     width: 400px;
-    background: #dadae7;
+    border: 0;
+    background: #aec6caf6;
     .nav-text {
-      font-size: 15px;
+      font-size: 1.2em;
+      font-weight: 500;
+      color: rgba(75, 72, 72, 0.952);
     }
   }
   .personalInfo {
+    font-size: 1.1em;
+    font-weight: 500;
     border-radius: 10px;
     position: absolute;
-    right: 10vw;
-    top: 1.5vh;
+    right: 150px;
+    top: 9px;
   }
 }

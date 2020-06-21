@@ -5,6 +5,7 @@ import { Form, Input, Button } from 'antd'
 import './index.less'
 import { UserOutlined, LockOutlined, MobileOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 class List extends Component {
     constructor(props) {
@@ -12,28 +13,60 @@ class List extends Component {
         this.state = {
             listNum: 5,
             show: false,
+            useremail:'',
             name: '',
             dynasty: '',
             author: '',
             content:'',
             type:'',
             file: '',
-            imagePreviewUrl: ''
+            imagePreviewUrl: '',
+
+            isLogin: '', // 是否登录
         }
     }
 
+    componentDidMount() {
+        axios.get('/checkloginstate').then((res) => {
+            console.log('是否登录', res.data.data)  // 0为未登录，1为已登录
+            let loginData = res.data.data
+            if (loginData === 1) {
+              // 已登录
+              this.setState({
+                isLogin: true
+              }, () => {
+                console.log('isLogin', this.state.isLogin)
+              })
+            } else {
+                this.setState({
+                    isLogin: false
+                  })
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+    }
 
 
-    handleFile(){
+    handleFile= (e) => {
         let picture = document.getElementById("picture").files;
+        var ucontent = document.getElementById("content");
         let formData = new FormData();
         formData.append('file', picture[0]);
-
-        fetch("http://localhost:8080/upload", {
+        let that =this;
+        fetch("http://localhost:8080/imgupload", {
             method:'post',
             body:formData,
-        }).then(response => response.text()).then(data => {
-            alert(data)
+        }).then(function (res) {
+            return res.json();
+        }).then(function (json) {
+            console.log(json.data)
+            that.setState({
+                content: json.data,
+                uploadcontent:true
+            },() => {
+                ucontent.value = that.state.content;
+            })
         }).catch(function(e){
             alert("error:" + e);
         })
@@ -47,9 +80,14 @@ class List extends Component {
     }
 
     upLoad() {
-        this.setState({
-            show: true
-        });
+        if(this.state.isLogin === false) {
+            // 未登录
+            alert('请登录!')
+        } else {
+            this.setState({
+                show: true
+            });
+        }
     }
 
     cancel() {
@@ -125,6 +163,8 @@ class List extends Component {
         } else {
             $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);}
                 return (
+<div>
+                    
                     <div className="content-list" >
                 {
                     list.map((item, index) => {
@@ -139,7 +179,8 @@ class List extends Component {
                                 </span>
                                 <span className="author">
                                 {item.dynasty}:{item.author}
-                        </span>
+                                 </span>
+
                             <div className="content">
                                 {item.content}
                                 </div>
@@ -147,7 +188,9 @@ class List extends Component {
                                 <div className="content-tag">
                                 {item.type}
                                 </div>
-
+                                {/*   <p>分享自用户<span className="useremail">*/}
+                                {/*{item.useremail}*/}
+                                {/*   </span></p>*/}
                                 </div>
                         )
                         } else {
@@ -155,8 +198,9 @@ class List extends Component {
                         }
                     })
                 }
+<Button onClick={() => this.upLoad()} className="upLoad">上传</Button>
 
-        <Button onClick={() => this.upLoad()} className="upLoad">上传</Button>
+
                 <div className={this.state.show ? 'showUpLoadForm' : 'upLoadForm'}>
                 <Form enctype="multipart/form-data" onFinish={this.handleSubmit}>
                 <Form.Item name="name" rules={[{ required: true, message: '请输入诗名' }]} className="formItem" label="诗名：">
@@ -192,12 +236,14 @@ class List extends Component {
             name="content"
             onChange={this.handleContentChange}
             cols="60" rows="10"
+            id="content"
             placeholder="请输入内容">
                 </textarea>
-                <form>
-                <input type="file" id="picture" />
+                <form className="uploadimgform">
+                <div className="filebutton"><div>选择文件</div><input type="file" id="picture"/></div>
+                {/* <input type="file" id="picture"/> */}
                 <br/>
-                <button type="button" onClick={this.handleFile}>上传图片</button>
+                <button type="button" onClick={this.handleFile} className="uploadimgbutton">上传图片</button>
                 </form>
 
         </Form.Item>
@@ -216,6 +262,7 @@ class List extends Component {
             </div>
 
             </div>
+        </div>
         )
         }
     }

@@ -17,7 +17,6 @@ class LookManage extends Component {
           title: '发布者邮箱',
           dataIndex: 'email',
           key: 'email',
-          render: text => <a>{text}</a>,
         },
         {
           title: '通知内容',
@@ -28,16 +27,7 @@ class LookManage extends Component {
           title: '发布时间',
           dataIndex: 'time',
           key: 'time',
-        },
-        {
-          title: 'Action',
-          key: 'action',
-          render: (text, record) => (
-            <span>
-              <Button style={{ marginRight: 10 }}>查看</Button>
-            </span>
-          ),
-        },
+        }
       ]
     }
   }
@@ -63,7 +53,7 @@ class LookManage extends Component {
     return (
       <div>
         <Head />
-        <div className="wrapper">
+        <div className="notice_wrapper">
           <Table
             rowKey={(record, index) => `complete${record.id}${index}`}
             columns={this.state.columns}
@@ -73,6 +63,7 @@ class LookManage extends Component {
               defaultCurrent: 1
             }}
             style={{ margin: '20px 0' }}
+            className="looknotice"
           />
         </div>
       </div>

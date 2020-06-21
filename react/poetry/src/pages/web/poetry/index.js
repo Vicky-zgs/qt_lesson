@@ -26,7 +26,7 @@ class Poetry extends Component {
       this.setState({
         poetryList: res.data.data
       },() =>{
-        // console.log('诗词列表数据',this.state.poetryList)
+        console.log('诗词列表数据',this.state.poetryList)
       })
     }).catch((err) => {
       console.log(err)
@@ -36,7 +36,7 @@ class Poetry extends Component {
       this.setState({
         poetryDynasty: res.data.data
       },() =>{
-        console.log('诗词朝代数据',this.state.poetryDynasty)
+        // console.log('诗词朝代数据',this.state.poetryDynasty)
       })
     }).catch((err) => {
       console.log(err)
@@ -47,7 +47,7 @@ class Poetry extends Component {
       this.setState({
         poetryType: res.data.data
       },() =>{
-        console.log('诗词类别数据',this.state.poetryType)
+        // console.log('诗词类别数据',this.state.poetryType)
       })
     }).catch((err) => {
       console.log(err)

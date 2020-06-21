@@ -1,10 +1,11 @@
 // 评论组件
 import React, { Component } from 'react'
 import './index.less'
-import { Button, Input } from 'antd';
+import { Button, Input, Comment, Tooltip, List } from 'antd';
 import axios from 'axios'
+import moment from 'moment';
 
-class Comment extends Component {
+class CommentList extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -60,6 +61,7 @@ class Comment extends Component {
         credentials: 'include'
       }).then(function (res) {
         alert('评论成功')
+        window.location.reload(true)
       })
     }
   }
@@ -72,10 +74,16 @@ class Comment extends Component {
         <ul>
           {
             this.props.list.map(item => (
-              <li key={item.id}>
-                <h4>评论人邮箱: {item.email}</h4>
-                <p>评论内容：{item.comments}</p>
-              </li>
+              // <li key={item.id}>
+              //   <h4>评论人邮箱: {item.email}</h4>
+              //   <p>评论内容：{item.comments}</p>
+              // </li>
+              <li className="comment-item">
+                <Comment
+                  author={item.email}
+                  content={item.comments}
+                  />
+                </li>
             ))
           }
         </ul>
@@ -101,4 +109,4 @@ class Comment extends Component {
   }
 }
 
-export default Comment
+export default CommentList
