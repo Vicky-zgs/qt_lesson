@@ -77,9 +77,10 @@ class PubNotice extends Component {
                 <textarea className="pub_notice"
                   onChange={this.handleText}
                   cols="60" rows="10"
-                  placeholder="请输入通知内容">
+                  placeholder="请输入通知内容"
+                  style={{fontSize: '1.1em'}}>
                 </textarea>
-                <Button className="submit" onClick={this.handleSubmit}>发布</Button>
+                <Button className="submit" onClick={this.handleSubmit} style={{fontSize: '1.1em'}}>发布</Button>
               </div>
             </div>
           </Content>

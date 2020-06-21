@@ -87,7 +87,7 @@ class ManageComment extends Component {
       // 需要对数据进行转换 拿到的 1：男/管理员 0：女/普通用户
       for (let i = 0; i < result.length; i++) {
         const temp_isManager = result[i].isManager === 1 ? '管理员' : '普通用户';
-        const temp_gender = result[i].gender === 1 ? '男' : '女'
+        const temp_gender = result[i].gender === '1' ? '男' : '女'
 
         //push数据
         temp_data.push({
@@ -137,7 +137,7 @@ class ManageComment extends Component {
       // 需要对数据进行转换 拿到的 1：男/管理员 0：女/普通用户
       for (let i = 0; i < result.length; i++) {
         const temp_isManager = result[i].isManager === 1 ? '管理员' : '普通用户';
-        const temp_gender = result[i].gender === 1 ? '男' : '女'
+        const temp_gender = result[i].gender === '1' ? '男' : '女'
 
         //push数据
         temp_data.push({
@@ -230,12 +230,36 @@ class ManageComment extends Component {
   deleteUser = (id) => {
     // console.log('删除的用户id',id)
     let url = "http://localhost:8080/admin/deleteuser";//接口地址
+    let that = this
     fetch(url, {
       method: 'post',
       body: id,
       credentials: 'include'//解决fetch跨域session丢失
+    }).then(function (res) {
+      return res.json();
+  }).then(function (json) {
+    const result = json.data
+    const temp_data = []
+    // 需要对数据进行转换 拿到的 1：男/管理员 0：女/普通用户
+    for (let i = 0; i < result.length; i++) {
+      const temp_isManager = result[i].isManager === 1 ? '管理员' : '普通用户';
+      const temp_gender = result[i].gender === '1' ? '男' : '女'
+
+      //push数据
+      temp_data.push({
+        email: result[i].email,
+        username: result[i].username,
+        password: result[i].password,
+        grade: result[i].grade,
+        gender: temp_gender,
+        isManager: temp_isManager,
+      })
+    }
+    that.setState({
+      data: temp_data
     })
-  }
+  })
+}
 
   // 点击 编辑 
   changeUser = (data) => {
@@ -264,7 +288,7 @@ class ManageComment extends Component {
           isManager: temp_isManager,
         })
 
-    let data = new FormData();
+    let change_data = new FormData();
     let that = this
     let msg = {
       'id': this.state.change_user.id,
@@ -275,18 +299,23 @@ class ManageComment extends Component {
       'isManager': this.state.isManager ? this.state.isManager : temp_data[0].isManager,
       'gender': this.state.gender ? this.state.gender : temp_data[0].gender,
     }
-    console.log('编辑用户的信息：', msg)
+    // console.log('编辑用户的信息：', msg)
     for (const key in msg) {
-      data.append(key, msg[key])
+      change_data.append(key, msg[key])
     }
     fetch(url, {
       method: 'post',
-      body: data,
+      body: change_data,
       credentials: 'include'
-    }).then(function () {
+    }).then(function (res) {
+      return res.json();
+  }).then(function (json) {
       alert('编辑成功')
+      // console.log('编辑后的用户信息', json.data)
       that.setState({
-        show_changeUser: false
+        show_changeUser: false,
+      },() => {
+        window.location.reload(true)
       })
     }).catch(function (err) {
       alert('提交失败, 报错', err)

@@ -3,6 +3,7 @@ import React from 'react'
 import { Form, Input, Button, Card } from 'antd'
 import { UserOutlined, LockOutlined, MobileOutlined } from '@ant-design/icons'
 import './index.less'
+import img from '../../../utils/img.png'
 
 class Login extends React.Component {
   constructor(props) {
@@ -63,13 +64,20 @@ class Login extends React.Component {
     }).then(function (res) {
       alert('邮件发送成功')
     }).catch((err) => {
-      console.log(err)
+      alert(err)
     })
   }
 
   render() {
+    const loginStyle = {
+      backgroundImage: `url(${img})`,
+      backgroundRepeat: 'repeat-y',
+      backgroundAttachment: 'fixed',
+      backgroundSize: '100% 100%',
+      opacity: '1'
+    }
     return (
-      <div className="forget_pwd">
+      <div className="forget_pwd" style={loginStyle}>
         <Card className="login-form" title="找回密码">
         <Form onFinish={this.handleSubmit}>
           <Form.Item name="username" rules={[{ required: true, message: '请输入你的用户名' }]}>

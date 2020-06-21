@@ -3,6 +3,7 @@ import { Layout, Menu, Input, Button, Table, Select, Form } from 'antd';
 import './index.less'
 import SiderMenu from '../../Sider/index.js'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -22,7 +23,9 @@ class ManagePoet extends Component {
           title: '诗人名',
           dataIndex: 'name',
           key: 'name',
-          render: text => <a>{text}</a>,
+          render: (text, record) => (
+            <Link to={"/poetInfo/" + record.id + '/' + record.name}>{text}</Link>
+          ),
         },
         {
           title: '字',
@@ -138,8 +141,16 @@ class ManagePoet extends Component {
       method: 'post',
       body: id,
       credentials: 'include'//解决fetch跨域session丢失
-    }).then(function(res) {
-      alert('删除成功！')
+    }).then(function (res) {
+      return res.json();
+    }).then(function (json) {
+      // console.log(json.data)
+      state.setState({
+        data: json.data
+      },() => {
+        alert('删除成功！')
+      })
+      // console.log('Data', state.state.data)
     })
   }
 
@@ -180,6 +191,8 @@ class ManagePoet extends Component {
       alert('提交成功')
       that.setState({
         show_addPoet: false
+      },() => {
+        window.location.reload(true)
       })
     }).catch(function (err) {
       alert('提交失败, 报错', err)
@@ -194,7 +207,7 @@ class ManagePoet extends Component {
       this.setState({
         show_changePoet: true
       })
-      // console.log('编辑用户的信息', this.state.change_user)
+      console.log('编辑用户的信息', this.state.change_poet)
     })
   }
   // 编辑 后 点击 "提交"
@@ -236,6 +249,8 @@ class ManagePoet extends Component {
       alert('编辑成功')
       that.setState({
         show_changePoet: false
+      },() => {
+        window.location.reload(true)
       })
     }).catch(function (err) {
       alert('提交失败, 报错', err)

@@ -4,6 +4,7 @@ import './index.less'
 import Login from './login.js'
 import Register from './register.js'
 import { Link } from 'react-router-dom'
+import img from '../../../utils/img.png'
 
 class LoginAndRegister extends React.Component {
   constructor (props) {
@@ -34,9 +35,16 @@ class LoginAndRegister extends React.Component {
   };
 
   render () {
+    const loginStyle = {
+      backgroundImage: `url(${img})`,
+      backgroundRepeat: 'repeat-y',
+      backgroundAttachment: 'fixed',
+      backgroundSize: '100% 100%',
+      opacity: '1'
+    }
     return (
-      <div className="login">
-        <Link to="/web/index" className="login-title">古诗文鉴赏</Link>
+      <div className="login" style={loginStyle}>
+        <Link to="/web/index" className="loginTitle">古诗文鉴赏</Link>
         <Card
           className="login-form"
           tabList={this.state.tabList}

@@ -3,6 +3,7 @@ import { Layout, Menu, Input, Button, Table, Select, Form } from 'antd';
 import './index.less'
 import SiderMenu from '../../Sider/index.js'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -22,7 +23,9 @@ class ManageVPoetry extends Component {
           title: '诗词名',
           dataIndex: 'name',
           key: 'name',
-          render: text => <a>{text}</a>,
+          render: (text, record) => (
+            <Link to={"/poetryInfo/" + record.id + '/' + record.name}>{text}</Link>
+          ),
         },
         {
           title: '诗人名',
@@ -131,8 +134,14 @@ class ManageVPoetry extends Component {
       method: 'post',
       body: id,
       credentials: 'include'//解决fetch跨域session丢失
-    }).then(function(res) {
-      alert('删除成功！')
+    }).then(function (res) {
+      return res.json();
+    }).then(function (json) {
+      // console.log(json.data)
+      state.setState({
+        data: json.data
+      })
+      // console.log('Data', state.state.data)
     })
   }
 
@@ -167,10 +176,14 @@ class ManageVPoetry extends Component {
         method: 'post',
         body: data,
         credentials: 'include'
-    }).then(function () {
+    }).then(function (res) {
+      return res.json();
+    }).then(function (json) {
       alert('提交成功')
       that.setState({
         show_addPoetry: false
+      },() => {
+        window.location.reload(true)
       })
     }).catch(function (err) {
       alert('提交失败, 报错',err)
@@ -185,7 +198,7 @@ class ManageVPoetry extends Component {
       this.setState({
         show_changePoetry: true
       })
-      // console.log('编辑用户的信息', this.state.change_user)
+      console.log('编辑用户的信息', this.state.change_poetry)
     })
   }
   // 编辑 后 点击 "提交"
@@ -216,7 +229,9 @@ class ManageVPoetry extends Component {
     }).then(function () {
       alert('编辑成功')
       that.setState({
-        show_changePoetry: false
+        show_changePoetry: false,
+      },() => {
+        window.location.reload(true)
       })
     }).catch(function (err) {
       alert('提交失败, 报错', err)

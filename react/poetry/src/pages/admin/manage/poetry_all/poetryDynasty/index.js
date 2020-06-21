@@ -22,13 +22,13 @@ class ManageDynasty extends Component {
           title: '朝代id',
           dataIndex: 'id',
           key: 'id',
-          render: text => <a>{text}</a>,
+          render: text => <span>{text}</span>,
         },
         {
           title: '朝代名称',
           dataIndex: 'name',
           key: 'name',
-          render: text => <a>{text}</a>,
+          render: text => <span>{text}</span>,
         },
         {
           title: '开始年份',
@@ -128,8 +128,16 @@ class ManageDynasty extends Component {
       method: 'post',
       body: id,
       credentials: 'include'//解决fetch跨域session丢失
-    }).then(function(res) {
-      alert('删除成功！')
+    }).then(function (res) {
+      return res.json();
+    }).then(function (json) {
+      // console.log(json.data)
+      state.setState({
+        data: json.data
+      },() => {
+        alert('删除成功！')
+      })
+      // console.log('Data', state.state.data)
     })
   }
 
@@ -156,6 +164,8 @@ class ManageDynasty extends Component {
       alert('提交成功')
       that.setState({
         show_addDynasty: false
+      },() => {
+        window.location.reload(true)
       })
     }).catch(function (err) {
       alert('提交失败, 报错',err)
@@ -199,6 +209,8 @@ class ManageDynasty extends Component {
       alert('编辑成功')
       that.setState({
         show_changeDynasty: false
+      },() => {
+        window.location.reload(true)
       })
     }).catch(function (err) {
       alert('提交失败, 报错', err)

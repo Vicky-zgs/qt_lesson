@@ -3,6 +3,7 @@ import { Layout, Menu, Input, Button, Table } from 'antd';
 import './index.less'
 import SiderMenu from '../Sider/index.js'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -40,7 +41,9 @@ class ManageComment extends Component {
           key: 'action',
           render: (text, record) => (
             <span>
-              <Button style={{ marginRight: 10 }}>查看</Button>
+              <Button style={{ marginRight: 10 }}>
+                <Link to={"/poetryInfo/" + record.poetryid + '/' + record.poetryname}>查看</Link>
+              </Button>
               <Button onClick={(e) => this.deleteCollection(record.id)}>删除</Button>
             </span>
           ),
@@ -94,14 +97,22 @@ class ManageComment extends Component {
   deleteCollection = (id) => {
     // 点击删除触发的方法
     // console.log('删除的id',id)
-    var state = this
+    var that = this
     let url = "http://localhost:8080/admin/deletecomment";//接口地址
     fetch(url, {
       method: 'post',
       body: id,
       credentials: 'include'//解决fetch跨域session丢失
-    })
-  }
+    }).then(function (res) {
+      return res.json();
+  }).then(function (json) {
+      // console.log(json.data)
+      that.setState({
+          data:json.data
+      })
+      // console.log('Data', state.state.data)
+  })
+}
 
   render() {
     return (

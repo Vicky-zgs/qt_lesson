@@ -104,6 +104,7 @@ class ManagerMyInfo extends Component {
         return res.json();
     }).then(function (json) {
         alert(json.description)
+        window.location.reload(true)
     })
 }
 

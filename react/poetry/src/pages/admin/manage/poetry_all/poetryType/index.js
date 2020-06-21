@@ -22,7 +22,7 @@ class ManageType extends Component {
           title: '类型',
           dataIndex: 'type',
           key: 'type',
-          render: text => <a>{text}</a>,
+          render: text => <span>{text}</span>,
         },
         {
           title: 'Action',
@@ -94,8 +94,16 @@ class ManageType extends Component {
       method: 'post',
       body: id,
       credentials: 'include'//解决fetch跨域session丢失
-    }).then(function(res) {
-      alert('删除成功！')
+    }).then(function (res) {
+      return res.json();
+    }).then(function (json) {
+      // console.log(json.data)
+      state.setState({
+        data: json.data
+      },() => {
+        alert('删除成功！')
+      })
+      // console.log('Data', state.state.data)
     })
   }
 
@@ -119,6 +127,8 @@ class ManageType extends Component {
       alert('提交成功')
       that.setState({
         show_addType: false
+      },() => {
+        window.location.reload(true)
       })
     }).catch(function (err) {
       alert('提交失败, 报错',err)
@@ -158,6 +168,8 @@ class ManageType extends Component {
       alert('编辑成功')
       that.setState({
         show_changeType: false
+      },() => {
+        window.location.reload(true)
       })
     }).catch(function (err) {
       alert('提交失败, 报错', err)

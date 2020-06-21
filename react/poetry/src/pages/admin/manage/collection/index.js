@@ -40,8 +40,8 @@ class ManagerColl extends Component {
           key: 'action',
           render: (text, record) => (
             <span>
-              <Button style={{ marginRight: 10 }} onClick={(e) => this.checkCollection(record.id)}>
-                <Link to={"/poetryInfo/" + record.poetryid}>查看</Link>
+              <Button style={{ marginRight: 10 }}>
+                <Link to={"/poetryInfo/" + record.poetryid + '/' + record.poetryname}>查看</Link>
               </Button>
               <Button onClick={(e) => this.deleteCollection(record.id)}>删除</Button>
             </span>
@@ -85,11 +85,11 @@ class ManagerColl extends Component {
     }).then(function (res) {
         return res.json();
     }).then(function (json) {
-        console.log(json.data)
+        // console.log(json.data)
         state.setState({
             data:json.data
         })
-        console.log('Data', state.state.data)
+        // console.log('Data', state.state.data)
     })
   }
 
@@ -111,11 +111,6 @@ class ManagerColl extends Component {
         })
         console.log('Data', state.state.data)
     })
-  }
-
-  checkCollection = (id) => {
-    // 点击查看触发的方法
-    console.log(id)
   }
 
   render() {

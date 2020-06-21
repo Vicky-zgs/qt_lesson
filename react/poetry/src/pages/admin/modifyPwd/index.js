@@ -3,6 +3,8 @@ import React from 'react'
 import { Form, Input, Button, Card } from 'antd'
 import { UserOutlined, LockOutlined, MobileOutlined } from '@ant-design/icons'
 import './index.less'
+import img from '../../../utils/img.png'
+import { Link } from 'react-router-dom'
 
 class SetNewPwd extends React.Component {
   constructor(props) {
@@ -46,15 +48,22 @@ class SetNewPwd extends React.Component {
       },
       body: JSON.stringify({ check: this.state.check, newPassword: this.state.password1 })
     }).then(function (res) {
-      alert('邮件发送成功')
+      alert('保存修改！')
     }).catch((err) => {
       console.log(err)
     })
   }
 
   render() {
+    const loginStyle = {
+      backgroundImage: `url(${img})`,
+      backgroundRepeat: 'repeat-y',
+      backgroundAttachment: 'fixed',
+      backgroundSize: '100% 100%',
+      opacity: '1'
+    }
     return (
-      <div className="forget_pwd">
+      <div className="forget_pwd" style={loginStyle}>
         <Card className="login-form" title="修改密码">
         <Form onFinish={this.handleSubmit}>
 
@@ -116,6 +125,9 @@ class SetNewPwd extends React.Component {
           </Form.Item>
 
           <Button type="primary" htmlType="submit" className="login-form-button" block >保存修改</Button>
+          <Button className="login-form-button" block style={{margin: '10px 0'}}>
+            <Link to="/login">返回登录页面</Link>
+          </Button>
         </Form>
         </Card>
       </div>

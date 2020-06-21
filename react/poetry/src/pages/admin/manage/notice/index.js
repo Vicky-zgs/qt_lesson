@@ -38,7 +38,6 @@ class ManageNotice extends Component {
           key: 'action',
           render: (text, record) => (
             <span>
-              <Button style={{ marginRight: 10 }}>查看</Button>
               <Button onClick={(e) => this.deleteNotice(record.id)}>删除</Button>
             </span>
           ),
@@ -99,10 +98,19 @@ class ManageNotice extends Component {
       method: 'post',
       body: id,
       credentials: 'include'//解决fetch跨域session丢失
-    }).then(function(res) {
-      alert('删除成功！')
+    }).then(function (res) {
+      return res.json();
+    }).then(function (json) {
+      // console.log(json.data)
+      state.setState({
+        data: json.data
+      },() => {
+        alert('删除成功！')
+      })
+      // console.log('Data', state.state.data)
     })
   }
+
 
   render() {
     return (
