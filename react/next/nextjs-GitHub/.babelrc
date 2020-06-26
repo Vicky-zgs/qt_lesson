@@ -1,0 +1,9 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    ["import", {
+      "libraryName": "antd"
+      // "style": "css"  // 按需加载antd组件的css  但是一般不这样写 会有问题 一般在_app.js中引入css
+    }]
+  ]
+}
