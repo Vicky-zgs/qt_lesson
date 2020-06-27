@@ -64,3 +64,8 @@ server1.js (koa使用示例) :
 # 自定义app
   - _app.js
     使用静态方法getInitialProps, 并且要获取子组件中getInitialProps获取的数据, 然后当作自己的数据传给子组件
+
+# document    css-in-js
+  - 通常是服务端渲染时使用
+
+# Hooks  让函数组件具有类组件的能力

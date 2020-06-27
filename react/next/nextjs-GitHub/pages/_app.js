@@ -1,9 +1,11 @@
-import App, { Container } from 'next/app'
+import App from 'next/app'
 
 import 'antd/dist/antd.css'
 
+import Layout from '../components/Layout.jsx'
+
 class MyApp extends App {
-  
+
   // 进行全局的数据的获取
   static async getInitialProps({ Component }) {
     // 拿到子组件 (例如a.js) 中的getInitialProps获取的数据
@@ -24,9 +26,9 @@ class MyApp extends App {
     // console.log('Component', Component)
 
     return(
-      <Container>
-        <Component {...pageProps} />
-      </Container>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
     )
   }
 }

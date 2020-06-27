@@ -24,19 +24,19 @@ events.forEach(event => {
 
 export default () => {
 
-  function gotoTestB() {
-    Router.push({
-      // 添加点击时间进行页面跳转 这样的写法与Link效果一样
-      pathname: '/test/b',
-      query: {
-        id: 2
-      }
-    }, '/test/b/2') // 页面跳转
-  }
+  // function gotoTestB() {
+  //   Router.push({
+  //     // 添加点击时间进行页面跳转 这样的写法与Link效果一样
+  //     pathname: '/test/b',
+  //     query: {
+  //       id: 2
+  //     }
+  //   }, '/test/b/2') // 页面跳转
+  // }
 
   return (
     <>
-    <Button onClick={gotoTestB}>test b</Button>
+      <span>Index</span>
     </>
   )
 }
